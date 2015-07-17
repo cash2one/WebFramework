@@ -1,0 +1,7 @@
+SMDD_ID : 编号
+SMD_ID : 月结广告商折扣编号
+LOGIC_SYMBOL : 逻辑运算符
+LEFT_OPERAND : 左操作数
+RIGHT_OPERAND : 右操作数
+DISCOUNT_RATE : 折扣率
+STATUS : 状态

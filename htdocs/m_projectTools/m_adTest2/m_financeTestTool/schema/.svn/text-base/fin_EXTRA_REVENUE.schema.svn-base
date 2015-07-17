@@ -1,0 +1,28 @@
+[_table_]
+name = 额外收入汇总表
+primary_key = ER_ID
+field_list = ER_ID,USER_ID,USER_TYPE,ER_BALANCE,OPERATE_TIME,REMARK
+
+[ER_ID]
+name = 额外收入ID
+readable_map = 
+
+[USER_ID]
+name = 用户ID
+readable_map = 
+
+[USER_TYPE]
+name = 账户类型
+readable_map = 0:预付费广告商|1:代理商
+
+[ER_BALANCE]
+name = 额外收入金额
+readable_map = 
+
+[OPERATE_TIME]
+name = 操作时间
+readable_func = readable_time
+
+[REMARK]
+name = 备注
+readable_map = 

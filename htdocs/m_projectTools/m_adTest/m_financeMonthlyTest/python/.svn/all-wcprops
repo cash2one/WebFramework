@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/outfox/!svn/ver/428537/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python
+END
+SponsorMonthlySettlementTable.py
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn/outfox/!svn/ver/413750/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/SponsorMonthlySettlementTable.py
+END
+ClickTable.py
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/outfox/!svn/ver/417958/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/ClickTable.py
+END
+LogDATable.py
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/outfox/!svn/ver/413604/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/LogDATable.py
+END
+SponsorMonthlyDiscountTable.py
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/outfox/!svn/ver/412858/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/SponsorMonthlyDiscountTable.py
+END
+SponsorTodayCostTable.py
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/outfox/!svn/ver/421200/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/SponsorTodayCostTable.py
+END
+AdClickChargeUpProgressTable.py
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/outfox/!svn/ver/417968/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/AdClickChargeUpProgressTable.py
+END
+LogDASimTable.py
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/outfox/!svn/ver/417231/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/LogDASimTable.py
+END
+TableHtmlWriter.py
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/outfox/!svn/ver/428456/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/TableHtmlWriter.py
+END
+TableHtmlWriterTest.py
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/outfox/!svn/ver/419181/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/TableHtmlWriterTest.py
+END
+SponsorAccountHistoryTable.py
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/outfox/!svn/ver/428438/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/SponsorAccountHistoryTable.py
+END
+TableDelete.py
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/outfox/!svn/ver/412842/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/TableDelete.py
+END
+SponsorTable.py
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/outfox/!svn/ver/409501/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/SponsorTable.py
+END
+DBFactory.py
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/outfox/!svn/ver/413604/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/DBFactory.py
+END
+SponsorBalanceTable.py
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/outfox/!svn/ver/409501/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/SponsorBalanceTable.py
+END
+BaseTable.py
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/outfox/!svn/ver/417960/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/BaseTable.py
+END
+SponsorMonthlyDiscountDetailTable.py
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/svn/outfox/!svn/ver/412836/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/SponsorMonthlyDiscountDetailTable.py
+END
+SponsorMonthlyContractTable.py
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/outfox/!svn/ver/428537/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/SponsorMonthlyContractTable.py
+END
+SponsorDailyCostTable.py
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/outfox/!svn/ver/421200/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/SponsorDailyCostTable.py
+END
+SponsorBalanceChangeTable.py
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/outfox/!svn/ver/421200/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/SponsorBalanceChangeTable.py
+END

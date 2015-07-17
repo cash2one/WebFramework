@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/outfox/!svn/ver/413320/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/php
+END
+load_tables.php
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/outfox/!svn/ver/411440/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/php/load_tables.php
+END
+set_status.php
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/outfox/!svn/ver/413309/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/php/set_status.php
+END
+delete_tables_sponsor.php
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/outfox/!svn/ver/409501/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/php/delete_tables_sponsor.php
+END
+read_conf.php
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/outfox/!svn/ver/409405/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/php/read_conf.php
+END
+set_conf.php
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/outfox/!svn/ver/409405/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/php/set_conf.php
+END
+load_files.php
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/outfox/!svn/ver/411239/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/php/load_files.php
+END
+php
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/outfox/!svn/ver/409405/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/php/php
+END
+save_status.php
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/outfox/!svn/ver/413302/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/php/save_status.php
+END
+load_status.php
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/outfox/!svn/ver/413320/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/php/load_status.php
+END
+read_html_filenames.php
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/outfox/!svn/ver/413320/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/php/read_html_filenames.php
+END
+add_new_status.php
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/outfox/!svn/ver/413302/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/php/add_new_status.php
+END
+del_name.php
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/outfox/!svn/ver/413302/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/php/del_name.php
+END
+load_html_files.php
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/outfox/!svn/ver/411239/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/php/load_html_files.php
+END
+del_status.php
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/outfox/!svn/ver/413302/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/php/del_status.php
+END

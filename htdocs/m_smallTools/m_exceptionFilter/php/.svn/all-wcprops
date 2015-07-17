@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/outfox/!svn/ver/509727/incubator/Test/WebFramework/htdocs/m_smallTools/m_exceptionFilter/php
+END
+loadWhitelistContents.php
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/outfox/!svn/ver/509727/incubator/Test/WebFramework/htdocs/m_smallTools/m_exceptionFilter/php/loadWhitelistContents.php
+END
+getWhitelist.php
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/outfox/!svn/ver/509727/incubator/Test/WebFramework/htdocs/m_smallTools/m_exceptionFilter/php/getWhitelist.php
+END
+WhiteList.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/outfox/!svn/ver/509727/incubator/Test/WebFramework/htdocs/m_smallTools/m_exceptionFilter/php/WhiteList.class.php
+END
+loadWhitelistNames.php
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/outfox/!svn/ver/509727/incubator/Test/WebFramework/htdocs/m_smallTools/m_exceptionFilter/php/loadWhitelistNames.php
+END
+ExceptionResult.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/outfox/!svn/ver/509727/incubator/Test/WebFramework/htdocs/m_smallTools/m_exceptionFilter/php/ExceptionResult.class.php
+END
+php
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/outfox/!svn/ver/509727/incubator/Test/WebFramework/htdocs/m_smallTools/m_exceptionFilter/php/php
+END
+whitelist_edit.php
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/outfox/!svn/ver/509727/incubator/Test/WebFramework/htdocs/m_smallTools/m_exceptionFilter/php/whitelist_edit.php
+END
+dbUtil.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/outfox/!svn/ver/509727/incubator/Test/WebFramework/htdocs/m_smallTools/m_exceptionFilter/php/dbUtil.php
+END
+filter_process.php
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/outfox/!svn/ver/509727/incubator/Test/WebFramework/htdocs/m_smallTools/m_exceptionFilter/php/filter_process.php
+END
+\
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/outfox/!svn/ver/509727/incubator/Test/WebFramework/htdocs/m_smallTools/m_exceptionFilter/php/%5C
+END
+ExceptionFilter.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/outfox/!svn/ver/509727/incubator/Test/WebFramework/htdocs/m_smallTools/m_exceptionFilter/php/ExceptionFilter.class.php
+END

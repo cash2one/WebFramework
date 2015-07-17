@@ -1,0 +1,11 @@
+SMC_ID : 编号
+SPONSOR_ID : 广告商编号
+CONTRACT_ID : 合同编号
+CONTRACT_START_DATE : 合同开始时间
+CONTRACT_END_DATE : 合同结束时间
+CREDIT_POINTS : 信贷评分
+CONTRACT_TEXT_ID : 合同附件编号
+STATUS : 状态
+REMARK : 备注
+CREATE_TIME : 创建时间
+LAST_UPDATE_TIME : 最后更新时间

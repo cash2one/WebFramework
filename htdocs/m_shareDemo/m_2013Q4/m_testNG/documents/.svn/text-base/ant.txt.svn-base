@@ -1,0 +1,44 @@
+<h3>定义TestNG的ant任务</h3>
+<pre>
+   * demo: <taskdef resource="testngtasks" classpath="testng.jar"/>
+   * 这个任务运行TestNG测试，并且通常是在单独的jvm中。
+   * 细节参考：http://testng.org/doc/ant.html
+</pre>
+
+<h3>可以配置的属性</h3>
+<table border="1">
+    <tr><th>属性名</th><th>描述</th><th>是否必须</th></tr>
+    <tr><td>annotations</td><td>字符串"JDK"或者"Javadoc".定义测试适用的注释类型. 如果使用"Javadoc", 则需要同时指定"sourcedir".</td><td>
+            不是必须. 如果适用jkd5则默认为"JDK"，如果适用jdk1.4则默认为"Javadoc"</td></tr>
+    <tr><td>classfilesetref</td><td>要运行的测试类的FileSet结构的引用.</td><td></td></tr>     
+    <tr><td>classpath</td><td>要运行的测试的PATH-like 结构.</td><td></td></tr>
+    <tr><td>classpathref</td><td>要运行的测试的PATH-like 结构的引用.</td><td></td></tr>
+    <tr><td>dumpCommand</td><td>打印TestNG启动命令.</td><td>不是必须,默认false</td></tr>
+    <tr><td>enableAssert</td><td>开启JDK 1.4的断言.</td><td>不是必须,默认true</td></tr>
+    <tr><td>failureProperty</td><td>失败发生时要设置的属性的名称.只有haltonfailure没有设置时才有效.</td><td>不是必须.</td></tr>
+    <tr><td>haltonfailure</td><td>如果测试运行期间发生失败，停止构造过程.</td><td>不是必须,默认false</td></tr>
+    <tr><td>haltonskipped</td><td>如果发生至少一次测试跳过，停止构造过程.</td><td>不是必须,默认false</td></tr>
+    <tr><td>groups</td><td>要运行的组列表，空格或逗号分隔</td><td></td></tr> 
+    <tr><td>excludedgroups</td><td>排除在外的组列表，空格或逗号分隔</td><td></td></tr>
+    <tr><td>jvm</td><td>使用的jvm，将被Runtime.exec()运行java</td><td></td></tr>
+    <tr><td>listeners</td><td>逗号或空格分隔的全路径类列表，需要实现org.testng.ITestListener或org.testng.IReporter</td><td>不是必须</td></tr>
+    <tr><td>outputdir</td><td>报告输出目录</td><td>不是必须,默认输出到test-output.</td></tr>
+    <tr><td>skippedProperty</td><td>当发生测试被跳过时设置的property的名称.只有当haltonskipped没有设置时才使用</td><td>不是必须</td></tr>
+    <tr><td>sourcedir</td><td>用于jdk1.4测试的PATH-like结构(使用JavaDoc形式的annotations)</td><td></td></tr>
+    <tr><td>sourcedirref</td><td>用于jdk1.4测试的PATH-like结构的引用(使用JavaDoc形式的annotations)</td><td></td></tr>
+    <tr><td>suiteRunnerClass</td><td>TestNG启动器的全路径名称</td><td>不是必须.默认使用org.testng.TestNG</td></tr>
+    <tr><td>parallel</td><td>运行测试时使用的并行模式 - methods或者tests </td><td>不是必须 - 如果没有指定，并行模式不被选择</td></tr>
+    <tr><td>threadCount</td><td>运行时使用的线程数量。如果并行模式被同时指定否则忽略。</td><td>默认1</td></tr>
+    <tr><td>testJar</td><td>包含测试和套件定义的jar包路径</td><td></td></tr>
+    <tr><td>timeOut</td><td>所有测试必须运行完成的最大超时时间，单位毫秒</td><td></td></tr>
+    <tr><td>useDefaultListeners</td><td>是否使用默认监听器和报告器.</td><td>默认true.</td></tr>
+    <tr><td>workingDir</td><td>运行TestNG前ant任务应该转移到的目录。</td><td></td></tr>
+    <tr><td>xmlfilesetref</td><td>用于要测试的套件定义的FileSet结构的引用</td><td></td></tr>
+    <tr><td>suitename</td><td>设置测试套件的默认名称如果在suite的xml文件或者源代码中都没有被定义。</td><td>不是必须，默认设置为"Ant suite"</td></tr>
+    <tr><td>testname</td><td>设置测试的默认名称如果在suite的xml文件或者源代码中都没有被定义。</td><td>不是必须，默认设置为"Ant test"</td></tr>
+</table>
+
+
+<script>
+    $("tr:even").css("background-color", "#99ff00");
+</script>

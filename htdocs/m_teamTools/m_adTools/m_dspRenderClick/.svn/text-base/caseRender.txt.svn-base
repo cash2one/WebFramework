@@ -1,0 +1,13 @@
+##bid-server测试用例
+COLLECT:CASE
+####swf物料
+(ID=SWF_RENDER,Command=QUERY):(adData/swf.xml):( -url xiumei.com -ip 119.165.101.176 -v):(logs/bid-dsp.log):(exact):()
+####jpg物料
+(ID=JPG_RENDER,Command=QUERY):(adData/adDataTemplate.xml):( -url xiumei.com -ip 119.165.101.176 -v):(logs/bid-dsp.log):(exact):()
+####item物料
+(ID=ITEM_RENDER,Command=QUERY):(adData/item.xml):( -ip 58.83.224.0 -url youku.com -v):(logs/bid-dsp.log):(exact):()
+####thirdParty
+(ID=THIRDPARTY_RENDER,Command=QUERY):(adData/thirdParty.xml):( -ip 58.83.224.0 -url youku.com -v):(logs/bid-dsp.log):(exact):()
+####dangdang
+(ID=THIRDPARTYITEM_RENDER,Command=QUERY):(adData/thirdPartyItem.xml):( -ip 58.83.224.0 -url youku.com -v):(logs/bid-dsp.log):(exact):()
+#

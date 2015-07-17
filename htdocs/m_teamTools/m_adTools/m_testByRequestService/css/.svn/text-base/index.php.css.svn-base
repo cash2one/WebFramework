@@ -1,0 +1,111 @@
+h2 {
+    display: inline-block;
+}
+
+table#conf_table {
+    width: 100%;
+}
+
+table#manual_url_table {
+    width: 100%;
+}
+
+pre {
+    width: 1000px;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+    text-align: left;
+}
+
+a#add_url,
+a.url_del,
+a#show_conf_div,
+a#upload_btn,
+a#show_result_div {
+    text-decoration: none;
+    font-size: 0.6em;
+    font-weight: bold;
+}
+
+a#add_url:hover,
+a.url_del:hover,
+a#show_conf_div:hover,
+a#upload_btn:hover,
+a#show_result_div:hover {
+    text-decoration: underline;
+}
+
+div#user_nav {
+    font-size: 0.8em;
+}
+
+div#user_nav a {
+    color: blue;
+    font-weight: normal;
+}
+
+div#user_nav a:hover {
+    font-weight: bold;
+}
+
+input#num1 {
+    width: 30px;
+    height: 18px;
+    text-align: right;
+}
+
+input#service_port {
+    width: 50px;
+}
+
+input#url_src_host {
+    width: 160px;
+}
+
+input#url_src_path {
+    width: 600px;
+}
+
+input#url_src_input {
+    width: 80%;
+}
+
+input#req_interval {
+    width: 30px;
+}
+
+table#conf_table th {
+    text-align: right;
+}
+
+td#req_td {
+    text-align: center;
+}
+
+.link_enabled {
+    color: blue;
+}
+
+.link_disabled {
+    color: #CCDDEE;
+}
+
+select#url_list {
+    width: 90%;
+}
+
+div#url_content {
+    width: 1000px;
+}
+
+iframe#web_show {
+    width: 100%;
+    height: 600px;
+}
+
+table#conf_table tr {
+    background-color: #CCDDEE;
+}

@@ -1,0 +1,13 @@
+##case st
+(ID=ST-SINGLE,Command=QUERY):(adData/site-single.xml):( -url youdao.com -ip 58.83.224.0 -v):(logs/bid-dsp.log):(exact):("LOG":"IMPR")|("BID":"hs030.corp.yodao.com)|("USER_OUTSIDE_ID":"")|("POSITION_ID":"0")|("WIN_PRICE":"6")|("WIDTH":"300")|("HEIGHT":"250")|("RESPONSE_TIME":"2013)|("BID_PRICE":")|("AGENT":"curl)|("BID_COOKIE":"-8660964261892718765")
+(ID=RT-DOUBLE-3,Command=QUERY):(adData/crowd-double-3.xml):( -ip 58.83.224.0 -v):(logs/bid-dsp.log):(exact):("Crowd":"54321")|(site_id=10001)
+(ID=UC-DOUBLE-3,Command=QUERY):(adData/uc-double-3.xml):( -ip 58.83.224.0 -v):(logs/bid-dsp.log):(exact):("UserCategory":"54321")|(site_id=10021)
+(ID=RT-ST-5,Command=QUERY):(adData/rt-st-2.xml):( -ip 58.83.224.0 -url 163.com -v):(logs/bid-dsp.log):(exact):("Crowd":"200")|(site_id=10098)
+(ID=BT-ST-5,Command=QUERY):(adData/bt-st-2.xml):( -ip 58.83.224.0 -url 163.com -v):(logs/bid-dsp.log):(exact):("UserCategory":"2000")|(site_id=10098)
+(ID=ALLT,Command=QUERY):(adData/adDataTemplate.xml):( -ip 58.83.224.0 -url youku.com -v):(logs/bid-dsp.log):(exact):(site_id=10099)
+(ID=CPA-2,Command=QUERY):(adData/cpa.xml):( -ip 58.83.224.0 -url youku.com -v):(logs/bid-dsp.log):(exact):("CPA":"20000")
+(ID=LEFENG-API,Command=QUERY):(adData/lefeng.xml):( -ip 58.83.224.0 -url youku.com -v):(logs/bid-dsp.log):(exact):(sponsor_id=1)
+(ID=WBIAO-API-CPC,Command=QUERY):(adData/wbiao-cpc.xml):( -ip 58.83.224.0 -url youku.com -v):(logs/bid-dsp.log):(exact):("CHARGE_TYPE":"CPC")
+(ID=WBIAO-API-CPA,Command=QUERY):(adData/wbiao-cpa.xml):( -ip 58.83.224.0 -url youku.com -v):(logs/bid-dsp.log):(exact):("CHARGE_TYPE":"CPA")
+(ID=ZHENPING-API,Command=QUERY):(adData/zhenpin.xml):( -ip 58.83.224.0 -url youku.com -v):(logs/bid-dsp.log):(exact):("Item":"98316)
+(ID=JIEHUN-API,Command=QUERY):(adData/jiehun.xml):( -ip 58.83.224.0 -url youku.com -v):(logs/bid-dsp.log):(exact):(sponsor_id=1)

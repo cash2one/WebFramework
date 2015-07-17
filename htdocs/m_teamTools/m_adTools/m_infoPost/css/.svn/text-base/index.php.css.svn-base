@@ -1,0 +1,56 @@
+h3 {
+    text-align: center;
+    color: #aabbcc;
+}
+
+h3 a {
+    font-size: 0.6em;
+    color: blue;
+    text-decoration: none;
+}
+
+h3 a:hover {
+    text-decoration: underline;
+}
+
+table {
+    width: 100%;
+}
+
+div#title_box table td{
+    border-bottom: 1px solid;
+    border-bottom-color: #aabbcc;
+}
+
+div.yui3-g {
+    border-top: 1px solid;
+    border-top-color: #aabbcc;
+}
+
+div#content_box {
+    height: 90%;
+    border-left: 1px solid;
+    border-left-color: #aabbcc;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+textarea {
+    width: 98%;
+    height: 60%;;
+}
+
+table td div {
+    width: 100%;
+    font-weight: bold;
+}
+
+table td div.time {
+    text-align: right;
+    font-size: 0.6em;
+    color: #aabbcc;
+}
+
+.highlight {
+   background-color: #bbccdd; 
+}

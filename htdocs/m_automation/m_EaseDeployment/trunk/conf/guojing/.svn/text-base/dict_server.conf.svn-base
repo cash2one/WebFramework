@@ -1,0 +1,399 @@
+### variable definitions 
+$svn_url$ => https://dev.corp.youdao.com/svn/outfox/products/dict/trunk/
+$rootpath$ => /disk2/deploydict/dict_server
+$codepath$ => $rootpath$/code
+$confpath$ => $codepath$/conf/replace.properties
+$resinpath$ => /global/share/guojing/dictresin/resin-3.0.21
+$webpath$ => $rootpath$/resin-3.0.21
+$fspath$ => tiger:6080
+$remotedatadir$ => /exec/dict/5.0/dist
+$localdatadir$ => $rootpath$/dict-data
+$dataversionid$ => -1
+$baikedataversionid$ => -1
+$webdsmachine$ => nc107;nc108;nb293
+
+### check definitions 
+
+### step definitions 
+{
+    step.name: stopls
+    step.cmd: [shell]:cd $codepath$; killall java
+    step.cmd.sep: ,
+    step.ignore_fail: 1
+}
+
+{
+    step.name: stopweb
+    step.cmd: [shell]:cd $webpath$; sh bin/httpd.sh stop
+    step.cmd.sep: ,
+    step.ignore_fail: 1
+}
+
+{
+    step.name: clear.env
+    step.cmd: [shell]:rm -rf $rootpath$; mkdir -p $rootpath$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: deploy.checkoutcode
+    step.cmd: [shell]:svn co $svn_url$ $codepath$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: deploy.change_replaceconf
+    step.cmd: [shell]:cp $confpath$.test  $confpath$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: deploy.changeconf_webaddress
+    step.cmd: [file.update_line_for_match]:$confpath$,^webaddress,webaddress=$webdsmachine$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: deploy.changeconf_dsaddress
+    step.cmd: [file.update_line_for_match]:$confpath$,^dsaddress,dsaddress=$webdsmachine$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: deploy.ant
+    step.cmd: [shell]:cd $codepath$ ; ant
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: deploy.changemyhome
+    step.cmd: [file.update_line_for_equal]:$codepath$/run/setenv.sh,MYHOME=/disk2/dict_project,MYHOME=$rootpath$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: deployslice0.checkoutdata
+    step.cmd: [shell]:cd $codepath$; sh run/download_front_data.sh 0 $fspath$ $remotedatadir$  $localdatadir$ $dataversionid$ $baikedataversionid$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: deployslice1.checkoutdata
+    step.cmd: [shell]:cd $codepath$; sh run/download_front_data.sh 1 $fspath$ $remotedatadir$  $localdatadir$ $dataversionid$ $baikedataversionid$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: deployslice2.checkoutdata
+    step.cmd: [shell]:cd $codepath$; sh run/download_front_data.sh 2 $fspath$ $remotedatadir$  $localdatadir$ $dataversionid$ $baikedataversionid$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: deployslice3.checkoutdata
+    step.cmd: [shell]:cd $codepath$; sh run/download_front_data.sh 3 $fspath$ $remotedatadir$  $localdatadir$ $dataversionid$ $baikedataversionid$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice0.sentence
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start sentence $localdatadir$ 0 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice1.sentence
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start sentence $localdatadir$ 1 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice2.sentence
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start sentence $localdatadir$ 2 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice3.sentence
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start sentence $localdatadir$ 3 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice0.bphrase
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start bphrase $localdatadir$ 0 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice1.bphrase
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start bphrase $localdatadir$ 1 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice2.bphrase
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start bphrase $localdatadir$ 2 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice3.bphrase
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start bphrase $localdatadir$ 3 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice0.phrase
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start phrase $localdatadir$ 0 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice1.phrase
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start phrase $localdatadir$ 1 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice2.phrase
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start phrase $localdatadir$ 2 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice3.phrase
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start phrase $localdatadir$ 3 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice0.basic
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start basic $localdatadir$ 0 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice1.basic
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start basic $localdatadir$ 1 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice2.basic
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start basic $localdatadir$ 2 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice3.basic
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start basic $localdatadir$ 3 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice0.pntsel
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start pntsel $localdatadir$ 0 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice1.pntsel
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start pntsel $localdatadir$ 1 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice2.pntsel
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start pntsel $localdatadir$ 2 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice3.pntsel
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start pntsel $localdatadir$ 3 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice0.etran
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start etran $localdatadir$ 0 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice1.etran
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start etran $localdatadir$ 1 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice2.etran
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start etran $localdatadir$ 2 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice3.etran
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start etran $localdatadir$ 3 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice0.wiki
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start wiki $localdatadir$ 0 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice1.wiki
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start wiki $localdatadir$ 1 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice2.wiki
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start wiki $localdatadir$ 2 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice3.wiki
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start wiki $localdatadir$ 3 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice0.wikiimage
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start wikiimage $localdatadir$ 0 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice1.wikiimage
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start wikiimage $localdatadir$ 1 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice2.wikiimage
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start wikiimage $localdatadir$ 2 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_slice3.wikiimage
+    step.cmd: [shell]:cd $codepath$; sh run/service.sh start wikiimage $localdatadir$ 3 0 4 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: deployweb.antwar
+    step.cmd: [shell]:cd $codepath$;ant war  -Divy.bypass=true
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: deployweb.cpresin
+    step.cmd: [shell]:cp -r  $resinpath$  $rootpath$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: deployweb.unzipwar
+    step.cmd: [shell]:unzip  $codepath$/dist/outfox-dict.war -d $webpath$/webapps/ROOT/
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: startweb
+    step.cmd: [shell]:cd $webpath$; sh bin/httpd.sh start
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+
+### collect definitions 
+{
+    collect.name: deplopls_slice0
+    collect.cmd: stopls,clear.*,deploy.*,deployslice0.checkoutdata,start_slice0.*
+    collect.hostname: nc069
+}
+
+{
+    collect.name: deplopls_slice1
+    collect.cmd: stopls,clear.*,deploy.*,deployslice1.checkoutdata,start_slice1.*
+    collect.hostname: nc070
+}
+
+{
+    collect.name: deplopls_slice2
+    collect.cmd: stopls,clear.*,deploy.*,deployslice2.checkoutdata,start_slice2.*
+    collect.hostname: nc109
+}
+
+{
+    collect.name: deplopls_slice3
+    collect.cmd: stopls,clear.*,deploy.*,deployslice3.checkoutdata,start_slice3.*
+    collect.hostname: nc111
+}
+
+{
+    collect.name: deplopweb
+    collect.cmd: stopweb,clear.*,deploy.*,deployweb.*,startweb
+    collect.hostname: nb293
+}
+
+{
+    collect.name: cleardeployenv
+    collect.cmd: stopweb,stopls,clear.*
+    collect.hostname: nc069,nc070,nc109,nc111
+}
+
+

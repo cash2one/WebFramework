@@ -1,0 +1,20 @@
+<h3>日志查看</h3>
+<pre>
+    日志地址: http://tb037x.corp.youdao.com:28081/m_shareDemo/m_2013Q4/m_testNG/demos/test-output/
+    * A test is considered successful if it completed without throwing any exception or if  it threw an exception that was expected (see the
+      documentation for the expectedExceptions attribute found on the @Test annotation).
+    * @Test
+      public void verifyLastName() {
+        assert "Beust".equals(m_lastName) : "Expected name Beust, for" + m_lastName;
+      }
+
+</pre>
+
+<h3>执行失败的用例</h3>
+<pre>
+    * 套件中的测试失败时，每次testNG都会在输出目录中创建一个名为testng-failed.xml的文件。
+      这个xml文件包含只重新运行这些失败的测试方法的必要信息，容许只运行这些失败的测试而不必运行全部测试。
+       * java -classpath testng.jar;%CLASSPATH% org.testng.TestNG -d test-outputs testng.xml
+       * java -classpath testng.jar;%CLASSPATH% org.testng.TestNG -d test-outputs test-outputs/testng-failed.xml
+       * 注意testng-failed.xml将包含所有必要的依赖方法，所以可以保证运行失败的方法而不运行任何被跳过的(失败)方法。
+</pre>

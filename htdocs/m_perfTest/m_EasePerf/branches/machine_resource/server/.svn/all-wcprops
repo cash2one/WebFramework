@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/outfox/!svn/ver/430431/incubator/Test/WebFramework/htdocs/m_perfTest/m_EasePerf/branches/machine_resource/server
+END
+MachineMonitor.py
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/outfox/!svn/ver/430431/incubator/Test/WebFramework/htdocs/m_perfTest/m_EasePerf/branches/machine_resource/server/MachineMonitor.py
+END
+config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/outfox/!svn/ver/430431/incubator/Test/WebFramework/htdocs/m_perfTest/m_EasePerf/branches/machine_resource/server/config.xml
+END
+processor.py
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/outfox/!svn/ver/430431/incubator/Test/WebFramework/htdocs/m_perfTest/m_EasePerf/branches/machine_resource/server/processor.py
+END
+testProcessor.py
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/outfox/!svn/ver/430431/incubator/Test/WebFramework/htdocs/m_perfTest/m_EasePerf/branches/machine_resource/server/testProcessor.py
+END
+dbOperator.py
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/outfox/!svn/ver/430431/incubator/Test/WebFramework/htdocs/m_perfTest/m_EasePerf/branches/machine_resource/server/dbOperator.py
+END
+mysql.conf
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/outfox/!svn/ver/430431/incubator/Test/WebFramework/htdocs/m_perfTest/m_EasePerf/branches/machine_resource/server/mysql.conf
+END
+daemon.py
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/outfox/!svn/ver/430431/incubator/Test/WebFramework/htdocs/m_perfTest/m_EasePerf/branches/machine_resource/server/daemon.py
+END
+creatDB.py
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/outfox/!svn/ver/430431/incubator/Test/WebFramework/htdocs/m_perfTest/m_EasePerf/branches/machine_resource/server/creatDB.py
+END
+collect.py
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/outfox/!svn/ver/430431/incubator/Test/WebFramework/htdocs/m_perfTest/m_EasePerf/branches/machine_resource/server/collect.py
+END
+testDB.py
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/outfox/!svn/ver/430431/incubator/Test/WebFramework/htdocs/m_perfTest/m_EasePerf/branches/machine_resource/server/testDB.py
+END

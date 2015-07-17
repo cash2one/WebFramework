@@ -1,0 +1,22 @@
+h1 {
+    background-color:#DDD;
+    padding-left: 30px;
+    padding-top: 10px;
+}
+
+/* user input area */
+div#user_input_div {
+    background-color:#fdf2a0;
+}
+
+table#user_input_tbl {
+    width: 100%;
+}
+
+table#user_input_tbl td.cell_name {
+    width: 90px;
+}
+
+table#user_input_tbl td.cell_value input[type=text]{
+    width: 100%;
+}

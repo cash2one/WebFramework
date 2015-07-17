@@ -1,0 +1,78 @@
+<html>
+
+
+<head>
+    <link rel="stylesheet" href="./css/index.php.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="./css/home.css" type="text/css" media="all" />
+<!--
+    <script src="./js/globvar.js" type="text/javascript"></script>
+    <script src="./js/util.js" type="text/javascript"></script>
+--->
+    <script src="./js/home.js" type="text/javascript"></script>    
+</head>
+
+<body>
+	<div class="demo">
+				<div class="yui3-g">
+					<div class="yui3-u-1-4">
+						<h3 id="user_header">User List</h3>
+						<select id="user_list" class="selectable">
+						</select>
+	
+						<h3 id="product_header">Product List</h3>
+						<select id="product_list" class="selectable">
+						</select>
+
+						<h3 id="type_cube_header">Type-Cube List</h3>
+						<ol id="type_cube_list" class="selectable">
+						</ol>
+
+						<h3>Time Selection</h3>
+						<ol id="time_list" class="selectable">
+							<li>Hour</li>
+							<li>8Hour</li>
+							<li>Day</li>
+							<li>Week</li>
+							<li>Month</li>
+							<li>Manual</li>
+						</ol>
+
+						<div id="manual">
+							Start: <input type=text id=from_ts size=20> <br>
+							&nbsp;&nbsp;End:  <input type=text id=end_ts size=20>
+						</div>
+					
+						<input type=button id="query" value="Query"/> &nbsp;
+
+						<label>Graph in row: </label>
+						<select id="g_count_in_row">
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option selected>4</option>
+							<option>5</option>
+							<option>6</option>
+							<option>7</option>
+						</select>
+
+					</div>
+
+					<div class="yui3-u-1-4">
+						<h3 id="graph_header">Graph List</h3>
+						<ol id="graph_list" class="selectable">
+						</ol>
+
+						<div id="select_op">
+							<input type=checkbox id="select_all"> select all/unselect all
+						</div>
+					</div>
+
+					<div class="yui3-u-2-4">
+						<h3 id="selected_item_header">Selected Item List(type : cube : graph)</h3>
+						<ol id="selected_item_list" class="selectable">
+						</ol>
+					</div>
+				</div>
+	</div>
+</body>
+</html>

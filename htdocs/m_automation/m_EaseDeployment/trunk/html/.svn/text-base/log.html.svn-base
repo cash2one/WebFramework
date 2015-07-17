@@ -1,0 +1,23 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./css/log.html.css" type="text/css" />
+</head>
+<body>
+    <div id ="file_input" class = "file_input" > 
+        <input type="text" size = "70" id ="file_path" class="file_path"/>
+        <input type= "button" id ="start_getfile" class="getfile"  value="打开文件"/>
+        (打开机群中的某个文件  例如：nb093:/disk2/guojing/code/build.xml)
+    </div>
+
+    <div id="log_tabs" class="ui-tabs ui-widget">
+            <ul class="ui-tabs-nav ui-helper-clearfix">
+            </ul>
+            <br/>
+    </div>
+    <a id="回到顶部" href="#">   
+      <span></span> 
+    </a>
+    <script src="./js/log.html.js" type="text/javascript"></script>
+</body>
+</html>

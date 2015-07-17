@@ -1,0 +1,18 @@
+<h4>流程简单描述</h4>
+1. 用户浏览了某一个包含有有道广告的页面（词典，频道，邮箱，联盟，线下直销，DSP，搜索）
+2. 页面上的js会向展示resin请求广告(二次请求）
+3. 展示resin会向展示服务请求广告，并把从展示服务返回的广告变体进行渲染, 发送到用户浏览的页面，有道的广告就展现在用户面前(对于有些平台可能不竟然)
+4. 用户点击广告, 请求发送到点击服务，点击服务解析出ClickAction对象，然后发送给反作弊服务，之后跳转到landing page(广告商页面）
+5. 反作弊服务一直会处理请求队列中的点击, 如果是有效的点击，就放到uncharged_clicks表，如果是作弊点击会放到FRAUD_CLICK表
+
+分布式架构图
+<img src="https://dev.corp.youdao.com/outfoxwiki/Ead/AntiFrauder/clickAntiDistribute?action=AttachFile&do=get&target=new_architecture.png" />
+
+Redis高可用架构
+<img src="https://dev.corp.youdao.com/outfoxwiki/Ead/AntiFrauder/clickAntiRedisHA?action=AttachFile&do=get&target=Redis-HA.png" />
+
+点击反作弊物理架构
+<img src="https://dev.corp.youdao.com/outfoxwiki/Ead/AntiFrauder/clickAntiDistribute?action=AttachFile&do=get&target=new_architecture-overview.png" />
+
+以zookeeper为中心的示意图
+<img src="https://dev.corp.youdao.com/outfoxwiki/Ead/AntiFrauder/clickAntiDistribute?action=AttachFile&do=get&target=zookeeper-module.png" />

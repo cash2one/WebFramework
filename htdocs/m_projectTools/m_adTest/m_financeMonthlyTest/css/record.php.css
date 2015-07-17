@@ -1,0 +1,48 @@
+table th,
+table td {
+    padding: 3px;
+    font-size: 0.8em;
+}
+
+table td a {
+    text-decoration: none;
+}
+
+table td a:hover {
+    text-decoration: underline;
+}
+
+input#new_status {
+    width: 300px;
+}
+
+td.center {
+    text-align: center;
+}
+
+.saved {
+    background:yellow;
+}
+
+.unsaved {
+    background:white;
+}
+
+table td.p_td {
+    vertical-align: top;
+}
+
+div#user_input_area {
+    /*
+    height: 500px;
+    border: 1px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    */
+}
+
+td.p_td td {
+    font-size: 0.7em;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}

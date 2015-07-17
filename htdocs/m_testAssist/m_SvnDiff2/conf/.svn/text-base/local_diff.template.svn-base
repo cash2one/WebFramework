@@ -1,0 +1,17 @@
+#!/usr/bin/expect
+set timeout 5
+
+# remove this file for security reason
+set ret [exec rm "$current_file$"]
+
+spawn su $user_name$
+while {1} {
+    expect "Password:" 
+    send "$password$\r"
+
+    expect "]\\$"
+    send "ssh $hostname$ 'cd $path$; svn diff'\r"
+
+    expect "]\\$"
+    break   
+}

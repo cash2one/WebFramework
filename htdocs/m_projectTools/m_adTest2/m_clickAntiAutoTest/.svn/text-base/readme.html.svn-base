@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta charset="utf8">
+</head>
+
+<body>
+<h3>概述</h3>
+点击反作弊的自动化分为三部分:<br>
+<br>
+1. 自动部署部分: 要实现自动化需要往服务中嵌入代码<br>
+1.1 往点击服务中嵌入的代码主要是用来设置当前点击的一些属性, 比如ClickTime, ClickerIp等<br>
+1.2 往反作弊服务的代码中嵌入的代码，主要是收集反作弊处理之后的一些结果<br>
+<br>
+2. 自动化框架部分<br>
+2.1 设置点击信息的方法<br>
+2.2 提供一些验证的类<br>
+2.3 用例本身写的方式<br>
+2.4 用例的执行<br>
+<br>
+3. 执行结果展示部分<br>
+3.1 每次执行，都会有相应的记录在tts上<br>
+
+<h3>如何使用</h3>
+0. 部署相关:<br>
+0.1 svn code: https://dev.corp.youdao.com/svn/outfox/incubator/Test/testAutomation/auto-deploy<br>
+0.2 click deployment: ./yinst.py ClickService.py auto nb093<br>
+0.3 anti deployment:  ./yinst.py AntifrauderService.py auto nc111<br>
+0.4 机器上的部署配置：python/auto-deploy, 以test账号执行<br>
+1. 框架的物理路径 tb037:/disk2/qatest/svn_code/qa/WebFramework/htdocs/m_projectTools/m_adTest2/m_clickAntiAutoTest<br>
+2. SVN: https://dev.corp.youdao.com/svn/outfox/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_clickAntiAutoTest<br>
+3. 如何执行：<br>
+3.1 以test帐号登录到tb037<br>
+3.2 去路径/disk2/qatest/svn_code/qa/WebFramework/htdocs/m_projectTools/m_adTest2/m_clickAntiAutoTest/python下<br>
+3.3 执行：./testRunner.py "本次测试的描述", 则testcases路径下的所有用例都会被执行<br>
+4. 用例命名方式: case_xxxx.py<br>
+5. 一个用例的例子：<br>
+<pre>
+#!/usr/bin/python
+#encoding:utf-8
+
+from lib import *
+
+clickUrl = "/clk/request.s?k=dBFmyUMlQE5co6lz9IzRHn0JdExfUa3JWMLI2SPfhvKDkrhJsqy4JgqDZrOALHfj67qnj0A9Ftph9KgHXdmZQ%2F%2BOsoUguAp7%2FvYx%2BYyyBNN6hUa%2FxyQ8l3MC04u2BXSgxozbzAj06xdZD%2F5qhe9JHC7NiaIhJoibnXFpz6DpaqmKHjzIxtFDvJvnRcaf6361iunmfyzZrh%2FgyMKWH31pO3Xt75cOvyvGH7fClguLQGVP2lA%2FCyPIZBFqNB8pQFyD3Rgh2bVPUahC1%2F43hVYh5H43jxV2Bk4pEhILW5w%2Fj4vfAQf0MFWWn7pOZQdWaWisYflxWgPdqGVStZchZaibBTJRozqcffYAK5OsDkZ8akWHfHByhN1ZhY7DhTvl%2Bfv%2BiVlM29FxcP98IHrq5Q3WZ9fGj6hHFwmmOMCAq5WIKq%2FXxo%2BoRxcJpjjAgKuViCqvUbA%2Ba3ZarJqh014KJcY9NbL%2BgchVEWB5AdS1TNreugA%3D&d=http%3A%2F%2Fwvvw.tairen.net.cn%2F%3Fyx02-01&s=8"
+
+tc = TestCase("[词典]:测试IpConsisFilter过滤规则", "展示的ip和点击的ip不同则为作弊")
+tc.context.setClickerIp("61.135.255.85").setClickTime(1365411695000).clearFraudClickTable().setClickUrl(clickUrl).setValidator(ShouldFilterValidator("IpConsistFilter"))
+</pre>
+
+<h3>作者</h3>
+Ldap: zhangpei<br>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/outfox/!svn/ver/501902/incubator/Test/WebFramework/htdocs/m_teamTools/m_adTest2013Q3/m_onlineRegressionMonitor/php
+END
+DataHandle.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/outfox/!svn/ver/501902/incubator/Test/WebFramework/htdocs/m_teamTools/m_adTest2013Q3/m_onlineRegressionMonitor/php/DataHandle.class.php
+END
+DataInfo.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/outfox/!svn/ver/501818/incubator/Test/WebFramework/htdocs/m_teamTools/m_adTest2013Q3/m_onlineRegressionMonitor/php/DataInfo.class.php
+END
+getAndSaveData.php
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/outfox/!svn/ver/501471/incubator/Test/WebFramework/htdocs/m_teamTools/m_adTest2013Q3/m_onlineRegressionMonitor/php/getAndSaveData.php
+END
+apiForHandle.php
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/outfox/!svn/ver/501889/incubator/Test/WebFramework/htdocs/m_teamTools/m_adTest2013Q3/m_onlineRegressionMonitor/php/apiForHandle.php
+END
+MonitorDB.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/outfox/!svn/ver/501818/incubator/Test/WebFramework/htdocs/m_teamTools/m_adTest2013Q3/m_onlineRegressionMonitor/php/MonitorDB.class.php
+END
+SumData.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/outfox/!svn/ver/501818/incubator/Test/WebFramework/htdocs/m_teamTools/m_adTest2013Q3/m_onlineRegressionMonitor/php/SumData.class.php
+END

@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/outfox/!svn/ver/441488/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_financeTestTool/python
+END
+del_all_states.py
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/outfox/!svn/ver/441188/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_financeTestTool/python/del_all_states.py
+END
+show_results.py
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/outfox/!svn/ver/441112/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_financeTestTool/python/show_results.py
+END
+show_table_content.py
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/outfox/!svn/ver/441488/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_financeTestTool/python/show_table_content.py
+END
+bakup_state.py
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/outfox/!svn/ver/441112/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_financeTestTool/python/bakup_state.py
+END
+update_state.py
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/outfox/!svn/ver/441087/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_financeTestTool/python/update_state.py
+END
+show_schema_names.py
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/outfox/!svn/ver/440917/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_financeTestTool/python/show_schema_names.py
+END
+del_state.py
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/outfox/!svn/ver/441188/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_financeTestTool/python/del_state.py
+END
+del_table_content.py
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/outfox/!svn/ver/440947/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_financeTestTool/python/del_table_content.py
+END

@@ -1,0 +1,81 @@
+[_table_]
+name = 代理商账户明细表
+primary_key = AAH_ID
+field_list = AAH_ID,TO_USER_ID,OPERATE_TYPE,ACTUAL_BALANCE,VIRTUAL_BALANCE,COUPON,OPERATOR_ID,OPERATE_TIME,OPERATOR_IP,AUDITOR_ID,AUDIT_STATUS,AUDIT_TIME,IS_CHARGED,PAYMENT_TYPE,BILL_NO,VOUCHER_NO,REMARK,COST_FLOW,NEW_COST_FLOW
+
+[AAH_ID]
+name = 账务记录ID
+
+[FROM_USER_ID]
+name = 账务主动方ID
+
+[TO_USER_ID]
+name = 账务被动方ID
+
+[OPERATE_TYPE]
+name = 操作类型
+readable_map = 1:入资|2:返点|3:撤资|4:为广告商撤资|5:为广告商入资|6:为代理商入资|7:虚拟资金入资|11:代理商利润(预付)|12:代理商利润(结算)|16:收入额外收入
+
+[ACTUAL_BALANCE]
+name = 实际余额
+readable_map = 
+
+[VIRTUAL_BALANCE]
+name = 优惠余额
+readable_map = 
+
+[COUPON]
+name = 促销码
+readable_map = 
+
+[OPERATOR_ID]
+name = 操作人ID
+readable_map = 
+
+[OPERATE_TIME]
+name = 操作时间
+readable_func = readable_time
+
+[OPERATOR_IP]
+name = 操作人IP
+readable_map = 
+
+[AUDITOR_ID]
+name = 审核人ID
+readable_map = 
+
+[AUDIT_STATUS]
+name = 审核状态
+readable_map = 0:已提交|1:已确认待审核|2:审核未通过|3:审核通过|4:不用审核|5:无效(记录已删除)
+
+[AUDIT_TIME]
+name = 审核时间
+readable_func = readable_time
+
+[IS_CHARGED]
+name = 是否已入账
+readable_map = 0:未入账|1:已入账
+
+[PAYMENT_TYPE]
+name = 支付类型
+readable_map = 1:现金|2:支票|3:电汇|4:其他|5:在线支付
+
+[BILL_NO]
+name = 票据编号
+readable_map =  
+
+[VOUCHER_NO]
+name = 凭证编号
+readable_map = 
+
+[REMARK]
+name = 备注
+readable_map = 
+
+[COST_FLOW]
+name = 现金流
+readable_map = 
+
+[NEW_COST_FLOW]
+name = 现金流累计
+readable_map = 

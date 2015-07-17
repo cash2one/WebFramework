@@ -1,0 +1,286 @@
+### variable definitions 
+$install_path$ => /disk1/lili
+$root_dir$ => $install_path$/eadu/
+$impr_code$ => https://dev.corp.youdao.com/svn/outfox/products/ad/ead/tags/dsp-br-pre1
+$resin_code$ => /global/share/lili/resin-3.0.21.tar.gz
+$impr_analyzer_code$ => /global/share/lili/impr_analyzer
+$impr_resin_analyzer_code$ => /global/share/lili/impr_resin_analyzer
+$union_site_db$ => jdbc:mysql://tb041:3306/uniontest?user=lili&amp;password=lili
+$union_site_db_2$ => jdbc:mysql://tb041:3306/uniontest?user=lili&amp;password=lili
+$rabbit_mq_host$ => tb039x.corp.youdao.com
+$cache_port$ => 9527
+$zookeeper_hosts$ => tb081:2181
+$inputPrefix_impr$ => "$root_dir$/impr_service/logs/log"
+$inputPrefix2_impr$ => "$root_dir$/impr_service/logs/vaquero2.log"
+$product_impr$ => \"eadu\"
+$serverType_impr$ => \"impr\"
+$config_impr$ => \"conf/vaquero-analyzer.eadu_impr.xml\"
+$cpu_monitor_str_impr$ => \"@@ANALYSIS@@ eadu.impr.cpu\"
+$res_monitor_str_impr$ => \"@@ANALYSIS@@ eadu.impr.res\"
+$impr_host$ => nc069
+$inputPrefix_resin$ => \"$root_dir$/impr_resin/logs/log\"
+$inputPrefix2_resin$ => \"$root_dir$/impr_resin/logs/log2\"
+$product_resin$ => \"eadu\"
+$serverType_resin$ => \"resin\"
+$config_resin$ => \"conf/vaquero-analyzer.eadu_resin.xml\"
+$cpu_monitor_str_resin$ => \"@@ANALYSIS@@ eadu.resin.cpu\"
+$res_monitor_str_resin$ => \"@@ANALYSIS@@ eadu.resin.res\"
+$resin_host$ => nc111
+$impr_war_local_dir$ => $root_dir$/impr_war
+$impr_resin_local_dir$ => $root_dir$/impr_resin
+$impr_service_local_dir$ => $root_dir$/impr_service
+$impr_analyzer$ => $root_dir$/impr_analyzer
+$impr_resin_analyzer$ => $root_dir$/impr_resin_analyzer
+
+### check definitions 
+
+### step definitions 
+{
+    step.name: stop_service.resin
+    step.desc: stop resin
+    step.cmd: [shell]:cd $impr_resin_local_dir$; ./bin/httpd.sh stop
+    step.cmd.sep: ,
+    step.ignore_fail: 1
+}
+
+{
+    step.name: stop_service.impr
+    step.desc: stop impr
+    step.cmd: [shell]:cd $impr_service_local_dir$; ./bin/stop.sh eadu
+    step.cmd.sep: ,
+    step.ignore_fail: 1
+}
+
+{
+    step.name: stop_service.analyzer
+    step.desc: stop analyzer
+    step.cmd: [shell]:/global/home/maintain/chenying/script/shell/killpid.sh toolbox.manager.tools.Ana lyzerService;/global/home/maintain/chenying/script/shell/killpid.sh tail -F -n 0
+    step.cmd.sep: ,
+    step.ignore_fail: 1
+}
+
+{
+    step.name: impr_resin.stop
+    step.desc: stop resin
+    step.cmd: [shell]:cd $impr_resin_local_dir$; ./bin/httpd.sh stop
+    step.cmd.sep: ,
+    step.ignore_fail: 1
+}
+
+{
+    step.name: impr_resin.remove
+    step.cmd: [shell]:rm -rf $impr_resin_local_dir$
+    step.cmd.sep: ,
+    step.ignore_fail: 1
+}
+
+{
+    step.name: impr_resin.部署代码
+    step.cmd: [shell]:cp -r $resin_code$ /tmp; cd /tmp; tar -zxvf resin-3.0.21.tar.gz; mv resin-3.0.21 $impr_resin_local_dir$; rm -rf /tmp/resin-3.0.21.tar.gz
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: impr_resin.update_http_port
+    step.cmd: [file.update_line_for_equal]:$impr_resin_local_dir$/conf/resin.conf,<http server-id="" host="*" port="@hport@"/>,<http server-id="" host="*" port="28082"></http>
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: impr_resin.update_srun_port
+    step.cmd: [file.update_line_for_equal]:$impr_resin_local_dir$/conf/resin.conf,<srun server-id="" host="@host@" port="@sport@"/>,<srun server-id="" host="127.0.0.1" port="15764"/>
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: impr-war.remove
+    step.cmd: [shell]:rm -rf $impr_war_local_dir$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: impr-war.check-out
+    step.cmd: [checkenv.display_cpu]:
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: impr-war.build
+    step.cmd: [shell]:cd $impr_war_local_dir$; cp conf/properties/servers.properties.eadu_online conf/properties/servers.properties
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: impr-war.update_impr_resin_path
+    step.cmd: [file.update_line_for_match]:$impr_war_local_dir$/conf/properties/servers.properties,impr_resin_path=.*,impr_resin_path=$impr_resin_local_dir$/webapps
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: impr-war.update_union_site_db
+    step.cmd: [file.update_line_for_match]:$impr_war_local_dir$/conf/properties/servers.properties,union_site_db=.*,union_site_db=$union_site_db$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: impr-war.update_union_site_db_2
+    step.cmd: [file.update_line_for_match]:$impr_war_local_dir$/conf/properties/servers.properties,union_site_db_2=.*,union_site_db_2=$union_site_db_2$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: impr-war.add_monitor
+    step.cmd: [file.add_comment_for_line]:$impr_war_local_dir$/src/java/outfox/ead/impr/web/EadController.java,long start = System.currentTimeMillis();
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: impr-war.add_monitor_2
+    step.cmd: [file.insert_before_line]:$impr_war_local_dir$/src/java/outfox/ead/impr/web/EadController.java^AdRequest adRequest = adRequestFactory.create(request, response);^long start = System.currentTimeMillis();
+    step.cmd.sep: ^
+    step.ignore_fail: 0
+}
+
+{
+    step.name: impr-war.add_monitor_3
+    step.cmd: [file.insert_before_line]:$impr_war_local_dir$/src/java/outfox/ead/impr/web/EadController.java,return adCode;,LOG.info("@@ANALYSIS@@ eadu.resin.status=OK");
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: impr-war.add_monitor_4
+    step.cmd: [file.insert_before_line]:$impr_war_local_dir$/src/java/outfox/ead/impr/web/EadController.java^return renderer.render(adList, adRequest);^LOG.info("@@ANALYSIS@@ eadu.resin.status=OK");
+    step.cmd.sep: ^
+    step.ignore_fail: 0
+}
+
+{
+    step.name: impr-war.add_monitor_5
+    step.cmd: [file.insert_after_line]:$impr_war_local_dir$/src/java/outfox/ead/impr/web/EadController.java,if (adRequest == null|| adResponse == null){,LOG.info("@@ANALYSIS@@ eadu.resin.status=ERROR");
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: impr-war.add_monitor_6
+    step.cmd: [file.insert_before_line]:$impr_war_local_dir$/src/java/outfox/ead/impr/web/EadController.java,return renderer.renderUniversalAds(adRequest);,LOG.info("@@ANALYSIS@@ eadu.resin.status=ERROR");
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: impr-war.add_monitor_7
+    step.cmd: [file.insert_after_line]:$impr_war_local_dir$/src/java/outfox/ead/impr/web/EadController.java,staticCounterMonitorUpdate(StaticCounterMonitor.TOTAL_REQUEST);,LOG.info("@@ANALYSIS@@ eadu.resin.elapse="+(System.currentTimeMillis()-start));
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: impr-war.rabbitmq
+    step.cmd: [file.update_line_for_match]:$impr_war_local_dir$/conf/properties/servers.properties,rabbit_mq_host=.*,rabbit_mq_host=$rabbit_mq_host$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: impr-service.stop
+    step.cmd: [shell]:cd $impr_service_local_dir$; ./bin/stop.sh eadu
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: impr-service.remove
+    step.cmd: [shell]:rm -rf $impr_service_local_dir$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: impr-service.checkout
+    step.cmd: [shell]:svn co $impr_code$ $impr_service_local_dir$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: impr-service.build
+    step.cmd: [shell]:cd $impr_service_local_dir$; cp conf/properties/servers.properties.eadu_online conf/properties/servers.properties
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: impr-service.cache_port
+    step.cmd: [file.update_line_for_match]:$impr_service_local_dir$/conf/properties/servers.properties,cache_port=.*,cache_port=$cache_port$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: impr-service.zookeeper_hosts
+    step.cmd: [file.update_line_for_match]:$impr_service_local_dir$/ conf/properties/servers.properties,zookeeper_hosts=.*,zookeeper_hosts=$zookeeper_hosts$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: impr-service.rabbit_mq_host
+    step.cmd: [file.update_line_for_match]:$impr_service_local_dir$/conf/properties/servers.properties ,rabbit_mq_host=.* ,rabbit_mq_host=$rabbit_mq_host$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: impr-service.mointor
+    step.cmd: [file.insert_after_line]:$impr_service_local_dir$/src/java/outfox/ead/adnet/framework2/AdRequestHandlerImpl.java^Helper.debug(LOG, "[", (System.currentTimeMillis() - start), "ms]",  adRequest);^LOG.info("@@ANALYSIS@@ eadu.impr.elapse="+(System.currentTimeMillis() - start));
+    step.cmd.sep: ^
+    step.ignore_fail: 0
+}
+
+{
+    step.name: impr-service.ant
+    step.cmd: [shell]:cd $impr_service_local_dir$; ant resolve; ant mkconf; ant compile
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+
+### collect definitions 
+{
+    collect.name: stop_service
+    collect.desc: stop service
+    collect.cmd: stop_service.*
+    collect.hostname: nc107
+}
+
+{
+    collect.name: impr_resin
+    collect.cmd: impr_resin.*
+    collect.hostname: nc107
+}
+
+{
+    collect.name: impr-war
+    collect.cmd: impr-war.*
+    collect.hostname: nc107
+}
+
+{
+    collect.name: impr-service
+    collect.cmd: impr-service.*
+    collect.hostname: hs014
+}
+
+

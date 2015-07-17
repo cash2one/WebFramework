@@ -1,0 +1,46 @@
+.filetree .hitarea {
+    background: url(../resources/database.png) 0 0 no-repeat; 
+}
+
+ul#db_table_list ul,
+div#condition_set,
+.colorful {
+    background:#eeefff;
+}
+
+table select,
+table input,
+table textarea,
+table {
+    width: 100%;
+}
+
+table tr td {
+    padding: 0px;
+    border-spacing:0px;
+}
+
+table tr td.op {
+    text-align: center;
+}
+
+a {
+    text-decoration:none;
+}
+
+a:hover {
+    text-decoration:underline;
+}
+
+table#query_table {
+    margin-bottom: 5px;
+}
+
+div#condition_set {
+    padding-bottom: 5px;
+}
+
+.highlight {
+    font-weight: bold;
+    color: #ff0000;
+}

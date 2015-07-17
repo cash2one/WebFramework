@@ -1,0 +1,25 @@
+body {
+    background: #66CDAA;
+}
+
+a.default {
+    color: blue;
+}
+
+a.selected {
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+}
+
+input[type=text],
+input[type=password],
+table td#set_detail table tr td,
+table td#set_detail table tr th,
+select {
+    background: #DCDCDC;
+}
+
+table td#set_detail table {
+    border: #DCDCDC 1px solid;
+}

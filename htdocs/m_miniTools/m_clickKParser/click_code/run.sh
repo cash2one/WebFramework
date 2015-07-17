@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd project
+# java -cp classes:lib/* outfox.ead.click.ShowClickInfo "uoUDmtFzs8eNcLhmGdY/TGLphd2JhCQhHJ5VJhnERbwW1ATzIpmKpG+dJV5AFja1oXpPzt/BBnoRappTs8Riy0VWKNgzi1vaOGH0f3Fw+f2uNIMk7bAy3Yef81CrXmDfRGQOqVammt+BVvBhlqR5uvEuVk1Pm6UlpXwLsmvjXyIM37V7lHW7Qqm1F9Q813Ia2i96TbCXP6WSAEO0cyMR8gJ+D9oC4MWyiy8/C+T1l40E6/WMhtyaZirjpfeYE+RoMT/kFHgEQMfIbhLsC0a52VR7RmDnaxeAeptUyiYQwiN2a8guUNxsIK0xP3aElYMx18aPqEcXCaY4wICrlYgqr9fGj6hHFwmmOMCAq5WIKq/Xxo+oRxcJpjjAgKuViCqvZEFbYcRrGvnpGcHLKCsGcw==" 16
+java -cp classes:lib/* outfox.ead.click.ShowClickInfo $@

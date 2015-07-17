@@ -1,0 +1,17 @@
+#!/usr/bin/expect
+set timeout 5
+
+# remove this file for security reason
+set ret [exec rm "$current_file$"]
+
+spawn svn diff -x "--ignore-eol-style -w -b" -r $version1$:$version2$ --username $user_name$ $url$
+while {1} {
+  expect {
+    eof                                     {break}
+    "Username:"                             {send "$user_name$\r"}
+    "Password for '$user_name$':"           {send "$password$\r"}
+    "Store password unencrypted (yes/no)?"  {send "no\r"}
+    "(R)eject, accept (t)emporarily or accept (p)ermanently?" {send "p\r"}
+  };
+}
+close $spawn_id

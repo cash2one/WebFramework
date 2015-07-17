@@ -1,0 +1,50 @@
+[_table_]
+name = 广告商余额表
+primary_key = SPONSOR_ID
+field_list = SPONSOR_ID,ACTUAL_BALANCE,VIRTUAL_BALANCE,DISCOUNT_RATE,DEPOSIT_STATUS,CREDIT_LIMIT,DEPOSIT_NUM,CASH_FLOW,SERVICE_CHARGE,SERVICE_CHARGE_FLAG,DISCOUNT_TYPE,SETTLEMENT_TYPE
+
+[SPONSOR_ID]
+name = 广告商ID
+
+[ACTUAL_BALANCE]
+name = 实际余额
+
+[VIRTUAL_BALANCE]
+name = 体验金余额
+
+[DISCOUNT_RATE]
+name = 折扣率
+
+[DEPOSIT_STATUS]
+name = 入资状态
+readable_map = 0:未入资|1:已入资
+
+[CREDIT_LIMIT]
+name = 信用额度
+
+[DEPOSIT_NUM]
+name = 入资次数
+
+[CASH_FLOW]
+name = 现金流
+
+[SERVICE_CHARGE]
+name = 服务费
+
+[SERVICE_CHARGE_FLAG]
+name = 服务费标识
+readable_map = 0:未扣除|1:已扣除
+
+[ACTUAL_AMOUNT_BALANCE]
+name = 实际金额结余
+
+[VIRTUAL_AMOUNT_BALANCE]
+name = 体验金结余
+
+[DISCOUNT_TYPE]
+name = 折扣类型
+readable_map = 0:普通折扣|1:月结固定折扣|2:月度总消费条件折扣|3:月度日均消费条件折扣
+
+[SETTLEMENT_TYPE]
+name = 结算类型
+readable_map = 0:普通结算|1:月结算

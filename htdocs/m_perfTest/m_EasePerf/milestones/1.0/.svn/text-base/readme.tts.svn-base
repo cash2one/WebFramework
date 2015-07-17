@@ -1,0 +1,8 @@
+【svn addr】: 
+https://dev.corp.youdao.com/svn/outfox/incubator/Test/WebFramework/htdocs/m_perfTest/m_EasePerf
+
+【dir structure】
+-rw-r--r--  1 zhangb kaiwoo   13 Dec  6 15:21 name.tts
+drwxr-xr-x  3 zhangb kaiwoo 4096 Dec  6 15:18 php
+-rw-r--r--  1 zhangb kaiwoo  693 Dec  6 15:23 readme.tts
+drwxr-xr-x  3 zhangb kaiwoo 4096 Dec  6 15:17 server

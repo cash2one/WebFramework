@@ -1,0 +1,2 @@
+test_fin_db = tb081:finance_db:3306:test:test
+#test_fin_db = tb094:eadb3:3306:ead:ea89,d24

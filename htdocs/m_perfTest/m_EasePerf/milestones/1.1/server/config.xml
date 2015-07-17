@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+  <db> 
+    <!-- your ldap -->
+    <ldap>yinxj</ldap>
+
+    <!-- product team -->
+    <product>armani</product>
+
+    <!-- child product -->
+    <type>search</type>
+  </db>
+  <datas>
+    <!-- 若有多个log文件待监控, 可用多个data块 -->
+    <data>
+	    <!-- service name, 为便于区分, 建议为: 机器名_服务名, 如: nb092_ds -->
+        <cubename>tb037_ds</cubename>
+	    <!-- 监控日志, 请写fullPath，可以配置与时间相关
+	    1，配置与日期相关的文件：以 @@your time pattern @@结束， @@括起来的的内容被修改（注意目前只支持一次替换）
+	    	日期说明： %Y :完整年(2013)
+	    			  %y :年后两位 [00,99]
+	    			  %m :月份 [01,12]	%M : 秒 [01,59]	    			  
+	    			  %d :日期 [01,31]
+	    			  %H :小时24小时制[00,23]	%h :小时12小时制[01,12]
+	    	比如： /disk2/resin-3.0.21/log/stdout.log.2013-02-28 配置为
+	    		  /disk2/resin-3.0.21/log/stdout.log.@@%Y-%m-%d@@
+	     -->
+        <logfile>/disk2/perf_test/search.log</logfile>
+
+        <!-- 时间间隔，默认30s, 即每30s的log给出一个点 -->
+        <timeInterval>30</timeInterval>
+
+	    <!-- 待监控的整型key (目前不支持带有","的key), 多个key请用","分隔 -->
+        <numberKeys>search.process.time,cluster.time</numberKeys>
+
+	    <!-- 待监控的字符型key (目前不支持带有","的key), 多个key请用","分隔 -->
+        <stringKeys>search.process.state,cluster.status</stringKeys>
+
+        <!-- 进程资源监控 (cpu, mem): 若不做监控, 请注释掉 processes块, 说明: 
+            1. 若要监控多个进程, 可如下配置:
+                1.1 在processes下配多个process
+                1.2 在一个process中指定多个待监控进程, 并在alias中配置多个别名, 用","分隔, 并 (用pid指定时请在pid中配置多个, 用","分隔)
+            2. 每个process请至少用pid, processPath, regPattern中的一个来指定: 
+                2.1 若使用pid指定, 则regPattern及processPath的配置无效 (不推荐按此配置, 否则服务重启导致pid改变后无法继续监控), 将对pid指定的进程做监控
+                2.2 若仅使用regPattern指定 (在CDATA[]的[]中配置正则表达式), 则会监控命令"ps xu"输出中, command项匹配regPattern的进程
+                    例: 进程的command为java -Xmx256m -cp lib/*:build/classes outfox.yinxj.svncheck.LogUpdate, 则可配置为: outfox.*Logupdate
+                2.3 若仅使用processPath (进程的启动路径或父路径) 来指定, 则会监控/proc/${pid}/cwd指向的路径包含processPath的所有pid (不推荐, 因为可能会匹配到多个进程)
+                2.4 (推荐方式) 若regPattern及processPath均指定, 则仅会监控同时满足2.2及2.3条件的进程
+            3. 监控条件: 满足监控条件的进程数 = 配置的alias数
+               若不满足监控条件, 则不对进程做监控. 当满足监控条件满足时, 会继续 (或开始) 做监控
+         -->
+        <processes>
+            <!-- 推荐用regPattern及processPath配置 -->
+            <process>
+                <alias>ds</alias>
+                <regPattern><![CDATA[fakeSearch]]></regPattern>
+                <processPath>/disk2/perf_test</processPath>
+                <pid></pid>
+            </process>
+        </processes>
+    </data>
+  </datas>
+</root>

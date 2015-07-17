@@ -1,0 +1,67 @@
+<?php
+
+require_once("ExceptionFilter.class.php");
+//通过白名单过滤日志中的异常，并将不在白名单内的异常的行号和内容打印出来
+$host = $_GET["host"];
+$path = $_GET["path"];
+$whitelistName = $_GET["whitelist"];
+
+//echo 'host is:'.$host.'<hr/>path is: '.$path.'<hr/>whitelist is:'.$whitelistName;
+//$host="qt104";
+//$path="/disk3/lihy/union/ead-lr-ctr-feature-impr/logs/stderr";
+//$whitelistName="union_stderr_whitelist";
+
+
+function filter($host,$path,$whitelistName){
+    $whitelist_prefix = "/disk2/qatest/svn_code/qa/WebFramework/htdocs/m_smallTools/m_exceptionFilter/data/";
+   // echo $whitelist_prefix;
+    $fileName = getName($path);
+    //将文件sed处理后放到该磁盘的test/exceptionFilter目录下
+    $sedToPath = getSedToPath($path);
+    $mkdirCmd = "ssh ".$host." \"mkdir -p ".$sedToPath."\"";
+    system($mkdirCmd);
+    $filterCmd = "ssh ".$host."\" sed -n -e '/Exception/I {=;p;b}' -e '/Error/I {=;p}' ".$path." > tmpE.log";
+    $copyCmd = 'scp '.$host.':'.$path.' '.$whitelist_prefix;
+    //echo $copyCmd;
+
+    //将数据拷贝到本地data目录下
+    system($copyCmd);
+    //对文件进行一遍sed过滤，将所有Exception和Error所在的行的行号以及内容存储到tmpE.log中
+    $filterCmd = "cd ".$whitelist_prefix."; sed -n -e '/Exception/I {=;p;b}' -e '/Error/I {=;p}' ".$fileName."> tmpE.log";
+   // echo 'filter cmd is:'.$filterCmd.'<hr/>';
+    system($filterCmd);
+    $inFile = $whitelist_prefix .'tmpE.log';
+    $whitelist = $whitelist_prefix .$whitelistName;
+   // echo 'white list :'.$whitelist;
+    if(file_exists($whitelist)){
+     //   echo 'new a ExceptionFilter<hr/>';
+        $exceptionFilter = new ExceptionFilter($whitelist);
+       // echo 'start to get filter result...<hr/>';
+        $result = $exceptionFilter->getFilterResult($inFile);
+        return $result; 
+    }else{
+        echo 'whitelist:'.$whitelistName.' is not exist.';
+    }
+}
+
+function getName($path){
+   // echo 'path is:'.$path;
+   // $pos = strrpos($path, '/');
+   // echo '<hr/>pos of last / is:'.$pos.'<hr/>';
+    $fileName = substr( $path, strrpos($path, '/')+1);
+   // echo '<hr/>fileName is '.$fileName;
+    return $fileName;
+}
+
+function getSedToPath($path){
+    $disk = substr($path,0,7);//获取字符串“'/diskX//'
+    return $disk.'test';
+}
+
+$res = filter($host,$path,$whitelistName);
+//echo $res;
+echo json_encode($res);
+?>
+
+
+

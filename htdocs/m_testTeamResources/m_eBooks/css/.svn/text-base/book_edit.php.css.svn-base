@@ -1,0 +1,15 @@
+table {
+    width: 40%;
+}
+
+table td input.input {
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

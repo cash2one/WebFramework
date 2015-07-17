@@ -1,0 +1,88 @@
+<html>
+<head>
+    <meta charset="utf-8">
+	<link rel="stylesheet" href="../../css-base/jquery-ui.min.css" type="text/css" media="all" />
+
+	<script src="../../js-base/jquery.min.js" type="text/javascript"></script>
+	<script src="../../js-base/json.min.js" type="text/javascript"></script>
+	<script src="../../js-base/jquery-ui.min.js" type="text/javascript"></script>
+	<script src="../../js-base/tablednd.min.js" type="text/javascript"></script>
+
+	<link rel="stylesheet" href="../../css-base/grid.css" type="text/css" />
+	<link rel="stylesheet" href="./css/index.php.css" type="text/css" />
+
+    <script src="./js/conf_collects.html.js" type="text/javascript"></script>
+	<script src="./js/base.js" type="text/javascript"></script>
+    <script src="./js/conf_steps.html.js" type="text/javascript"></script>
+    <script src="./js/home.html.js" type="text/javascript"></script>
+    <!--script src="./js/conf_vars.html.js" type="text/javascript"></script-->
+</head>
+
+<body>
+    <!-- user input form -->
+    <div id="login-panel" style="display:none" class="ui-widget ui-widget-content ui-corner-all" title="用户登陆">
+        <p id="login_tip"></p>
+        <table id="user_input_table">
+            <tr>
+                <td>用户名:</td>
+                <td><input type="text" id="user_ldap" class="text ui-widget-content ui-corner-all" /></td>
+            </tr>
+            <tr>
+                <td>密码:</td>
+                <td><input type="password" id="user_passwd" value="" class="text ui-widget-content ui-corner-all" /></td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="setting_bar">
+    	<!-- user login link -->
+    	<span id="login_link">
+            <label id="user_info"></label>
+            <a href="" id="login_btn">登陆</a>
+    	</span>
+    	<!-- ssh password input link -->
+    	<span id="ssh_link" style="display:none">
+            <a href="" id ="ssh_btn">机群密码</a>
+    	</span>
+    </div>
+
+    <!-- ssh password input form-->
+    <div id = "ssh_dialog" style="display:none" title="请输入机群密码">
+	    <input type="password" id="ssh_password" value="" class="text ui-widget-content ui-corner-all" />
+    </div>
+
+    <!-- define pages for deployment -->
+	<div id="deploy_page">
+        <ul>
+			<li><a href="#page_home">首页</a></li>
+			<li><a href="#page_conf">配置</a></li>
+			<li><a href="#page_log">日志</a></li>
+		</ul>
+			
+		<div id="page_home"></div>
+		<div id="page_conf">
+            <b>变量定义</b> 
+            <a href="" class="save_all">保存全部</a>
+            <a href="" class="check_conf">检查配置|</a> 
+            <hr>
+			<div id="section_var"></div>
+            <br>
+            <b>步骤定义</b> 
+            <a href="" class="save_all">保存全部</a>
+            <a href="" class="check_conf">检查配置|</a>
+            <hr>
+			<div id="section_step"></div>
+            <br>
+            <b>集合定义</b> 
+            <a href="" class="save_all">保存全部</a>
+            <a href="" class="check_conf">检查配置|</a>
+            <hr>
+			<div id="section_collect"></div>
+		</div>
+		<div id="page_log"></div>
+    </div> 
+
+    <script src="./js/index.php.js" type="text/javascript"></script>
+
+</body>
+</html>

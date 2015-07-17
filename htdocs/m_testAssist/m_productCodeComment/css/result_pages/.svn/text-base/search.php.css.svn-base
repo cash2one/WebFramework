@@ -1,0 +1,32 @@
+body {
+    background-color: #20B2AA;
+    padding: 50px 50px 20px 50px;
+    color: #FFDAB9;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
+table {
+    margin-bottom: 20px;
+}
+
+table tr td {
+    padding-bottom: 5px;
+}
+
+table tr td.title {
+    border-bottom: 1px solid #FFDAB9;
+    font-weight: bold;
+}
+
+table tr td.content {
+    padding-top: 5px;
+    padding-left: 5px;
+    color: #F8F8FF;
+}
+
+table tr td.path {
+    font-size: 0.8em;
+}

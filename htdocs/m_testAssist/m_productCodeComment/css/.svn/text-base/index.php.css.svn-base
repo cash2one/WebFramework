@@ -1,0 +1,56 @@
+body {
+    background-color: #20B2AA;
+    color: #FFDAB9;
+}
+
+h2 {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+select,
+input[type='text'],
+input[type='password'] {
+    background-color: #E0FFFF;
+    border: 0px;
+}
+
+input[type='submit'] {
+    background-color: #20B2AA;
+    color: #FFDAB9;
+}
+
+a {
+    text-decoration: none;
+    color: #FFDAB9;
+}
+a:hover {
+    text-decoration: underline;
+}
+a.selected {
+    font-weight: bold;
+}
+
+
+div#container {
+    text-align: center;
+    margin-top: 100px;
+}
+
+div#container hr {
+    width: 80%;
+}
+
+div#search input[name='searchStr'] {
+    width: 300px;
+}
+
+div#add input[name='svnUrl'] {
+    width: 500px;
+}
+
+div.content {
+    display: none;
+    text-align: left;
+    margin-left: 650px;
+}

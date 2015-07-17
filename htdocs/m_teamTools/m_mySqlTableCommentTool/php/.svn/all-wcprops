@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/outfox/!svn/ver/529763/incubator/Test/WebFramework/htdocs/m_teamTools/m_mySqlTableCommentTool/php
+END
+mongoUtil.php
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/outfox/!svn/ver/529713/incubator/Test/WebFramework/htdocs/m_teamTools/m_mySqlTableCommentTool/php/mongoUtil.php
+END
+loadTablesStr.php
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/outfox/!svn/ver/529763/incubator/Test/WebFramework/htdocs/m_teamTools/m_mySqlTableCommentTool/php/loadTablesStr.php
+END
+mysqlUtil.php
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/outfox/!svn/ver/529763/incubator/Test/WebFramework/htdocs/m_teamTools/m_mySqlTableCommentTool/php/mysqlUtil.php
+END
+saveFieldComment.php
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/outfox/!svn/ver/529696/incubator/Test/WebFramework/htdocs/m_teamTools/m_mySqlTableCommentTool/php/saveFieldComment.php
+END
+loadFieldTablesStr.php
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/outfox/!svn/ver/529739/incubator/Test/WebFramework/htdocs/m_teamTools/m_mySqlTableCommentTool/php/loadFieldTablesStr.php
+END

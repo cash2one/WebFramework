@@ -1,0 +1,33 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+  
+<suite name="Suite1" verbose="1" >
+    <test name="Regression1">
+        <classes>
+            <class name="demos.Demo01"/>
+        </classes>
+    </test>
+
+    <test name="GroupRun">
+        <groups>
+            <run>
+                <exclude name="slow"  />
+                <include name="fast"  />
+            </run>
+        </groups>
+  
+        <classes>
+            <class name="demos.Demo01" >
+            </class>
+        </classes>
+    </test>
+
+    <test name="GroupRun2">
+        <classes>
+            <class name="demos.Demo01">
+                <methods>
+                    <include name="aFastTest" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

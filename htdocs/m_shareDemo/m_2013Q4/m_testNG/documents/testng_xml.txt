@@ -1,0 +1,284 @@
+<h3>testng.xml配置方式一：类</h3>
+<pre class="code">
+&lt;!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" &gt;
+&lt;suite name="Suite1"    verbose="1" &gt;  
+  &lt;test name="Nopackage" &gt;  
+    &lt;classes&gt;  
+       &lt;class name="NoPackageTest"  /&gt;  
+    &lt;/classes&gt;  
+  &lt;/test&gt;  
+  &lt;test name="Regression1"   &gt;  
+    &lt;classes&gt;  
+      &lt;class name="test.sample.ParameterSample"  /&gt;  
+      &lt;class name="test.sample.ParameterTest" /&gt;  
+    &lt;/classes&gt;  
+  &lt;/test&gt;  
+&lt;/suite&gt;
+</pre>
+
+<h3>testng.xml配置方式一：包</h3>
+<pre class="code">
+&lt;!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" &gt;  
+&lt;suite name="Suite1" verbose="1" &gt;  
+  &lt;test name="Regression1"   &gt;  
+    &lt;packages&gt;  
+      &lt;package name="test.sample" /&gt;  
+   &lt;/packages&gt;  
+ &lt;/test&gt;  
+&lt;/suite&gt; 
+</pre>
+
+<h3>testng.xml配置方式一：组、方法(包含VS不包含)</h3>
+<pre class="code">
+&lt;test name="Regression1"&gt;  
+  &lt;groups&gt;  
+    &lt;run&gt;  
+      &lt;exclude name="brokenTests"  /&gt;  
+      &lt;include name="checkinTests"  /&gt;  
+    &lt;/run&gt;  
+  &lt;/groups&gt;  
+   
+  &lt;classes&gt;  
+    &lt;class name="test.IndividualMethodsTest"&gt;  
+      &lt;methods&gt;  
+        &lt;include name="testMethod" /&gt;  
+      &lt;/methods&gt;  
+    &lt;/class&gt;  
+  &lt;/classes&gt;  
+&lt;/test&gt;
+</pre>
+
+<h3>说明</h3>
+<pre>
+   * 你同样可以在testng.xml中定义新的组，指定属性的额外详细情况，比如是否并行运行测试，使用多少线程，是否运行junit测试，等等...
+   * 默认情况下，testNG执行测试用例按照它们在xml中被发现的顺序执行，可以通过设置preserve-order为false来不可预测的顺序执行
+</pre>
+
+<h3>testng-1.0.dtd</h3>
+<pre class="code">
+&lt;!--
+
+Here is a quick overview of the main parts of this DTD.  For more information,
+refer to the &lt;a href="http://testng.org"&gt;main web site&lt;/a&gt;.
+                                                      
+A &lt;b&gt;suite&lt;/b&gt; is made of &lt;b&gt;tests&lt;/b&gt; and &lt;b&gt;parameters&lt;/b&gt;.
+                                                      
+A &lt;b&gt;test&lt;/b&gt; is made of three parts:                        
+
+&lt;ul&gt;
+&lt;li&gt; &lt;b&gt;parameters&lt;/b&gt;, which override the suite parameters     
+&lt;li&gt; &lt;b&gt;groups&lt;/b&gt;, made of two parts                           
+&lt;li&gt; &lt;b&gt;classes&lt;/b&gt;, defining which classes are going to be part
+  of this test run                                    
+&lt;/ul&gt;
+                                                      
+In turn, &lt;b&gt;groups&lt;/b&gt; are made of two parts:                
+&lt;ul&gt;
+&lt;li&gt; Definitions, which allow you to group groups into   
+  bigger groups                                       
+&lt;li&gt; Runs, which defines the groups that the methods     
+  must belong to in order to be run during this test  
+&lt;/ul&gt;
+                                                      
+Cedric Beust & Alexandru Popescu                      
+@title DTD for TestNG                                    
+@root suite
+
+--&gt;
+
+
+&lt;!-- A suite is the top-level element of a testng.xml file
+--&gt;
+&lt;!ELEMENT suite
+(groups?,(listeners|packages|test|parameter|method-selectors|suite-files)*) &gt;
+
+&lt;!-- Attributes: --&gt;
+&lt;!--
+@attr  name        The name of this suite (as it will appear in the reports)
+@attr  junit       Whether to run in JUnit mode.
+@attr  verbose     How verbose the output on the console will be.  
+                This setting has no impact on the HTML reports.
+@attr  parallel   Whether TestNG should use different threads
+                to run your tests (might speed up the process)
+@attr  configfailurepolicy  Whether to continue attempting Before/After
+                Class/Methods after they've failed once or just skip
+remaining.
+@attr  thread-count An integer giving the size of the thread pool to use
+                if you set parallel.
+@attr  annotations  If "javadoc", TestNG will look for
+                JavaDoc annotations in your sources, otherwise it will
+                use JDK5 annotations.
+@attr  time-out     The time to wait in milliseconds before aborting the
+                method (if parallel="methods") or the test (parallel="tests")
+@attr  skipfailedinvocationcounts Whether to skip failed invocations.
+@attr  data-provider-thread-count An integer givin the size of the thread pool
+to use
+       for parallel data providers.
+@attr  object-factory A class that implements IObjectFactory that will be used
+to
+       instantiate the test objects.
+@attr allow-return-values If true, tests that return a value will be run as
+well
+--&gt;
+&lt;!ATTLIST suite 
+    name CDATA #REQUIRED
+    junit (true | false) "false"
+    verbose CDATA #IMPLIED
+    parallel (false | methods | tests | classes | instances) "false"
+    configfailurepolicy (skip | continue) "skip"
+    thread-count CDATA "5"
+    annotations CDATA #IMPLIED
+    time-out CDATA #IMPLIED
+    skipfailedinvocationcounts (true | false) "false"
+    data-provider-thread-count CDATA "10"
+    object-factory CDATA #IMPLIED
+    group-by-instances (true | false) "false"
+    preserve-order (true | false) "true"
+    allow-return-values (true | false) "false"
+&gt;
+
+&lt;!-- A list of XML files that contain more suite descriptions --&gt;
+&lt;!ELEMENT suite-files (suite-file)* &gt;
+
+&lt;!ELEMENT suite-file ANY &gt;
+&lt;!ATTLIST suite-file
+    path CDATA #REQUIRED
+&gt;
+
+&lt;!--
+Parameters can be defined at the &lt;suite&gt; or at the &lt;test&gt; level.
+Parameters defined at the &lt;test&gt; level override parameters of the same name in
+&lt;suite&gt;
+Parameters are used to link Java method parameters to their actual value,
+defined here.
+--&gt;
+&lt;!ELEMENT parameter ANY&gt;
+&lt;!ATTLIST parameter
+    name CDATA #REQUIRED
+    value CDATA #REQUIRED &gt;
+
+&lt;!--
+Method selectors define user classes used to select which methods to run.
+They need to implement &lt;tt&gt;org.testng.IMethodSelector&lt;/tt&gt; 
+--&gt;
+&lt;!ELEMENT method-selectors (method-selector*) &gt;
+&lt;!ELEMENT method-selector ((selector-class)*|script) &gt;
+&lt;!ELEMENT selector-class ANY&gt;
+&lt;!ATTLIST selector-class
+    name CDATA #REQUIRED
+  priority CDATA #IMPLIED
+&gt;
+&lt;!ELEMENT script ANY&gt;
+&lt;!ATTLIST script
+    language CDATA #REQUIRED
+&gt;
+
+&lt;!--
+A test contains parameters and classes.  Additionally, you can define
+additional groups ("groups of groups")
+--&gt;
+
+&lt;!ELEMENT test (method-selectors?,parameter*,groups?,packages?,classes?) &gt;
+
+&lt;!--
+@attr  name         The name of this test (as it will appear in the reports)
+@attr  junit        Whether to run in JUnit mode.
+@attr  verbose      How verbose the output on the console will be.
+                This setting has no impact on the HTML reports.
+                Default value: suite level verbose.
+@attr  parallel     Whether TestNG should use different threads
+                to run your tests (might speed up the process)
+@attr  thread-count An integer giving the size of the thread pool to be used
+if
+                parallel mode is used. Overrides the suite level value.
+@attr  annotations  If "javadoc", TestNG will look for
+                JavaDoc annotations in your sources, otherwise it will
+                use JDK5 annotations.
+@attr  time-out     the time to wait in milliseconds before aborting
+                the method (if parallel="methods") or the test (if
+parallel="tests")
+@attr  enabled      flag to enable/disable current test. Default value: true 
+@attr  skipfailedinvocationcounts Whether to skip failed invocations.
+@attr preserve-order If true, the classes in this tag will be run in the same
+order as
+found in the XML file.
+@attr allow-return-values If true, tests that return a value will be run as
+well
+--&gt;
+&lt;!ATTLIST test
+    name CDATA #REQUIRED 
+    junit (true | false) "false"
+    verbose  CDATA #IMPLIED
+    parallel  CDATA #IMPLIED
+    thread-count CDATA #IMPLIED
+    annotations  CDATA #IMPLIED
+    time-out CDATA #IMPLIED
+    enabled CDATA #IMPLIED
+    skipfailedinvocationcounts (true | false) "false"
+    preserve-order (true | false) "true"
+    group-by-instances (true | false) "false"
+    allow-return-values (true | false) "false"
+&gt;
+
+&lt;!--
+Defines additional groups ("groups of groups") and also which groups to
+include in this test run
+--&gt;
+&lt;!ELEMENT groups (define*,run?,dependencies?) &gt;
+
+&lt;!ELEMENT define (include*)&gt;
+&lt;!ATTLIST define
+    name CDATA #REQUIRED&gt;
+
+&lt;!-- Defines which groups to include in the current group of groups
+--&gt;
+&lt;!ELEMENT include ANY&gt;
+&lt;!ATTLIST include
+    name CDATA #REQUIRED
+    description CDATA #IMPLIED
+    invocation-numbers CDATA #IMPLIED&gt;
+
+&lt;!-- Defines which groups to exclude from the current group of groups
+--&gt;
+&lt;!ELEMENT exclude ANY&gt;
+&lt;!ATTLIST exclude
+    name CDATA #REQUIRED&gt;
+
+&lt;!-- The subtag of groups used to define which groups should be run
+--&gt;
+&lt;!ELEMENT run (include?,exclude?)* &gt;
+
+&lt;!ELEMENT dependencies (group*)&gt;
+
+&lt;!ELEMENT group ANY&gt;
+&lt;!ATTLIST group
+    name CDATA #REQUIRED
+    depends-on CDATA #REQUIRED&gt;
+
+&lt;!-- The list of classes to include in this test
+--&gt;
+&lt;!ELEMENT classes (class*) &gt;
+&lt;!ELEMENT class (methods*) &gt;
+&lt;!ATTLIST class
+    name CDATA #REQUIRED &gt;
+
+&lt;!-- The list of packages to include in this test
+--&gt;
+&lt;!ELEMENT packages (package*) &gt;
+&lt;!-- The package description. 
+     If the package name ends with .* then subpackages are included too.
+--&gt;
+&lt;!ELEMENT package (include?,exclude?)*&gt;
+&lt;!ATTLIST package
+    name CDATA #REQUIRED &gt;
+
+&lt;!-- The list of methods to include/exclude from this test                 --&gt;
+&lt;!ELEMENT methods (include?,exclude?,parameter?)* &gt;
+
+&lt;!-- The list of listeners that will be passed to TestNG --&gt;
+&lt;!ELEMENT listeners (listener*) &gt;
+
+&lt;!ELEMENT listener ANY&gt;
+&lt;!ATTLIST listener
+    class-name CDATA #REQUIRED &gt;
+</pre>

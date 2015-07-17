@@ -1,0 +1,11 @@
+【用途】
+ 1. 给定一个svn url，查看这个版本的checkin log情况
+ 2. 更简单的查看此url上两个版本之间的差别  
+
+【其他】
+ 1. 其中diff部分代码拷贝自m_testAssist/m_SvnDiff
+
+【Contact】
+ Author: 张培
+ Email: zhangpei@rd.netease.com
+ Phone: 9723

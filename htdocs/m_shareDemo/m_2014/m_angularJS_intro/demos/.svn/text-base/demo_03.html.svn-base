@@ -1,0 +1,31 @@
+<!doctype html>
+<html ng-app="MyServiceModule">
+    <head>
+        <script src="../../../../js-base/angularJS/angular.min.js"></script>
+    </head>
+
+    <body>
+        <div ng-controller="myController">
+            <input ng-model="name" />
+            <a href="#" ng-click="callNotify()">Salution</a>
+        </div>
+    </body>
+
+<script>
+angular.module('MyServiceModule', []).
+    factory('notify', ['$window', function (win) {
+        return function (msg) {
+            win.alert(msg);
+        };
+}]);
+ 
+function myController(scope, notifyService) {
+    scope.name = "zhangpei";
+    scope.callNotify = function () {
+        notifyService("Hello, " + scope.name + " !");
+    };
+}
+ 
+myController.$inject = ['$scope', 'notify'];
+</script>
+</html>

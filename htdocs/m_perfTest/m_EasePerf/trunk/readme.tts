@@ -1,0 +1,8 @@
+【svn addr】: 
+https://dev.corp.youdao.com/svn/outfox/incubator/Test/WebFramework/htdocs/m_perfTest/m_EasePerf/milestones/1.1
+
+监控工具：
+https://dev.corp.youdao.com/svn/outfox/incubator/Test/WebFramework/htdocs/m_perfTest/m_EasePerf/milestones/1.1/server
+
+注意：
+该版本与旧版本不兼容（切换了数据库），请升级监控工具，对于旧版本数据查看，使用旧版本

@@ -1,0 +1,56 @@
+<h3>命令行方式运行</h3>
+<pre>
+   * 执行方式：java org.testng.TestNG testng1.xml [testng2.xml testng3.xml ...]
+   * 必须指定最少一个描述你试图测试的TestNG suite的xml文件。
+</pre>
+
+<h3>命令行参数说明</h3>
+<pre>
+   * 可以通过运行testng不带参数来获取：java -cp .:testng-6.8.jar org.testng.TestNG
+</pre>
+<table border="1">
+    <tr><th>选项</th><th>参数</th><th>文档说明</th></tr>
+    <tr><td>-d</td><td>一个目录</td><td>生成报告的目录（ test-output）</td></tr>
+    <tr><td>-sourcedir</td><td>分号隔开的目录列表</td><td>带有javadoc注释的测试源文件目录.
+                            这个选项只在使用javadoc类型的annotation时才有效.(例如 "src/test" or 
+                            "src/test/org/testng/eclipse-plugin;src/test/org/testng/testng").</td></tr>
+    <tr><td>-testclass</td><td>可以在classpath路径中找到的逗号分隔的类列表。</td><td>逗号分隔的类文件列表(例如"org.foo.Test1,org.foo.test2").</td></tr>
+    <tr><td>-groups</td><td>逗号分隔的组列表</td><td>要运行的组列表(例如"windows,linux,regression").</td></tr>
+    <tr><td>-excludegroups</td><td>逗号分隔的组列表</td><td>不想包含在这次运行中的组列表</td></tr>
+    <tr><td>-testrunfactory</td><td>可以在classpath中找到的java类</td><td>指定测试的runner.这个类需要实现接口org.testng.ITestRunnerFactory</td></tr>
+    <tr><td>-listener</td><td>可以在classpath路径中找到的逗号分隔的类列表。</td><td>指定测试的listener. 这个类需要实现接口org.testng.ITestListener</td></tr>
+    <tr><td>-parallel</td><td>methods|tests</td><td>如果指定, 设置运行测试时如何使用并发线程的默认机制.<br>
+                                                  如果不设置，默认机制是完全不使用并发线程。这个设置可以被suite定义覆盖.</td></tr>
+    <tr><td>-threadcount</td><td>并发测试运行时默认使用的线程数用于设置并发测试时默认的线程数.</td><td>只在并发模式被选择时才生效 (例如, 打开
+                                  -parallel 选项). 这个设置可以被suite定义覆盖.</td></tr>
+    <tr><td>-suitename</td><td>测试套件使用的默认名称.</td><td>指定在命令行上定义的测试套件的名称。<br>
+                                                             如果suite.xml文件或源代码指定了另外一个不同的套件名称，这个选项将被忽略。<br>
+                                                             可以创建带空格的套件名称，如果在名称前后加双引号如"like this".</td></tr>
+    <tr><td>-testname</td><td>测试使用的默认名称.</td><td>指定在命令行上定义的测试的名称。
+                                                        如果suite.xml文件或源代码指定了另外一个不同的测试名称，这个选项将被忽略。
+                                                        可以创建带空格的测试名称，如果在名称前后加双引号如"like this".</td></tr>
+    <tr><td>-reporter</td><td>扩展配置用于自定义报告listenner.</td><td>类似 -listener 选项, 除了容许reporter示例上由javabean形式的配置.<br>
+                                 例如: -reporter com.test.MyReporter:methodFilter=*insert*,enableFiltering=true
+
+        </td></tr>
+</table>
+
+<h3>可以通过jvm的命令行来传递参数给TestNG</h3>
+<pre>
+    * demo: java -Dtestng.test.classpath="c:/build;c:/java/classes;" org.testng.TestNG testng.xml
+</pre>
+<table border="1">
+<tr><th>属性</th><th>类型</th><th>文档</th></tr>
+<tr><td>testng.test.classpath</td><td>分号分隔的包含测试类的一系列目录</td><td>如果这个属性被设置，TestNG将使用它替代从class path来查找测试类.<br>
+                                      如果你正在使用在xml文件里面的包标签并且在classpath路径中由很多类而大部分都不是测试类的时候比较方便</td></tr>
+</table>
+
+<pre>
+举例子:java org.testng.TestNG -groups windows,linux -testclass org.test.MyTest
+   * The command line flags that specify what tests should be run will be ignored if you also specify a testng.xml file, with the exception of
+   -includedgroups and -excludedgroups, which will override all the group inclusions/exclusions found in testng.xml.
+</pre>
+
+<script>
+    $("tr:even").css("background-color", "#99ff00");
+</script>

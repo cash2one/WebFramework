@@ -1,0 +1,34 @@
+body {
+    overflow-y: hidden;
+}
+
+ul#dir_list{
+    background-color: #eeccdd;
+    overflow-y: scroll;
+    height: 200px;
+}
+
+a#remember_me {
+    text-decoration: none;
+}
+
+a#remember_me:hover {
+    text-decoration: underline;
+}
+
+ul#filenames li a:hover {
+    color: red; 
+}
+
+div#pei {
+    height: 90%;
+    overflow-y: auto;
+}
+
+table {
+    display: inline;
+}
+
+table#myTable tr td div {
+    overflow-y: visible;
+}

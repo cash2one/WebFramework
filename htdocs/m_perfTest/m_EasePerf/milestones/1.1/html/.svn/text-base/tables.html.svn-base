@@ -1,0 +1,27 @@
+<html>
+<head>
+    <link rel="stylesheet" href="./css/tables.css" type="text/css" media="all" />
+    <script src = "./js/tables.js" type="text/javascript"></script>
+</head>
+<body>
+        <div id ="tables">
+            <table id="number">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+            <table id="status">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+            <table id="process">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+            <table id="system">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <div id = "tip"> No Datas</div>
+</body>
+</html>

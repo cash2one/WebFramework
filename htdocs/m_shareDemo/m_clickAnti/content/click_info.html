@@ -1,0 +1,119 @@
+<h4>点击串分析</h4>
+词典的点击串例的例子：http://d.clkservice.youdao.com/clk/request.s?k=MmBAyW7Ld5vWsuzz0EEPKrkod3PLzobzqvYzBgBBMXhCkgSRqi7u8jJ6bbqUr%2BnwoXpPzt%2FBBn
+oRappTs8Riy3K2deesMyKQ8IsTLu0ru7MgjMZoBtyVEowJZJWF48FjRGQOqVammt%2BBVvBhlqR5uvEuVk1Pm6UlpXwLsmvjXyJM7qeNqIP1
+QUHybxUBvTJPiwKslu23tBwP%2BkhfAsCXlP4NELneQOxmoF0t4jmrqPpmQ5UVfTje9s2MW7WTjHvlMsmgrA0H%2B
+ILDuXw2G8m157bi5RtzqBnqh6ICqKjvFb2MbBoxG0hJikU192ypdWQxSQY69RoaIdavSZxFncUbl26mytmH%
+2Bj49EyTQq5Te79wjXJClVt4XflAUu0zJWXuzB%2F7sfz3rnMu0aceOZBbOj3ZdcCIYEN%2BptjLlZhUDzk7Xxo%
+2BoRxcJpjjAgKuViCqv18aPqEcXCaY4wICrlYgqrz4J3l7eJfpgMhvbAUaFglKNlZC%2FV6qh0Lsd8d3APnbP&
+d=http%3A%2F%2Fwww.vipabc.com%2Fprogram%2Flinkage_page%2Fcramschool%2Findex.asp%3Fpop%3Dyes%26fromwhere%3DMrxo3nDDZL&s=16
+
+点击串的组成：
+源文件：lib/ead-datamodel-src.zip
+<a target="_demo" href="php/src/lib/outfox/ead/data/ClickAction.java">ClickAction</a> 继承自 <a target="_demo" href="php/src/lib/outfox/ead/data/AdItem.java">AdItem</a>
+
+
+点击服务配置文件: <a title="点击服务的spring配置文件" target="_demo" href="php/src/src/web/web-click/WEB-INF/clk-servlet.xml.template">src/web/web-click/WEB-INF/clk-servlet.xml.template</a>
+<table>
+<tr>
+    <td rowspan="8">
+        逻辑调用关系：
+    </td>
+    <td rowspan="8">
+        request.s
+    </td>
+    <td rowspan="8">
+        =>
+    </td>
+    <td rowspan="8">
+        <a title="点击服务的入口java文件, 处理点击请求，并放入队列中, 如果队列满，则等10s，超时丢弃,所以服务重启也没有关系" target="_demo" href="php/src/src/java/outfox/ead/click/ClickController.java">clickController</a>
+    </td>
+    <td rowspan="8">
+        => 
+    </td>
+    <td>
+        <a title="种转换跟踪的cookie：路径/conv/$sponsor_id,名称youdao_conv_trk_id,域.youdao.com,值encode(click)" target="_demo" href="php/src/src/java/outfox/ead/click/ConvTrackImpl.java">convTrack</a>
+    </td>
+</tr>
+<tr>
+    <td>
+        <a title="判断请求是否来自爬虫，或者广告商页面是否为空" target="_demo" href="php/src/src/java/outfox/ead/click/RequestCheckImpl.java">requestPreChecker</a>
+    </td>
+</tr>
+<tr>
+    <td>
+        <a title="从点击串中解析出ClickAction对象，并往其中添加更多信息：more_info，referer等,抽取cookies中的163账号" target="_demo" href="php/src/src/java/outfox/ead/click/ClickConstructImpl.java">clickConstruct</a>
+    </td>
+</tr>
+<tr>
+    <td>
+        <a title="负责构造点击Response的具体逻辑，对于词典和woso平台的跳转，采取vm渲染的方法(主要为了矫正referer)，对于其它点击，将目标页面写在Response里面" target="_demo" href="php/src/src/java/outfox/ead/click/ResponseConstruct.java">responseConstruct</a>
+    </td>
+</tr>
+<tr>
+    <td>
+        <a title="将列表中的点击依次发送给反作弊服务" target="_demo" href="php/src/src/java/outfox/ead/click/ClickSenderQueue.java">clickQueue</a>
+    </td>
+</tr>
+<tr>
+    <td>
+        <a title="监控类" target="_demo" href="php/src/src/java/outfox/ead/adnet/toolbox/ResponseTimeMonitorImpl.java">responseTimeMonitor</a>
+    </td>
+</tr>
+<tr>
+    <td>
+        <a title="为网易印象派产生特殊的landPage, 对于广告商网易印象派的点击，controller拿到点击之后，将此点击跳转到印象派对应的URL。为保证安全，双方约定一个key值" target="_demo" href="php/src/src/java/outfox/ead/click/NeteaseYxpImpl.java">neteaseYXP</a>
+    </td>
+</tr>
+<tr>
+    <td>
+        <a title="部分广告商不希望太多作弊的点击去他们的网站，在点击端做预处理，如果鼠标信息过滤略判为作弊，则跳到youdao.com" target="_demo" href="php/src/src/java/outfox/ead/click/ClickTrafficCheck.java">clkTrafficCheck</a>
+    </td>
+</tr>
+</table>
+
+
+<table>
+<tr>
+    <td>
+        点击服务中的点击队列:
+    </td>
+    <td>
+        <a title="从zk获取反作弊服务，处理点击对象，发送点击对象到反作弊服务,并返回处理状态结果" target="_demo" href="php/src/src/java/outfox/ead/click/ClickSenderQueue.java">clickQueue</a>
+    </td>
+    <td>
+        继承自
+    </td>
+    <td>
+        <a title="维护一个序列化点击队列(长度50w)，目录.tmpclk4send; 单独起一个线程轮流处理队列中的点击，处理完毕，则从队列中抛弃该点击；队列为空则阻塞; 为了提高速度，内存中也有一个点击的映射" href="php/src/src/java/outfox/ead/util/container/PersistSequenceQueue.java" target="_demo">PersistSequenceQueue</a> 
+    </td>
+    <td>
+        包含
+    </td>
+    <td>
+        <a title="提供了offer功能(写队列），提供poll功能（读队列）; 写超时则丢弃, 读超时则阻塞" target="_demo" href="php/src/src/java/outfox/ead/util/container/PersistQueue.java">PersistQueue</a>
+    </td>
+</tr>
+</table>
+
+<table>
+<tr>
+    <td>
+        从zk上获取antifrauder-server:
+    </td>
+    <td>
+        <a title="注册节点/anti-fraud, 内存维护的反作弊服务状态检查时间间隔10min(unValid->valid): 获取一个可用的反作弊服务，此方法首先优先从状态为OK的服务中选取，若不存在， 则从TIMEOUT中选取，若不存在，则从状态为FAILED中选取一个;初始化调用init函数,更新有效无效状态；有节点删除或者节点添加，也会更新map" target="_demo" href="php/src/src/java/outfox/ead/click/dispatch/AntiFrauderServerManager.java">AntiFrauderServerManager</a>
+    </td>
+    <td>
+        包含
+    </td>
+    <td>
+        <a title="对AntiFrauderProxy.java的封装" target="_demo" href="php/src/src/java/outfox/ead/click/dispatch/AntiFrauderServerItem.java">AntiFrauderServerItem</a>
+    </td>
+    <td>
+        包含
+    </td>
+    <td>
+        <a title="继承自SimpleRpcProxy，实现了AntiFrauder接口;连接到了Antifrauder服务, 超时时间2s; 发送点击到反作弊服务" target="_demo" href="php/src/src/java/outfox/ead/click/dispatch/AntiFrauderProxy.java">AntiFrauderProxy</a>
+    </td>
+</tr>
+</table>

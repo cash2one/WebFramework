@@ -1,0 +1,30 @@
+<html>
+<body>
+
+    <!-- user info input area -->
+    <div id="user_info_bar"> 
+        用户: <select id="user_name_list"></select>
+        &nbsp;
+        <a href="" class="op_new op_link">新建</a>
+    </div>
+
+    <hr/>
+
+    <table border="1" id="user_conf_table">
+        <thead>
+        <tr>
+            <th>用户名</th>
+            <th>配置文件名</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+
+        <tbody id="user-conf-list">
+        </tbody>
+    </table>
+
+    <!-- fill in the page -->
+    <!--script src="./js/home.html.js" type="text/javascript"></script-->
+
+</body>
+</html>

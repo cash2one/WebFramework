@@ -1,0 +1,33 @@
+这套脚本用来监控gclog，由yinxj、liujia在2013-07-26完成。
+GC的启动参数配置建议为: 
+             -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps
+
+使用方法：
+svn co https://dev.corp.youdao.com/svn/outfox/incubator/Test/WebFramework/htdocs/m_perfTest/m_EasePerf/milestones/2.0/server/nagios/ gcmonitor
+
+在nagios client端配置，
+gcmon.sh /logpath/gc.log key key -c 报警阈值 key key （其中key及说明在doc/help.xlsx中查看）
+eg：
+command[monitor_gclog]=/disk4/gouwuop/gcmonitor/gcmon.sh /disk4/gouwuop/gouwu-resin/log/jvm.log gc.time -c 100 gc.qps gc.tenuredUsed.percent.avg -c 80 gc.throughout
+
+在nagios server端配置示例：
+#nb306
+define host{
+        use             linux-server
+        host_name       nb306
+        contacts        armani
+        address         10.168.1.106
+        }
+define service{
+        notification_interval   10
+        use                     generic-service,srv-pnp
+        host_name               nb306
+        service_description     monitor_gclog_nb306
+        check_command           check_nrpe!monitor_gclog
+        contacts                armani
+        normal_check_interval   3
+        servicegroups           armani
+        max_check_attempts      1
+        }
+
+图形曲线可在nagios中查看。

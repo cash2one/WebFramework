@@ -1,0 +1,33 @@
+hibernate_dialect=org.hibernate.dialect.MySQLInnoDBDialect
+hibernate.connection.driver_class=com.mysql.jdbc.Driver
+
+hibernate_show_sql=false
+hibernate_format_sql=false
+
+#hibernate.connection.finance.url=jdbc:mysql://nb264/eadb3?useUnicode=true&characterEncoding=utf8
+#hibernate.connection.finance.username=ead
+#hibernate.connection.finance.password=ea89,d24
+
+# read only
+#hibernate.connection.adpublish.url=jdbc:mysql://sb111/eadb1?useUnicode=true&characterEncoding=utf8
+#hibernate.connection.adpublish.username=ead
+#hibernate.connection.adpublish.password=ea89,d24
+
+
+#finance write
+#hibernate.connection.write_finance.url=jdbc:mysql://tb094/eadb3?useUnicode=true&characterEncoding=utf8
+#hibernate.connection.write_finance.username=eadonline4nb
+#hibernate.connection.write_finance.password=new1ife4Th1sAugust
+
+hibernate.connection.finance.url=jdbc:mysql://tb081/finance_db?useUnicode=true&characterEncoding=utf8
+hibernate.connection.finance.username=test
+hibernate.connection.finance.password=test
+
+hibernate.connection.adpublish.url=jdbc:mysql://sb095/adpublish?useUnicode=true&characterEncoding=utf8
+hibernate.connection.adpublish.username=test
+hibernate.connection.adpublish.password=iliketesting
+
+#finance write
+hibernate.connection.write_finance.url=jdbc:mysql://tb081/financeDB?useUnicode=true&characterEncoding=utf8
+hibernate.connection.write_finance.username=test
+hibernate.connection.write_finance.password=test

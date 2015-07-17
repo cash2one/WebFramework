@@ -1,0 +1,24 @@
+[db]	#section
+db_host=tb041x.corp.youdao.com
+db_port=3306
+db_user=test
+db_pw=test
+database=perfdata2
+
+
+
+[log]
+indexTableName=indexTable
+dataTableName=dataTable
+indexTableSQL=create table if not exists indexTable(id varchar(32) not null primary key,ldap varchar(256),product varchar(256),type varchar(256),cubetype varchar(256),numvars varchar(1024),strvars varchar(1024),machinevars varchar(1024))
+dataTableSQL=create table if not exists dataTable(id int(32) not null primary key auto_increment, indexID varchar(32) not null, time int(11) not null, keyName varchar(64), keyValue double)
+
+[machine]
+machinesTableName=machines
+machineKeysTableName=machineKeys
+machineDataTableName=machineData
+machineTableSQL=create table if not exists machines(id int(32) not null primary key auto_increment,host varchar(32) not null)
+machineKeyTableSQL=create table if not exists machineKeys(id int(32) not null primary key auto_increment,keyName varchar(32) not null)
+machineDataTableSQL=create table if not exists machineData(id int(32) not null primary key auto_increment, machineID int(32) not null, keyName varchar(64) not null, time int(11) not null, keyValue double)
+
+

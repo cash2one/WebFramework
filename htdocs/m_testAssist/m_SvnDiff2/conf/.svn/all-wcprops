@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/outfox/!svn/ver/491044/incubator/Test/WebFramework/htdocs/m_testAssist/m_SvnDiff2/conf
+END
+svn_diff.template
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/outfox/!svn/ver/491044/incubator/Test/WebFramework/htdocs/m_testAssist/m_SvnDiff2/conf/svn_diff.template
+END
+svn_diff.template2
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/outfox/!svn/ver/491044/incubator/Test/WebFramework/htdocs/m_testAssist/m_SvnDiff2/conf/svn_diff.template2
+END
+local_diff.template
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/outfox/!svn/ver/491044/incubator/Test/WebFramework/htdocs/m_testAssist/m_SvnDiff2/conf/local_diff.template
+END

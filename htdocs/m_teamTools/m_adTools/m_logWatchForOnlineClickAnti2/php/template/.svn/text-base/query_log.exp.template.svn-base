@@ -1,0 +1,18 @@
+#!/usr/bin/expect
+set timeout 5
+set max_cnt 5
+
+# remove this file for security reason
+set ret [exec rm "$current_file$"]
+
+spawn su -c "../python/log_reader.py $set_file$" $username$
+while {1} {
+  incr max_cnt -1
+  expect {
+    eof         {break} 
+    "Password:" {sleep 1; send "$password$\r"}
+  };
+
+  if {$max_cnt == 0} {break}
+}
+close $spawn_id

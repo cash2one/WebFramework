@@ -1,0 +1,80 @@
+### variable definitions
+$remote_host$  => [shell: hostname=$(hostname); echo ${hostname%%.*}]
+$test_code$    => https://dev.corp.youdao.com/svn/outfox/products/ad/ead/milestones/m5.3.3.1@346975
+$union_site_db$  => jdbc:mysql://tb041:3306/unionTempTest2?user=lili&amp;password=lili
+$mail_site_db$   => jdbc:mysql://tb041:3306/unionTempTest2?user=lili&amp;password=lili
+$click_host$     => nb093x
+$impr_port$      => 9191
+$http_port$      => 49991
+$jmx_port$       => 9100
+$rabbit_mq_host$ => tb039x.corp.youdao.com
+$click_web_url$ => http://$click_host$.corp.youdao.com:18081/clk/request.s
+$root_dir$   => /disk2/zhangpei/bt/mail
+$war_dir$    => $root_dir$/impr_war
+$resin_dir$  => $root_dir$/impr_resin
+$impr_dir$   => $root_dir$/impr_service
+$start_sh_file$      => $impr_dir$/bin/start.sh
+$resin_analyzer_dir$ => $root_dir$/resin_analyzer
+$impr_analyzer_dir$  => $root_dir$/impr_analyzer
+$add_monitor_file$ => $impr_dir$/src/java/outfox/ead/adnet/framework/ImprServerImplementor.java
+
+### check definitions
+
+### step definitions
+{
+	step.name: stop_service.mkdir_root_dir
+	step.desc: stop mail impr service
+	step.cmd: [shell]: cd $impr_dir$; sh ./bin/stop.sh eadm-aps-1 
+	step.ignore_fail: 1
+}
+
+{
+	step.name: stop_service.stop_analyzer
+	step.desc: stop analyzer
+	step.cmd: [shell]: cd /tmp/deploy_dir_for_zhangpei; python -c "from Deploy import *; stop_analyzer()" 
+	step.ignore_fail: 1
+}
+
+{
+	step.name: stop_service.stop_resin
+	step.desc: stop resin
+	step.cmd: [shell]: cd $resin_dir$; ./bin/httpd.sh stop
+	step.ignore_fail: 1
+}
+
+{
+	step.name: impr_service.remove_local_dir
+	step.desc: remove impr service local dir
+	step.cmd: [shell]: cd $impr_dir$; ./bin/start.sh eadm-aps-1
+}
+
+{
+	step.name: impr_service.checkout_code
+	step.desc: check out impr service code 
+	step.cmd: [shell]: cd $impr_dir$; svn co $test_code$
+}
+
+{
+	step.name: impr_service.add_monitor
+	step.desc: add monitor for eadm-impr 
+	step.cmd: [add_monitor_for_file]: $add_for_file$, eadm, impr, remote_run
+}
+
+{
+	step.name: impr_service.ant_resolve
+	step.desc: run "ant resolve" for impr code
+	step.cmd: [shell]: cd $impr_dir$; ant resolve
+}
+
+{
+	step.name: impr_service.build_config_file
+	step.desc: build servers.properties from template file
+	step.cmd: [shell]: cd $impr_dir$; cp conf/properties/servers.properties.eadm_online conf/properties/servers.properties
+}
+
+{
+	step.name: impr_service.update_impr_port
+	step.desc: update impr_port in servers.properties as 9191
+	step.cmd: [update_line_for_match]: $impr_service$/conf/properties/servers.properties, impr_port=*, impr_port=9191, remote_run = True 
+  step.cmd.sep: ,
+}

@@ -1,0 +1,8 @@
+SMD_ID : 编号
+SPONSOR_ID : 广告商编号
+COMMENT : 备注
+STATUS : 状态
+AUDIT_STATUS : 审核状态
+CREATE_TIME : 创建时间
+AUDIT_TIME : 审核时间
+DISCOUNT_TYPE : 折扣类型

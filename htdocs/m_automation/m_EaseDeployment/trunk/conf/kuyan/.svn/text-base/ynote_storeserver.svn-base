@@ -1,0 +1,191 @@
+### variable definitions 
+$svn$ => https://dev.corp.youdao.com/svn/outfox/products/YNote/StoreServer/milestones/2.3
+$resin_path$ => /disk1/kuyan/resin-4.0.8
+$code_path$ => /disk1/kuyan/storeserver/2.3
+$down_path$ => /disk1/kuyan/storeserver
+$resin_source_path$ => /disk4/storeserver/resin-4.0.8
+$root_path$ => /disk1/kuyan
+
+### check definitions 
+
+### step definitions 
+{
+    step.name: down_code
+    step.desc: 下载代码
+    step.cmd: [shell]:svn co $svn$ $down_path$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: config_omapxml
+    step.cmd: [file.update_line_for_matchs_num]:,,,
+    step.cmd.sep: ;
+    step.ignore_fail: 0
+}
+
+{
+    step.name: config_ynotexml_mem
+    step.cmd: [file.update_line_for_match]:$code_path$/conf/ynote.xml.template,<name>PS Old Gen</name>,<name>CMS Old Gen</name>
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: config_ynotexml_odfs
+    step.cmd: [file.update_line_for_match]:$code_path$/conf/ynote.xml.template,<filestore>.*<odfs-service>nb378:7080</odfs-service> ,<filestore>\t
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: config_ynotexml_odfs_path
+    step.cmd: [file.update_line_for_contain_substr]:$code_path$/conf/ynote.xml.template,/ynote-testing/filestore,/ynote-test/filestore
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: config_ynotexml_znode
+    step.cmd: [file.update_line_for_contain_substr]:$code_path$/conf/ynote.xml.template,/ydrive-testing,/hy-omap2.1-test
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: config_ynotexml_node1
+    step.cmd: [file.update_line_for_contain_substr]:$code_path$/conf/ynote.xml.template,<node>nb214</node>,<node>zk1</node>
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: config_ynotexml_node2
+    step.cmd: [file.update_line_for_contain_substr]:$code_path$/conf/ynote.xml.template,<node>nb222</node>,<node>zk2</node>
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: config_ynotexml_node3
+    step.cmd: [file.update_line_for_contain_substr]:$code_path$/conf/ynote.xml.template,<node>nb228</node>,<node>zk3</node>
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: config_domainxml_1
+    step.cmd: [file.update_line_for_contain_substr]:$code_path$/conf/domain.properties.template,sb012.corp.yodao.com=sb012x.corp.youdao.com,nb103.corp.yodao.com=nb103x.corp.youdao.com
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: config_domainxml_2
+    step.cmd: [file.update_line_for_contain_substr]:$code_path$/conf/domain.properties.template,sb013.corp.yodao.com=sb013x.corp.youdao.com,
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: config_domainxml_3
+    step.cmd: [file.update_line_for_contain_substr]:$code_path$/conf/domain.properties.template,sb014.corp.yodao.com=sb014x.corp.youdao.com,
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: copy_resin
+    step.cmd: [shell]:cp -r $resin_source_path$ $root_path$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: ant_war
+    step.cmd: [shell]:cd $code_path$/;rm -rf build;ant war
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: copy_service2resin
+    step.cmd: [shell]:rm -rf $resin_path$/webapps/ydrive;cp $code_path$/build/ydrice.war $resin_path$/webapps/;ls -l $resin_path$/webapps/
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: start_resin
+    step.cmd: [shell]:cd $resin_path$;sh bin/resin.sh start
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: stop_resin
+    step.cmd: [shell]:cd $resin_path$;sh bin/resin.sh stop;
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: remove_code
+    step.cmd: [shell]:rm -rf $code_path$;ls -l $code_path$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: remove_resin
+    step.cmd: [shell]:rm -rf $resin_path$;ls -l $resin_path$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: test_check
+    step.cmd: [checkenv.display_cpu]:
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+
+### collect definitions 
+{
+    collect.name: svn_down
+    collect.cmd: down_code
+    collect.hostname: nb103
+}
+
+{
+    collect.name: config_service
+    collect.cmd: config_omapxml,config_ynotexml_mem,config_ynotexml_odfs_path,config_ynotexml_znode,config_ynotexml_node1,config_ynotexml_node2,config_ynotexml_node3,config_domainxml_1,config_domainxml_2,config_domainxml_3
+    collect.hostname: nb103
+}
+
+{
+    collect.name: deploy_service
+    collect.cmd: copy_resin,ant_war,copy_service2resin
+    collect.hostname: nb103
+}
+
+{
+    collect.name: start_service
+    collect.cmd: start_resin
+    collect.hostname: nb103
+}
+
+{
+    collect.name: stop_service
+    collect.cmd: stop_resin
+    collect.hostname: nb103
+}
+
+{
+    collect.name: clear_deploy
+    collect.cmd: stop_resin,remove_resin,remove_code
+    collect.hostname: nb103
+}
+
+

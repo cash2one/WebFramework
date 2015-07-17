@@ -1,0 +1,33 @@
+/* for selectable */
+.selectable .ui-selected { background: #F39814; color: white; }
+.selectable {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 90%;
+    border-top: 1px solid #ABABAB;
+}
+.selectable li{
+    margin: 0px;
+    padding: 0.4em;
+    min-height: 18px;
+    border: 1px solid #ABABAB;
+    border-top:0px;
+}
+
+li:hover {
+    cursor: pointer;
+}
+
+#selected_item_list {
+    width: 70%;
+}
+
+#selected_item_list li {
+    background: #1D78FC;
+    color: white;
+}
+
+#select_op {
+    margin-top: 5px;
+}

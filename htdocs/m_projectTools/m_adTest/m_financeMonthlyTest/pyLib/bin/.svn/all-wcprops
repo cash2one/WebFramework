@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/outfox/!svn/ver/417192/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/pyLib/bin
+END
+clear.sh
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/outfox/!svn/ver/417192/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/pyLib/bin/clear.sh
+END
+write.py
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/outfox/!svn/ver/412732/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/pyLib/bin/write.py
+END
+read.py
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/outfox/!svn/ver/412752/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/pyLib/bin/read.py
+END
+write.sh
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/outfox/!svn/ver/411329/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/pyLib/bin/write.sh
+END
+read.sh
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/outfox/!svn/ver/412729/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/pyLib/bin/read.sh
+END
+archive.sh
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/outfox/!svn/ver/411158/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/pyLib/bin/archive.sh
+END
+delete.sh
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/outfox/!svn/ver/411137/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/pyLib/bin/delete.sh
+END
+build_html.sh
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/outfox/!svn/ver/411243/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/pyLib/bin/build_html.sh
+END

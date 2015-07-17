@@ -1,0 +1,15 @@
+【svn addr】: 
+https://dev.corp.youdao.com/svn/outfox/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment
+
+【dir structure】
+[test@tb037 m_automation]$ ls -l m_EaseDeployment/
+drwxr-xr-x  8 test kaiwoo 4096 Nov 19 19:00 conf
+drwxr-xr-x  3 test kaiwoo 4096 Nov 19 19:00 css
+-rw-r--r--  1 test kaiwoo  125 Nov 19 19:50 description.tts
+drwxr-xr-x  3 test kaiwoo 4096 Nov 19 19:22 html
+-rw-r--r--  1 test kaiwoo 2375 Nov 19 19:22 index.php
+drwxr-xr-x  3 test kaiwoo 4096 Nov 19 19:45 js
+drwxr-xr-x  3 test kaiwoo 4096 Nov 19 19:00 log
+-rw-r--r--  1 test kaiwoo   13 Nov 19 19:00 name.tts
+drwxr-xr-x  4 test kaiwoo 4096 Nov 19 19:00 php
+drwxr-xr-x  5 test kaiwoo 4096 Nov 19 18:54 server

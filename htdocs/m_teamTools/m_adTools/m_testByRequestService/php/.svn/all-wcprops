@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/outfox/!svn/ver/411598/incubator/Test/WebFramework/htdocs/m_teamTools/m_adTools/m_testByRequestService/php
+END
+write_user_log.php
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/outfox/!svn/ver/410523/incubator/Test/WebFramework/htdocs/m_teamTools/m_adTools/m_testByRequestService/php/write_user_log.php
+END
+query_online_log.php
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/outfox/!svn/ver/411598/incubator/Test/WebFramework/htdocs/m_teamTools/m_adTools/m_testByRequestService/php/query_online_log.php
+END
+read_user_log.php
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/outfox/!svn/ver/410523/incubator/Test/WebFramework/htdocs/m_teamTools/m_adTools/m_testByRequestService/php/read_user_log.php
+END
+query_log.exp.template
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/outfox/!svn/ver/410504/incubator/Test/WebFramework/htdocs/m_teamTools/m_adTools/m_testByRequestService/php/query_log.exp.template
+END
+read_remote_file.php
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/outfox/!svn/ver/410521/incubator/Test/WebFramework/htdocs/m_teamTools/m_adTools/m_testByRequestService/php/read_remote_file.php
+END

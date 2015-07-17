@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/outfox/!svn/ver/428537/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/pyLib
+END
+TestDriver.py
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/outfox/!svn/ver/428473/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/pyLib/TestDriver.py
+END
+clear_table.py
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/outfox/!svn/ver/421202/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/pyLib/clear_table.py
+END
+build_schema.py
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/outfox/!svn/ver/421202/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/pyLib/build_schema.py
+END
+Schema.py
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/outfox/!svn/ver/428473/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/pyLib/Schema.py
+END
+Type.py
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/outfox/!svn/ver/417980/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/pyLib/Type.py
+END
+Field.py
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/outfox/!svn/ver/411075/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/pyLib/Field.py
+END
+DBConnection.py
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/outfox/!svn/ver/428537/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/pyLib/DBConnection.py
+END
+Table.py
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/outfox/!svn/ver/411329/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/pyLib/Table.py
+END

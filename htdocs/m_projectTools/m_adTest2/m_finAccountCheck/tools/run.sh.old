@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# below command for data deletion NOT needed for tool will delete data in table before do work
+# ./truncate_tables.py
+
+echo "生成对账用的输入数据，放到sponsor_revenue_monthly & agent_revenue_monthly"
+echo "数据库配置文件在jar/hibernate.properties, 请勿配置到线上库!!!"
+
+cd jar
+
+java -XX:-UseGCOverheadLimit -Xms2680m -Xmx2680m -cp .:./indicator.jar:./ant.jar:./commons-lang.jar:./mysql-connector.jar:./org.springframework.aop-3.0.0.RELEASE.jar:./servlet-api.jar:./aopalliance.jar:./org.springframework.web-3.0.0.RELEASE.jar:./log4j.jar:./cglib-nodep.jar:./commons-collections.jar:./ead-finance.jar:../bin/:./dom4j.jar:./org.springframework.jdbc-3.0.0.RELEASE.jar:./jta.jar:./hibernate3.jar:./org.springframework.transaction-3.0.0.RELEASE.jar:./org.springframework.orm-3.0.0.RELEASE.jar:./commons-pool.jar:./commons-dbcp.jar:./org.springframework.expression-3.0.0.RELEASE.jar:./org.springframework.asm-3.0.0.RELEASE.jar:./org.springframework.context-3.0.0.RELEASE.jar:./org.springframework.beans-3.0.0.RELEASE.jar:./org.springframework.core-3.0.0.RELEASE.jar:./commons-logging.jar:./junit.jar:./org.springframework.test-3.0.0.RELEASE.jar:./org.springframework.orm-3.0.0.RELEASE.jar:./antlr.jar org.junit.runner.JUnitCore outfox.ead.indicator.checker.IFinanceCheckerTest

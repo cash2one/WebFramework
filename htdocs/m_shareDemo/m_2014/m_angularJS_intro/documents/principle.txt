@@ -1,0 +1,15 @@
+<h3>自动初始化</h3>
+<pre>
+Angular会在DOMContentLoaded事件中自动初始化，Angular会找出由你通过ng-app这个directive指定的应用根节点。如果找到，Angular会做以下事情：
+ 加载与module相关的directive。
+ 创建应用相关的injector（依赖管理器）。
+ 以ng-app指定根节点，开始对DOM进行相关“编译”工作。换言之，可以将页面的其中一部分（非<html>）作为根节点，从而限制angular的作用范围。
+</pre>
+
+<h3>Compiler</h3>
+<pre>
+Compiler作为Angular的一个服务（Service），负责遍历DOM结构，寻找属性。编译过程分成两个阶段：
+ 1. 编译（Compile）：遍历DOM节点树，收集所有directives。返回结果是一个链接函数（linking function）。
+ 2. 链接（Link）：将directives绑定到一个作用域（scope）中，创建一个实况视图（live view）。在scope中的任何改变，将会在视图中得到体现（更新视图）；任何用户对模版的活动（改变），将会体现在scope model中（双向绑定）。这使得scope model能够反映正确的值。
+ 一些directives，诸如ng-repeat，会为每一个在集合（collection）中的元素复制一次特定的元素（组合）。编译和链接两个阶段，使性能得以提升。因为克隆出来的模版(template)只需要编译一次，然后为每一个集合中的元素进行一次链接（类似模版缓存）。
+</pre>

@@ -1,0 +1,55 @@
+代码使用举例：
+
+///////// 解析一个文件
+$config = new Config("kuyan", "deployment.txt");
+$config->parse();
+//获取文件名
+$config->fileName;
+//获取文件的绝对路径
+$config->filePath;
+//获取该文件所属用户名
+$config->userId;
+//获取文件中变量的属性值:
+foreach($config->varibles as $var){
+    $var->name;
+    $var->value;
+}
+//获取文件中step的属性值：
+foreach($config->steps as $step){
+    $step->getName();
+    $step->getCheckBeforeRun();//steps其它属性的获取类似，具体参考Element.class.php中的方法。
+    $step->getModuleName();//获取变量所属的模块名，如step.name: impr_service.build_config_file中，模块名为impr_service。
+    $step->getStepsbyModule("impr_service",$config->steps) //获取模块impr_service包含的所有steps，解析collect中的impr_service.*时可调用此方法
+}
+//Checks与Collects的各属性值获取方法，与step一样。
+
+
+
+//////// 生成一个文件
+
+$varList = array();
+$stepList = array();
+$checkList = array();
+$collectList = array();
+
+//将varList中添加var对象
+$var = new Varible();
+$var->set($name,$value); //name与value是从web页面读取到的字符串
+array_push($varList,$var);//将var对象放入数组中。后面可继续添加var对象
+
+//向stepList中添加step对象
+$step = new Step();
+$step->setName($name); //name是从页面获取的stepname值
+$step->setDesc($desc); //desc是从页面获取的stepdesc值,其它的属性赋值类似，具体参考Element.class.php中的set方法
+array_push($stepList,$step);
+
+//checkList与ColletList添加对象的方法，与step一样。
+
+//将web页面的元素写入到配置文件。"kuyan"为用户名，"test.txt"为配置文件名
+Deploy::save("kuyan", "test.txt",$varList,$checkList,$stepList,$collectList)
+
+//将web页面的元素写入到配置文件,并调试运行，
+//完整的执行命令是：./deploy.py -f test.txt -c stop_impr，用户只需要输入后半部分"-c stop_impr"
+$log = Deploy::run("kuyan", "test.txt",$varList,$checkList,$stepList,$collectList,"-c stop_impr")
+
+//接下来前端可以不断地从$log中读取日志，并展示给用户了。

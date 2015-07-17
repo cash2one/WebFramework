@@ -1,0 +1,20 @@
+[_table_]
+name = 广告商余额变更表
+primary_key = SBC_ID
+field_list = SBC_ID,SPONSOR_ID,CHANGE_AMOUNT,CHANGE_TYPE
+
+[SBC_ID]
+name = 余额变更表ID
+readable_map = 
+
+[SPONSOR_ID]
+name = 广告商ID
+readable_map = 
+
+[CHANGE_AMOUNT]
+name = 变化额度
+readable_map = 
+
+[CHANGE_TYPE]
+name = 变化类型
+readable_map = 1:增加|2:减少 

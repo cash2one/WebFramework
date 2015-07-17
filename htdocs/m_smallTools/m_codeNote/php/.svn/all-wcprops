@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/outfox/!svn/ver/437142/incubator/Test/WebFramework/htdocs/m_smallTools/m_codeNote/php
+END
+update_prod_index.php
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/outfox/!svn/ver/436896/incubator/Test/WebFramework/htdocs/m_smallTools/m_codeNote/php/update_prod_index.php
+END
+create_prod_index.php
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/outfox/!svn/ver/436896/incubator/Test/WebFramework/htdocs/m_smallTools/m_codeNote/php/create_prod_index.php
+END
+load_note_content.php
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/outfox/!svn/ver/437142/incubator/Test/WebFramework/htdocs/m_smallTools/m_codeNote/php/load_note_content.php
+END
+load_prod_list.php
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/outfox/!svn/ver/437015/incubator/Test/WebFramework/htdocs/m_smallTools/m_codeNote/php/load_prod_list.php
+END
+load_note_list.php
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/outfox/!svn/ver/437133/incubator/Test/WebFramework/htdocs/m_smallTools/m_codeNote/php/load_note_list.php
+END
+delete_note.php
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/outfox/!svn/ver/437107/incubator/Test/WebFramework/htdocs/m_smallTools/m_codeNote/php/delete_note.php
+END
+update_note.php
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/outfox/!svn/ver/437077/incubator/Test/WebFramework/htdocs/m_smallTools/m_codeNote/php/update_note.php
+END
+create_note.php
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/outfox/!svn/ver/437107/incubator/Test/WebFramework/htdocs/m_smallTools/m_codeNote/php/create_note.php
+END

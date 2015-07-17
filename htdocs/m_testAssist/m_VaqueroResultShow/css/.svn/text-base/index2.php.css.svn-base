@@ -1,0 +1,70 @@
+hr {
+    display: inline-block;
+    width: 92%;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+table a{
+    font-size: 0.6em;
+}
+
+a#view_log {
+    font-size: 0.6em;
+}
+
+p.small{
+    font-size: 0.6em;
+    display: inline-block;
+}
+
+table#machine_info_table,
+table#log_info_table,
+table#user_input_table {
+    width: 90%;
+}
+
+table .hostname {
+    width: 200px;
+}
+
+table .product {
+    width: 80px;
+}
+
+table .serv_type {
+    width: 150px;
+}
+
+table .cub_id {
+    width: 60px;
+}
+
+table .op {
+    width: 80px;
+}
+
+tbody#analyzer_input td input {
+    width: 100%;
+    border: 0px;
+}
+
+input#start_tm,
+input#end_tm {
+    width: 110px;
+}
+
+td p.img_title {
+    background-color: #AABBCC;
+    text-align: center;
+}
+
+table.output_table td {
+    vertical-align: top;
+}

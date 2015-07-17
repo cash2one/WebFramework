@@ -1,0 +1,18 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+  
+<suite name="Suite1" verbose="1" >
+    <parameter name="user-name"  value="zhangpei"/>
+    <parameter name="words"  value="Youdao test team, You Rock!"/>
+    <test name="Test1">  
+        <classes>  
+            <class name="demos.Demo07"/>  
+        </classes>  
+    </test> 
+
+    <test name="Test2">  
+        <parameter name="user-name"  value="zhangpei02"/>
+        <classes>  
+            <class name="demos.Demo07"/>  
+        </classes>  
+    </test> 
+</suite>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="regression" name="automation test">
+    <property name="base.dir" value="/disk2/qatest/svn_code/qa/WebFramework/htdocs/m_shareDemo/m_2013Q4/m_testNG/demos"/>
+    <property name="testng.output.dir" value="${base.dir}/test-output"/>
+    <property name="3rd.lib.dir" value="${base.dir}/libs"/>
+    <property name="testng.demo01.file" value="testng-demo01.xml"/>
+    <property name="testng.demo02-func.file" value="testng-demo02-func.xml"/>
+    <property name="testng.demo02-checkin.file" value="testng-demo02-checkin.xml"/>
+    <property name="testng.demo03.file" value="testng-demo03.xml"/>
+    <property name="testng.demo04.file" value="testng-demo04.xml"/>
+    <property name="testng.demo05.file" value="testng-demo05.xml"/>
+    <property name="testng.demo06.file" value="testng-demo06.xml"/>
+    <property name="testng.demo07.file" value="testng-demo07.xml"/>
+    <property name="testng.demo08.file" value="testng-demo08.xml"/>
+    <property name="testng.demo09.file" value="testng-demo09.xml"/>
+    <property name="testng.demo10.file" value="testng-demo10.xml"/>
+    <property name="testng.demo11.file" value="testng-demo11.xml"/>
+ 
+    <taskdef resource="testngtasks" classpath="${3rd.lib.dir}/testng-6.8/testng-6.8.jar"/>
+ 
+    <target name="clean">
+        <delete dir="${base.dir}/bin"/>
+    </target>
+    <target name="compile" depends="clean">
+        <mkdir dir="${base.dir}/bin"/>
+        <javac srcdir="${base.dir}/src" destdir="${base.dir}/bin" classpathref="classes" includeantruntime="off" debug="on" debuglevel="lines,vars,source"/>
+    </target>
+ 
+    <path id="classes">
+        <fileset dir="${3rd.lib.dir}" includes="testng-6.8/*jar"/>
+        <fileset dir="${3rd.lib.dir}" includes="*zip"/>
+        <pathelement location="${base.dir}/bin"/>
+    </path>
+ 
+    <target name="demo01" depends="compile">
+        <testng outputdir="${testng.output.dir}" classpathref="classes" delegateCommandSystemProperties="true">
+            <xmlfileset dir="${base.dir}" includes="${testng.demo01.file}"/>
+        </testng>
+    </target>
+
+    <target name="demo02-func" depends="compile">
+        <testng outputdir="${testng.output.dir}" classpathref="classes" delegateCommandSystemProperties="true">
+            <xmlfileset dir="${base.dir}" includes="${testng.demo02-func.file}"/>
+        </testng>
+    </target>
+
+    <target name="demo02-checkin" depends="compile">
+        <testng outputdir="${testng.output.dir}" classpathref="classes" delegateCommandSystemProperties="true">
+            <xmlfileset dir="${base.dir}" includes="${testng.demo02-checkin.file}"/>
+        </testng>
+    </target>
+
+    <target name="demo03" depends="compile">
+        <testng outputdir="${testng.output.dir}" classpathref="classes" delegateCommandSystemProperties="true">
+            <xmlfileset dir="${base.dir}" includes="${testng.demo03.file}"/>
+        </testng>
+    </target>
+
+    <target name="demo04" depends="compile">
+        <testng outputdir="${testng.output.dir}" classpathref="classes" delegateCommandSystemProperties="true">
+            <xmlfileset dir="${base.dir}" includes="${testng.demo04.file}"/>
+        </testng>
+    </target>
+
+    <target name="demo05" depends="compile">
+        <testng outputdir="${testng.output.dir}" classpathref="classes" delegateCommandSystemProperties="true">
+            <xmlfileset dir="${base.dir}" includes="${testng.demo05.file}"/>
+        </testng>
+    </target>
+
+    <target name="demo06" depends="compile">
+        <testng outputdir="${testng.output.dir}" classpathref="classes" delegateCommandSystemProperties="true">
+            <xmlfileset dir="${base.dir}" includes="${testng.demo06.file}"/>
+        </testng>
+    </target>
+
+    <target name="demo07" depends="compile">
+        <testng outputdir="${testng.output.dir}" classpathref="classes" delegateCommandSystemProperties="true">
+            <xmlfileset dir="${base.dir}" includes="${testng.demo07.file}"/>
+        </testng>
+    </target>
+
+    <target name="demo08" depends="compile">
+        <testng outputdir="${testng.output.dir}" classpathref="classes" delegateCommandSystemProperties="true">
+            <xmlfileset dir="${base.dir}" includes="${testng.demo08.file}"/>
+        </testng>
+    </target>
+
+    <target name="demo09" depends="compile">
+        <testng outputdir="${testng.output.dir}" classpathref="classes" delegateCommandSystemProperties="true">
+            <xmlfileset dir="${base.dir}" includes="${testng.demo09.file}"/>
+        </testng>
+    </target>
+
+    <target name="demo10" depends="compile">
+        <testng outputdir="${testng.output.dir}" classpathref="classes" delegateCommandSystemProperties="true">
+            <xmlfileset dir="${base.dir}" includes="${testng.demo10.file}"/>
+        </testng>
+    </target>
+
+    <target name="demo11" depends="compile">
+        <testng outputdir="${testng.output.dir}" classpathref="classes" delegateCommandSystemProperties="true">
+            <xmlfileset dir="${base.dir}" includes="${testng.demo11.file}"/>
+        </testng>
+    </target>
+</project>

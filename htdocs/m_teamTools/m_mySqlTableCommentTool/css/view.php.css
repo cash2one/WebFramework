@@ -1,0 +1,33 @@
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a.selected {
+    font-weight: bold;
+}
+
+a.commented {
+    color: green;
+}
+
+
+table#detail tr td {
+    padding: 0px;
+}
+
+table#detail tr td textarea {
+    border: 0px;
+    background-color: #F5F5DC;
+}
+
+a.update_remark {
+    font-size: 0.7em;
+}
+
+div#header {
+    margin-top: 10px;
+}

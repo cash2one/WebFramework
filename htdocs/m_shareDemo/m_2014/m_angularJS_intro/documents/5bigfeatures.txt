@@ -1,0 +1,46 @@
+<h3>1. 双向数据绑定</h3>
+<pre>
+数据绑定可能是AngularJS最酷最实用的特性。它能够帮助你避免书写大量的初始代码从而节约开发时间。
+
+传统来说，当model变化了。开发人员需要手动处理DOM元素并且将属性反映到这些变化中。这个一个双向的过程。一方面，model变化驱动了DOM中元素变化，另一方面，DOM元素的变化也会影响到Model。这个在用户互动中更加复杂，因为开发人员需要处理和解析这些互动，然后融合到一个model中，并且更新View。这是一个手动的复杂过程，当一个应用非常庞大的时候，将会是一件非常费劲的事情。
+
+<a href="demos/demo_01.html" target=_blank>数据绑定例子</a>
+</pre>
+
+<h3>2. 模板</h3>
+<pre>
+一个模板就是一个HTML文件。但是HTML的内容扩展了，包含了很多帮助你映射model到view的内容。
+>> HTML模板将会被浏览器解析到 DOM 中。
+>> DOM然后成为AngularJS编译器的输入。
+>> AngularJS将会遍历DOM模板来生成一些指导，即， directive （指令）。
+>> 所有的指令都负责针对view来设置数据绑定。
+
+使用DOM作为输入，而不是字符串，是AngularJS区别于其它的框架的最大原因 。
+最大的好处是为设计师和开发者创建了一个紧密的工作流。设计师可以像往常一样开发标签，然后开发者拿过来添加上功能，通过数据绑定将会使得这个过程非常简单。
+
+<a href="demos/demo_02.html" target=_blank>模板的例子</a>
+</pre>
+
+<h3>3. MVC</h3>
+<pre>
+AngularJS并不执行传统意义上的MVC，更接近于 MVVM（Moodel-View-ViewModel）
+>>Model:      model是应用中的简单数据。 一般是简单的javascript对象。
+>>ViewModel:  是$scope的对象 ，只存在于AnguarJS的应用中。$scope只是一个简单的js对象，这个对象使用简单的API来侦测和广播状态变化 。
+>>Controller: 负责设置初始状态和参数化$scope方法用以控制行为。需要指出的controller并不保存状态也不和远程服务互动。
+>>View: 是AngularJS解析后渲染和绑定后生成的HTML。这个部分帮助你创建web应用的架构。$scope拥有一个针对数据的参考，controller定义行为，view处理布局和互动 。
+</pre>
+
+<h3>4. 依赖注入(DI)</h3>
+<pre>
+AngularJS拥有内建的依赖注入子系统，可以帮助开发人员更容易的开发，理解和测试应用。
+DI允许你请求你的依赖，而不是自己找寻它们。比如，我们需要一个东西，DI负责找创建并且提供给我们。
+
+<a href="demos/demo_03.html" target=_blank>依赖注入的例子</a>
+</pre>
+
+<h3>5. 指令</h3>
+<pre>
+指令可以用来创建自定义的标签。它们可以用来装饰元素或者操作DOM属性。
+
+<a href="demos/demo_04.html" target=_blank>指令的例子</a>
+</pre>

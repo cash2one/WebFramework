@@ -1,0 +1,43 @@
+#!/usr/bin/expect -f
+#Author: kuyan@rd.netease.com
+
+    set timeout 5
+    set username [lindex $argv 0]
+    set key [lindex $argv 1]
+    set password [lindex $argv 2]
+    set cmd [lindex $argv 3]
+    set who [exec whoami]
+    
+    set keylen [exec echo $key | wc -m]
+    if { $keylen > 50 } {
+        set key [exec python encrypt.py $key]
+    }
+    set passlen [exec echo $password | wc -m]
+    if { $passlen > 50 } {
+        set password [exec python encrypt.py $password]
+    }
+    send_user "key:$key"
+    send_user "password:$password"
+    spawn su $username
+    exec sleep 1
+    while {1} {
+        expect {
+        "Password:" {send "$key\r"}
+        "Store password unencrypted (yes/no)?"  {
+            send "no\r"
+        }
+        "]\\$" {
+            send "$cmd\r" 
+            break
+        }
+        }
+    }
+    while {1} {
+        expect {
+        "Password for \'$who\':" {send "$password\r"}
+        "Username:" {send "$username\r"}
+        "Password for \'$username\':" {send "$password\r"}
+        "Store password unencrypted (yes/no)?"  {send "no\r"}
+        "]\\$" {break }
+        }
+    }

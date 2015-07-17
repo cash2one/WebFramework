@@ -1,0 +1,60 @@
+<!doctype html>
+<html ng-app="myModule">
+    <head>
+        <script src="../../../../js-base/angularJS/angular.min.js"></script>
+        <script src="../../../../js-base/jquery.min.js"></script>
+        <!-- from http://jsfiddle.net/simpulton/huKHQ/ -->
+    </head>
+
+    <body>
+        <!-- This directive is also listening for handleBroadcast on $rootScope -->
+        <my-component ng-model="message"></my-component>
+    </body>
+
+<script>
+var myModule = angular.module('myModule', []);
+myModule.factory('mySharedService', function($rootScope) {
+    var sharedService = {};
+
+    sharedService.message = '';
+
+    sharedService.prepForBroadcast = function(msg) {
+        this.message = msg;
+        this.broadcastItem();
+    };
+
+    sharedService.broadcastItem = function() {
+        $rootScope.$broadcast('handleBroadcast');
+    };
+
+    return sharedService;
+});
+
+myModule.directive('myComponent', function(mySharedService) {
+    return {
+        restrict: 'E',
+        controller: function($scope, $attrs, mySharedService) {
+            $scope.$on('handleBroadcast', function() {
+                $scope.message = 'Directive: ' + mySharedService.message;
+            });
+            $scope.handleClick = function(msg) {
+                mySharedService.prepForBroadcast(msg);
+            };            
+        },
+        link: function($scope, $element, $attrs) {
+            $('.testButtonWithApply').on('click', function(){
+                $scope.$apply(function() {
+                    $scope.handleClick('Scope apply');
+                });
+            });
+            
+            $('.testButtonWithoutApply').on('click', function(){
+                $scope.handleClick('This will not work');
+            });            
+        },
+        replace: true,
+        template: '<div><input ng-model="message"> <button ng-click="handleClick(\'Via controller\')">VIA CONTROLLER</button> <button class="testButtonWithApply">WITH APPLY</button> <button class="testButtonWithoutApply")">WITHOUT APPLY</button></div>'
+    };
+});
+</script>
+</html>

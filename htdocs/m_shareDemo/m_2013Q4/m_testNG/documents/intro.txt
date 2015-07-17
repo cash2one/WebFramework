@@ -1,0 +1,69 @@
+<h3>用途</h3>
+<pre>
+   * testNG是一个测试框架，可以满足多种测试需求：
+      * unit test
+      * functional test
+      * end-to-end test
+      * integration test
+   * testNG的产生受到JUnit以及Uunit的启发, 同时也有自己的一些特性:
+      * 注解
+      * 可以在一个大的线程池中执行测试，并发执行方式多种（方法级别的，测试类级别的等）
+      * 可以测试你的代码是否是线程安全的
+      * 灵活的测试配置
+      * 支持数据驱动测试（用 @DataProvider）
+      * 支持测试方法中保留参数
+      * 强大的执行模型（不只是TestSuite）
+      * 其他方式（不包括在本次分享之内)
+         * Supported by a variety of tools and plug-ins (Eclipse, IDEA, Maven, etc...)
+         * Embeds BeanShell for further flexibility.
+         * Default JDK functions for runtime and logging (no dependencies).
+         * Dependent methods for application server testing.
+</pre>
+
+<h3>编写一个测试典型的3个步骤</h3>
+<pre>
+   * 编写测试的 业务逻辑并在代码中插入TestNG annotation
+   * 将测试信息添加到testng.xml文件或者build.xml中
+   * 运行TestNG
+</pre>
+
+<h3>快速入门</h3>
+<pre class='code'>
+package example1;
+import org.testng.annotations.*;
+public class SimpleTest {
+    @BeforeClass
+    public void setUp() {
+        // BeforeClass注解意味着方法setUp在任何测试方法之前运行
+        // code that will be invoked when this test is instantiated
+    }
+ 
+    @Test(groups = { "fast" })
+    public void aFastTest() {
+        // we will be running the group fast, so aFastTest() will be invoked
+        // while aSlowTest() will be skipped.
+        System.out.println("Fast test");
+    }
+ 
+    @Test(groups = { "slow" })
+    public void aSlowTest() {
+        System.out.println("Slow test");
+    }
+}
+
+* 注意事项：
+   * 不需要集成自任何类以及扩展自任何接口
+   * 对于测试方法命名没有约定
+   * 一个测试方法可以属于一个活多个组
+   * 相比junit的TestCase/TestSuite，TestNG有suite/test/test method三个级别，即将test/test method明确区分开了
+</pre>
+
+<h3>用ant运行testNG</h3>
+<pre>
+    <a target=_blank href="demos/src/demo_01">demo_01</a>
+</pre>
+
+<h3>延伸阅读</h3>
+<pre>
+    <a target=_blank href="http://magustest.com/blog/automationtesting/testng-ant/">TestNG+Ant自动运行测试</a>
+</pre>

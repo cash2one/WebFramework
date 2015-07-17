@@ -1,0 +1,25 @@
+[案例]
+开发同学升级了js文件，可是由于客户之前有浏览器缓存，导致升级了的js文件没有生效
+
+[如何解决]
+一般来说，开发同学需要在引用js的地方加一个版本号，比如src的值对应的js路径后面加如&ver=2013.03.27类似的东东
+
+[本工具的用途]
+通过比较前后两个版本，来发现哪些升级了的js，在引用他们的地方，没有版本号或者版本号没有升级
+原理：
+    1、找出diff中的js/css文件,比如a.js   9
+    2、在2个版本代码中找出引用a.js的地方，如果测试版本的a.js的引用版本为空或者和线上版本的a.js引用相同, 则表示有问题
+
+[如何使用]
+1. 给定升级前后的两个svn地址,如
+https://dev.corp.youdao.com/svn/outfox/products/ad/ead/milestones/m6.1.2.3
+或者
+https://dev.corp.youdao.com/svn/outfox/products/ad/adpublish/milestones/m1.12.0@425440
+
+2. 点击查看, 并输入svn的用户名和密码
+
+3. 最终的页面会显示出哪个js对应的引用文件没有升级或添加版本
+
+[author]
+zhangpei(front-end)
+luqy(back-end)

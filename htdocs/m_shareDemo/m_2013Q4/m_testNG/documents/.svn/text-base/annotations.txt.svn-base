@@ -1,0 +1,66 @@
+<h3>testNG的注解列表及属性</h3>
+<table border="1">
+    <tr><td colspan="2">@BeforeSuite:</td><td>被注释的方法将在所有测试运行前运行</td></tr>
+    <tr><td colspan="2">@AfterSuite:</td><td>被注释的方法将在所有测试运行后运行</td></tr>
+    <tr><td colspan="2">@BeforeTest:</td><td>被注释的方法将在测试运行前运行</td></tr>
+    <tr><td colspan="2">@AfterTest:</td><td>被注释的方法将在测试运行后运行</td></tr>
+    <tr><td colspan="2">@BeforeGroups:</td><td>被配置的方法将在列表中的gourp前运行。这个方法保证在第一个属于这些组的测试方法调用前立即执行。</td></tr>
+    <tr><td colspan="2">@AfterGroups:</td><td>被配置的方法将在列表中的gourp后运行。这个方法保证在最后一个属于这些组的测试方法调用后立即执行。</td></tr>
+    <tr><td colspan="2">@BeforeClass:</td><td>被注释的方法将在当前类的第一个测试方法调用前运行。</td></tr>
+    <tr><td colspan="2">@AfterClass:</td><td>被注释的方法将在当前类的所有测试方法调用后运行。</td></tr>
+    <tr><td colspan="2">@BeforeMethod:</td><td>被注释的方法将在每一个测试方法调用前运行。</td></tr>
+    <tr><td colspan="2">@AfterMethod:</td><td>被注释的方法将在每一个测试方法调用后运行。</td></tr>
+    <tr><td>*</td><td>alwaysRun</td><td>对于每个bufore方法(beforeSuite, beforeTest, beforeTestClass 和 beforeTestMethod, 但是不包括 beforeGroups):<br>
+                                        如果设置为true，被配置的方法将总是运行而不管它属于哪个组。<br>
+                                        对于after方法(afterSuite, afterClass, ...)如果设置为true，
+                                        被配置的方法甚至在一个或多个先调用的方法失败或被忽略时也将运行。</td></tr>
+    <tr><td>*</td><td>dependsOnGroups</td><td>这个方法依赖的组列表</td></tr>
+    <tr><td>*</td><td>dependsOnMethods</td><td>这个方法依赖的方法列表</td></tr>
+    <tr><td>*</td><td>enabled</td><td>这个类的方法是否激活</td></tr>
+    <tr><td>*</td><td>groups</td><td>这个类或方法所属的分组列表</td></tr>
+    <tr><td>*</td><td>inheritGroups</td><td>如果设置为true，这个方法被属于在类级别被@Test annotation指定的组</td></tr>
+    <tr><td colspan="2">@DataProvider</td><td>标记一个方法用于为测试方法提供数据。
+                                              被注释的方法必须返回Object[][], 其中每个Object[]可以指派为这个测试方法的参数列表。<br>
+                                              从这个DataProvider接收数据@Test方法需要使用一个和当前注释相同名称的dataProvider名称</td></tr>
+    <tr><td>*</td><td>name</td><td>这个DataProvider的名称</td></tr>
+    <tr><td colspan="2">@Factory</td><td>标记方法作为一个返回对象的工厂，这些对象将被TestNG用于作为测试类。这个方法必须返回Object[]</td></tr>
+    <tr><td colspan="2">@Parameters</td><td>描述如何传递参数给@Test方法</td></tr>
+    <tr><td>*</td><td>value</td><td>用于填充这个方法的参数的变量列表</td></tr>
+    <tr><td colspan="2">@Test</td><td>标记一个类或方法作为测试的一部分</td></tr>
+    <tr><td>*</td><td>alwaysRun</td><td>如果设置为true，这个测试方法将总是运行，甚至当它依赖的方法失败时。</td></tr>
+    <tr><td>*</td><td>dataProvider</td><td>这个测试方法的data provider的名称</td></tr>
+    <tr><td>*</td><td>dataProviderClass</td><td>用于查找data provider的类。如果不指定，将在当前测试方法所在的类或者它的基类上查找data provider。<br>
+                                                如果这个属性被指定, 则data provider方法需要是指定类的static方法。</td></tr>
+    <tr><td>*</td><td>dependsOnGroups</td><td>当前方法依赖的组列表</td></tr>
+    <tr><td>*</td><td>dependsOnMethods</td><td>当前方法依赖的方法列表</td></tr>
+    <tr><td>*</td><td>description</td><td>当前方法的描述</td></tr>
+    <tr><td>*</td><td>enabled</td><td>当前类的方法/方法是否被激活</td></tr>
+    <tr><td>*</td><td>expectedExceptions</td><td>测试方法期望抛出的异常列表。如果没有异常或者抛出的不是列表中的任何一个，当前方法都将标记为失败.</td></tr>
+    <tr><td>*</td><td>groups</td><td>当前类/方法所属的组列表</td></tr>
+    <tr><td>*</td><td>invocationCount</td><td>当前方法被调用的次数</td></tr>
+    <tr><td>*</td><td>successPercentage</td><td>当前方法期望的成功率</td></tr>
+    <tr><td>*</td><td>sequential</td><td>如果设置为true，当前测试类上的所有方法保证按照顺序运行。
+                                         甚至测试们在parallel="true"的情况下.这个属性只能用于类级别，如果用于方法级别将被忽略。</td></tr>
+    <tr><td>*</td><td>timeOut</td><td>当前方法容许花费的最大时间，单位毫秒。</td></tr>
+    <tr><td>*</td><td>threadPoolSize</td><td>当前方法的线程池大小。方法将被多线程调用，次数由invocationCount参数指定<br>
+                                             注意：如果invocationCount没有指定则这个属性将被忽略</td></tr>
+</table>
+
+<h3>小结</h3>
+<pre>
+1. before方法和after方法带来了足够丰富的测试生命周期控制
+2. dependsOnGroups/dependsOnMethods 提供了依赖检查机制，并可以严格控制执行顺序
+3. DataProvider使得对同一个方法的测试覆盖变的非常轻松，非常适合进行边界测试，只要给出多种测试数据就可以针对一个测试方法进行覆盖
+4. expectedExceptions 使得异常测试变的非常轻松
+5. invocationCount/threadPoolSize终于可以简单的直接进行多线程测试了，这个绝对是junit的超级弱项，回想junit中那个万恶的System.exist(0)...
+6. timeOut 终于不用死等然后手工强行关闭测试，TestNG想的太周到了
+</pre>
+
+<h3>相关资源</h3>
+<pre>
+   * <a href="http://testng.org/doc/documentation-main.html#annotations">英文版</a>
+</pre>
+
+<script>
+    $("tr:even").css("background-color", "#99ff00");
+</script>

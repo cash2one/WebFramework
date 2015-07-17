@@ -1,0 +1,12 @@
+【用途】
+ 1. 通过给定analyzer的路径查看vaquero上的性能结果
+ 2. 如果在analyzer.sh中没有设置Product, ServerType, CubId, 那么需要在页面中设置
+ 3. 日志中的应用按钮可以把之前查看过的查询条件重新作为查询
+ 4. 显示额外信息，可以查看机器的其他指标
+ 5. 可以选择查看时间
+ 6. 可以选择每行显示的图像数
+
+【Contact】
+ Author: 张培
+ Email: zhangpei@rd.netease.com
+ Phone: 9723

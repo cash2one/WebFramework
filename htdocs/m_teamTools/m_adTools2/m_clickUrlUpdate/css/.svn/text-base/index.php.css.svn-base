@@ -1,0 +1,36 @@
+textarea {
+    width: 98%;
+    height: 100px;
+}
+
+table {
+    width: 98%;
+}
+
+table tr td {
+    width: 90%;
+}
+
+table#result td input {
+    width: 100%;
+}
+
+table tr th.head {
+    text-align: left;
+}
+
+table tr td input {
+    background: #CCDDEE;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h2 {
+    display:inline;
+}

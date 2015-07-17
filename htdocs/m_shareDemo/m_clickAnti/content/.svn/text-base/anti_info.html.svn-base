@@ -1,0 +1,106 @@
+反作弊的sprint配置文件:<a target="_demo" href="php/src/conf/modules/antifrauder/context/antifrauder.xml">antifrauder.xml</a>
+<table>
+<tr>
+    <td rowspan="4">
+        逻辑调用关系:
+    </td>
+    <td rowspan="4">
+        <a title="启动4个线程的rpc服务;初始函数init;初始化策略列表;注册到zk上;每过10min，检查一下zk上自己对应的节点;接收点击，存储到队列列表" target="_demo" href="php/src/src/java/outfox/ead/antifrauder/AntiFrauderImpl.java">server</a>
+    </td>
+    <td rowspan="4">
+        =>
+    </td>
+    <td rowspan="4">
+        <a title="初始化函数start;注入各平台的策略列表;接收点击写到.tmpclk4check中;最多50w点击;载入filterArg中的配置" target="_demo" href="php/src/src/java/outfox/ead/antifrauder/ClickCheckQueue.java">ClickCheckQueue</a><br>
+        继承自 <a title="" target="_demo" href="php/src/src/java/outfox/ead/util/container/PersistSequenceQueue.java">PersistSequenceQueue</a>
+    </td>
+    <td rowspan="4">
+        =>
+    </td>
+    <td>
+        <a title="目录.unFraudClick;保存最大点击数50w;写入表uncharged_clicks;" target="_demo" href="php/src/src/java/outfox/ead/click/ClickLogDbUpdateQueue.java">unFraudClickLogDbUpdateQueue</a>
+    </td>
+</tr>
+<tr>
+    <td>
+        <a title="目录.fraudClick;保存最大点击数50w;写入表FRAUD_CLICK;" target="_demo" href="php/src/src/java/outfox/ead/click/FraudClickLogDbUpdateQueue.java">FraudClickLogDbUpdateQueue</a>
+    </td>
+</tr>
+<tr>
+    <td>
+        <a title="初始化redis连接;保存点击的一些维度的数" target="_demo" href="php/src/src/java/outfox/ead/antifrauder/redis/RedisDaoImpl.java">RedisDaoImpl</a>
+    </td>
+</tr>
+<tr>
+    <td>
+        <a title="读取filterArg中的配置,载入每个平台中每个filter对象的配置参数;每5min更新一次;" target="_demo" href="php/src/src/java/outfox/ead/antifrauder/UnionAntiFrauderConfig.java">UnionAntiFrauderConfig</a>
+    </td>
+</tr>
+</table>
+
+server_id与平台的对应关系, 以及各平台的策略：
+<table border="1">
+    <tr>
+        <th>策略名</th><th>词典</th><th>邮箱</th><th>联盟</th><th>搜索</th><th>线下直销</th><th>频道</th><th>智选</th>
+    </tr>
+    <tr>
+        <td>ipConsistFilter</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td></td>
+    </tr>
+    <tr>
+        <td>imprClickTimeFilter</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td>
+    </tr>
+    <tr>
+        <td>ipBlackListFilter</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td>
+    </tr>
+    <tr>
+        <td>emptyRefererFilter</td><td></td><td></td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td></td>
+    </tr>
+    <tr>
+        <td>doubleClickFilter</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td>
+    </tr>
+    <tr>
+        <td>maxClickFilter</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td><td></td>
+    </tr>
+    <tr>
+        <td>ipMaxClickFilter</td><td></td><td></td><td>Y</td><td></td><td>Y</td><td></td><td></td>
+    </tr>
+    <tr>
+        <td>cacFilterContainer</td><td></td><td></td><td>Y</td><td></td><td>Y</td><td></td><td></td>
+    </tr>
+    <tr>
+        <td>clickTimeFilter</td><td></td><td></td><td>Y</td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+        <td>siteMaxClickFilter</td><td></td><td></td><td>Y</td><td></td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+        <td>singleSearchQuery</td><td></td><td></td><td></td><td>Y</td><td></td><td></td><td></td>
+    </tr>
+    <tr>
+        <td>blogerSelfClickFilter</td><td></td><td></td><td></td><td></td><td>Y</td><td></td><td></td>
+    </tr>
+    <tr>
+        <td>clickCheckAdjustFilter</td><td></td><td></td><td></td><td></td><td></td><td></td><td>Y</td>
+    </tr>
+</table>
+
+各策略含义：
+ipConsistFilter: 展示ip与点击ip不一致则过滤(对于词典手机该策略不生效：syndId=55)
+imprClickTimeFilter: 点击与展示时间差大于某个值或者小于某个值则过滤(例外情况：syndId = 1005 && memberId != 101238, memberId = 100383)
+doubleClickFilter: 在过去某段时间内已经点击过了(30分钟) (例外情况：syndId = 1005 && memberId != 101238, memberId = 100383)
+maxClickFilter: 过去10分钟内，某一个ip点击广告次数大于2则过滤(例外情况：syndId = 1005 && memberId != 101238, memberId = 100383)
+ipBlackListFilter: ip在黑名单内，则无效(主要是公司内部的ip)
+cacFilterContainer: 主要逻辑是随机比率<=max（sponsorRate，siteRate，filterRate）则按照鼠标信息进行过滤
+ipMaxClickFilter: 过去一天中某ip的点击大于某一个数则过滤；过去一天中某ip在某一个站点的点击大于某个数则过滤;
+emptyRefererFilter: refer为空则过滤掉
+clickTimeFilter: 根据联盟站点和点击事件，随机过滤一批点击
+siteMaxClickFilter: 一个站点一天最大的点击数设置上限
+singleSearchQuery: 搜索前端过滤原因是SingleQuery_referer:null, vendorName的前缀包括hotword.soua|hotword.heima|hotword.woso，则认为是作弊
+blogerSelfClickFilter: 博主自己点击自己博客的广告，则过滤
+clickCheckAdjustFilter: 根据配置参数随机判定一定比例点击为作弊
+
+<b>FILTERARG:</b> 反作弊每个策略用到的参数配置
+FILTER_NAME: 策略的类名
+server_id: 对应的平台（1 - 7）
+value：配置的值
+fkey: 某个策略对应具体配置项（以imprclicktimefilter为例：MIN_LIMIT, MAX_LIMIT, SYNDID(id:min:max))

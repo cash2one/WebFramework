@@ -1,0 +1,28 @@
+<!doctype html>
+<html ng-app>
+    <head>
+        <script src="../../../../js-base/angularJS/angular.min.js"></script>
+    </head>
+
+    <body>
+        <div ng-controller="AlbumCtrl">
+            <ul>
+                <li ng-repeat="image in images">
+                    <img ng-src="../{{image.image}}" alt="{{image.description}}">
+                </li>
+            </ul>
+        </div>
+    </body>
+
+<script>
+function AlbumCtrl($scope) {
+    $scope.images = [
+        {"image":"img/image_01.png", "description":"Image 01 description"},
+        {"image":"img/image_02.png", "description":"Image 02 description"},
+        {"image":"img/image_03.png", "description":"Image 03 description"},
+        {"image":"img/image_04.png", "description":"Image 04 description"},
+        {"image":"img/image_05.png", "description":"Image 05 description"}
+    ];
+}
+</script>
+</html>

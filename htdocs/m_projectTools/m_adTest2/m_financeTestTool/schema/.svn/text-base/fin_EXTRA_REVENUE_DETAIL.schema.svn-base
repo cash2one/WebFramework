@@ -1,0 +1,44 @@
+[_table_]
+name = 额外收入明细表
+primary_key = ERD_ID
+field_list = ERD_ID,USER_ID,USER_TYPE,ER_BALANCE,ER_TYPE,OPERATOR_ID,OPERATE_TIME,AUDIT_STATUS,REMARK,AHID
+
+[ERD_ID]
+name = 账务记录ID
+readable_map = 
+
+[USER_ID]
+name = 账务ID
+readable_map = 
+
+[USER_TYPE]
+name = 账户类型
+readable_map = 0:预付费广告商|1:代理商 
+
+[ER_BALANCE]
+name = 额外收入金额
+readable_map = 
+
+[ER_TYPE]
+name = 额外收入类型
+readable_map = 41:扣除服务费|42:返还服务费|16:代理商额外收入
+
+[OPERATOR_ID]
+name = 操作人ID
+readable_map = 
+
+[OPERATE_TIME]
+name = 操作时间
+readable_func = readable_time
+
+[AUDIT_STATUS]
+name = 审核状态
+readable_map = 0:已提交|1:已确认待审核|2:审核未通过|3:审核通过|4:不用审核|5:无效|7:暂未处理|8:延迟处理并已处理
+
+[REMARK]
+name = 备注
+readable_map = 
+
+[AHID]
+name = 明细表ID
+readable_map = 

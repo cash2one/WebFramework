@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+    <userInfo>
+        <!-- your ldap -->
+        <ldap>yinxj</ldap>
+
+        <!-- product team -->
+        <product>armani</product>
+
+        <!-- child product -->
+        <type>collect</type>
+
+        <!-- 某项监控的最小报警时间间隔, 默认为300s, 即在300s内不会发送同一项报警信息 -->
+        <maxAlarmInterval>300</maxAlarmInterval>
+
+        <!-- 接收报警信息的手机号码 (报警信息同时会发送邮件到ldap的rd邮箱), 请不要恶意骚扰别人:D -->
+        <phone>152101318950</phone>
+
+        <!-- 报警配置说明: 
+          1. v-: 值小于v时alarm
+          2. v+: 值大于v时alarm
+          3. v++: (v必须>1) 值不在[min/v,max*v]区间内时alarm (min及max由之前的值得到)
+        -->
+
+    </userInfo>
+
+    <datas>
+
+        <!-- 每个data对应一个cubeName, 可按需配置多个logFile, 多个gcLogFile, 多个process, 多个commandKey -->
+        <data>
+
+            <!-- service name, 如: nb092_ds. 若cubeName不匹配"\w\w\d\d\d", 会自动在前面加上机器名, 如"cluster"->"nb092_cluster" -->
+            <cubeName>test-again</cubeName>
+
+
+
+            <logFile>
+
+                <!-- 待监控的文件名
+                    处理的log格式: time_pattern @@ANALYSIS@@ key1=value, key2=value
+                    目前支持的time_pattern有: hh:mm:ss.sss, YYMMDD hhmmss, YYYY-MM-DD hh:mm:ss, MMDDhhmmss
+                    e.g.: /disk2/resin-3.0.21/log/stdout.log.@@%Y-%m-%d@@
+                若文件名中有"@@pattern@@", 则会根据pattern实时更新文件名(用pattern的实时值替换@@pattern@@), pattern配置见下: 
+                    %Y: 完整年(e.g.: 2013)      %y: 年后两位 [00,99]        %m: 月份 [01,12]        %d: 日期 [01,31]
+                    %H: hour-24小时制[00,23]    %h: hour-12小时制[01,12]    %M: minute [01,59]      %S: second [01,59]  -->
+                <fileName>/disk1/armani_ms/cluster/cluster/cluster.err</fileName>
+
+                <!-- 是否处理整个文件, 默认为false, 即仅处理文件中的新增内容. 注意: 若设为true, 重启本程序后会导致重复处理 -->
+                <wholeFile>false</wholeFile>
+
+                <!-- 时间间隔，默认30, 即对每30s的log做一次统计 -->
+                <timeInterval>30</timeInterval>
+
+                <!-- 值为数值的key (不支持带有","的key), 多个key请用","分隔 -->
+                <numberKeys>getByUrl.time,getById.time</numberKeys>
+
+                <!-- 值为字符串的key (不支持带有","的key), 多个key请用","分隔 -->
+                <stringKeys>cluster.status</stringKeys>
+
+                <!-- alarmKeys中的key请与numberKeys和stringKeys保持一致: 
+                    对numberKey "key", 会生成项key.min, key.avg, key.90, key.99, key.max, key.qps
+                    对stringKey "key", 会生成项key^value1, ..., key^valueN (吞吐), 进行alarm设置时, 请确保设置的value是有效的
+                alarmKeys里的key需要为上述生成项之一 -->
+                <alarmKeys>getByUrl.time.qps:100-,getByUrl.time.avg:1000+,cluster.status^fail:10+</alarmKeys>
+
+            </logFile>
+
+
+
+            <!-- java 进程的 gc 日志监控, 仅针对java进程, GC的启动参数配置建议为: 
+            -Xloggc:<file> -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -->
+            <gcLogFile>
+
+                <!-- fileName配置方式同logFile -->
+                <fileName>/disk1/armani_ms/cluster/cluster/cluster-armani.gc.log</fileName>
+
+                <!-- 是否处理整个文件, 默认为false, 即仅处理文件中的新增内容. 注意: 若设为true, 重启本程序后可能会导致重复处理 -->
+                <wholeFile>false</wholeFile>
+
+                <!-- 时间间隔，默认600, 即对每600s的log做一次统计, 建议用默认或更大值 -->
+                <timeInterval>600</timeInterval>
+
+                <!-- off: 关闭报警, on: 开启报警, 可以在conf/gc.conf中对报警进行详细设置 -->
+                <alarm>on</alarm>
+
+            </gcLogFile>
+
+
+
+            <!-- 进程资源收集: alias为空则不收集, 说明:
+                1. 用pid, processPath, regPattern来指定收集进程:
+                    1.1 若使用pid指定, 则regPattern及processPath的配置无效
+                        不推荐按此配置, 否则服务重启导致pid改变后无法继续收集
+                    1.2 若仅使用regPattern指定 (在CDATA[]的[]中配置正则表达式), 则会找到命令"ps xu"输出中, command项包含regPattern的进程
+                        例: 进程的command为java -Xmx256m -cp lib/*:build/classes outfox.yinxj.svncheck.LogUpdate, 则可配置为: outfox.*Logupdate
+                    1.3 若仅使用processPath (进程的启动路径或父路径) 来指定, 则会监控/proc/${pid}/cwd指向的路径包含processPath的所有pid
+                        不推荐, 因为可能会匹配到多个进程
+                    1.4 (推荐方式) 若regPattern及processPath均指定, 则仅会收集同时满足2.2及2.3条件的进程
+                2. 工作条件: 0 < 待收集进程数 <= 配置的alias数 (小于时会用前几个alias)
+                   若不满足工作条件, 则不对进程做收集. 当满足工作条件时, 会继续收集
+                3. 若要收集多个进程的数据, 可:
+                    3.1 配多个process
+                    3.2 在一个process的alias中配置多个, 用","分隔 (用pid指定时请在pid中配置多个pid, 用","分隔)
+                推荐用regPattern及processPath配置 -->
+            <process>
+
+                <!-- 时间间隔，默认10, 即每10s取一次进程资源 -->
+                <timeInterval>10</timeInterval>
+
+                <alias>test_process</alias>
+
+                <pid></pid>
+
+                <regPattern><![CDATA[perf-monitor]]></regPattern>
+
+                <processPath>/disk2/qatest/svn_code/qa/WebFramework/htdocs/m_testAssist/m_ProcessPerfMonitor</processPath>
+
+                <!-- 可收集的项: 
+                    - cpu: percent of cpu time
+                    - mem: memory usage (m)
+                    - fds: number of files openned
+                    - netLinks: net links
+                    - threads: number of threads
+                    - 可以配置多项
+                        - 用","分隔各项, 如: "cpu,mem,threads"
+                        - 用"*"表示所有项 -->
+                <keys>*</keys>
+
+                <!-- 若配置为 ${alias}.${keys之一}仅对${alias}的进程生效, 若配置为${keys之一}则对所有进程生效 -->
+                <alarmKeys>test_process.cpu:300+,threads:2++</alarmKeys>
+
+            </process>
+ 
+
+
+            <!-- 对命令行(shell命令)的输出数据做统计 -->
+            <commandKey>
+
+                <!-- key名称, 会自动在其加上前缀 "commandKey." -->
+                <key>total_process</key>
+
+                <!-- 时间间隔，默认30, 即每30s取一次 -->
+                <timeInterval>5</timeInterval>
+
+                <!-- 取command输出的第一行第一列为value, 若不为\d+则不收集 -->
+                <command><![CDATA[ps x | wc -l]]></command>
+
+                <!-- 对该key的报警设置 -->
+                <alarm>100+,2++</alarm>
+
+            </commandKey>
+  
+        </data>
+    </datas>
+</root>

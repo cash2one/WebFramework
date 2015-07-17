@@ -1,0 +1,35 @@
+body {
+    padding:5px;
+}
+
+h2 {
+    display: inline;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+div.yui3-g {
+    height: 1000px;
+    border-top:1px solid #95B8E7;
+    background: #fdf0a0;
+}
+
+div.yui3-g div#func_idx {
+    border-right:1px solid #95B8E7;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 10px;
+    height: 100%;
+}
+
+div.yui3-g div#func_area {
+    padding-left: 10px;
+    padding-top: 10px;
+    height: 100%;
+}

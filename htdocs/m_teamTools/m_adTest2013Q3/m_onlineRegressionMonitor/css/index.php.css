@@ -1,0 +1,28 @@
+body {
+    padding-top: 10px;
+    font-size: 0.8em;
+}
+
+h2 {
+    display:inline;
+}
+
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+div#header a {
+    font-size: 1.4em;
+}
+
+div#header {
+    margin-top: 20px;
+}

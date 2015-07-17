@@ -1,0 +1,22 @@
+table#edit_index_table,
+table#new_index_table,
+table#new_case_table {
+    width: 95%;
+}
+
+td.input {
+    width: 80%;
+}
+
+td.input input,
+td.input textarea {
+    width: 100%;
+}
+
+tr.case_unsaved {
+    background: 00cc00;  
+}
+
+tr.case_deleted {
+    background: cc0000;  
+}

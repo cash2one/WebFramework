@@ -1,0 +1,179 @@
+### variable definitions 
+$user_name$ => [shell:whoami]
+$install_path$ => /disk1/lili
+$host$ => nb404
+$root_dir$ => $install_path$/eadu/
+$impr_code$ => https://dev.corp.youdao.com/svn/outfox/products/ad/ead/branches/huangsz/ead_descPos
+$resin_code$ => /global/share/lili/resin-3.0.21.tar.gz
+$impr_analyzer_code$ => /global/share/lili/impr_analyzer
+$impr_resin_analyzer_code$ => /global/share/lili/impr_resin_analyzer
+$union_site_db$ => jdbc:mysql://tb085:3336/unionTempTest?user=lili&amp;password=lili
+$union_site_db_2$ => jdbc:mysql://tb085:3336/unionTempTest?user=lili&password=lili
+$cache_port$ => 9527
+$zookeeper_hosts$ => tb081:2181
+$adverdb$ => jdbc:mysql://tb085:3336/adPublishTempTest?user=lili&amp;password=lili
+$blcustomerdb$ => jdbc:mysql://tb085:3336/auditTempTest?user=lili&password=lili
+$industrydb$ => jdbc:mysql://tb085:3336/industry?user=lili&password=lili
+$blog_info_db$ => jdbc:mysql://tb041:3306/netease_blog_ad?user=lili&password=lili
+$hibernate_connection_traffic_url$ => jdbc:mysql://tb085x.corp.youdao.com:3336/unionTempTest?useUnicode=true&amp;characterEncoding=utf8
+$hibernate_connection_traffic_username$ => lili
+$hibernate_connection_traffic_password$ => lili
+$img_direct_db_url$ => jdbc:mysql://tb085x.corp.youdao.com:3336/unionTempTest?useUnicode=true&amp;characterEncoding=utf8&amp;user=lili&amp;password=lili
+$retarget_cfg$ => /disk1/lili/eadu/union.cfg
+$adg_label_db_url$ => jdbc:mysql://tb085:3336/retarget?characterEncoding=UTF-8
+$adg_label_db_username$ => lili
+$adg_label_db_password$ => lili
+$rabbit_mq_host$ => tb039x.corp.youdao.com
+$impr-war_local_dir$ => $root_dir$/impr-war
+$impr_resin_local_dir$ => $root_dir$/impr_resin
+$impr_service_local_dir$ => $root_dir$/impr_service
+$impr_analyzer$ => $root_dir$/impr_analyzer
+$impr_resin_analyzer$ => $root_dir$/impr_resin_analyzer
+
+### check definitions 
+
+### step definitions 
+{
+    step.name: stop impr resin
+    step.desc: stop impr resin
+    step.cmd: [shell]:cd $impr_resin_local_dir$; ./bin/httpd.sh stop
+    step.ignore_fail: 1
+}
+
+{
+    step.name: stop impr service
+    step.desc: stop impr service
+    step.cmd: [shell]:cd $impr_service_local_dir$; ./bin/stop.sh eadu
+}
+
+{
+    step.name: impr-resin.remove
+    step.desc: remove本地目录
+    step.cmd: [shell]:rm -rf $impr_resin_local_dir$
+}
+
+{
+    step.name: impr-resin.部署代码
+    step.desc: 部署代码
+    step.cmd: [shell]:cp-r $resin_code$ /tmp; cd /tmp; tar -zxvf resin-3.0.21.tar.gz; mv resin-3.0.21 $impr_resin_local_dir$; rm -rf /tmp/resin-3.0.21.tar.gz
+}
+
+{
+    step.name: impr-resin.update_http_port
+    step.desc: update http port in resin.conf
+    step.cmd: [file.update_line_for_equal]:$impr_resin_local_dir$/conf/resin.conf, <http server-id="" host="*" port="@hport@"/>, <http server-id="" host="*" port="28082"/>
+}
+
+{
+    step.name: impr-resin.update_srun_port
+    step.desc: update srun host/port in resin.conf
+    step.cmd: [file.update_line_for_equal]:$impr_resin_local_dir$/conf/resin.conf, <srun server-id="" host="@host@" port="@sport@"/>,<srun server-id="" host="127.0.0.1" port="15764"/>
+}
+
+{
+    step.name: impr-war.remove
+    step.desc: remove impr-war
+    step.cmd: [shell]:rm -rf $impr-war_local_dir$
+    step.ignore_fail: 1
+}
+
+{
+    step.name: impr-war.check-out
+    step.desc: check out code
+    step.cmd: [shell]:svn co $impr_code$ $impr-war_local_dir$
+}
+
+{
+    step.name: impr-war.build
+    step.desc: build servers.properties
+    step.cmd: [shell]:cd $impr-war_local_dir$; cp conf/properties/servers.properties.eadu_online conf/properties/servers.properties
+}
+
+{
+    step.name: impr-war.update_impr_resin_path
+    step.cmd: [file.update_line_for_match]:$impr-war_local_dir$/conf/properties/servers.properties, impr_resin_path=.*, impr_resin_path=$impr_resin_local_dir$/webapps
+}
+
+{
+    step.name: impr-war.update_union_site_db
+    step.cmd: [file.update_line_for_match]:$impr-war_local_dir$/conf/properties/servers.properties,  union_site_db=.* , union_site_db=$union_site_db$
+}
+
+{
+    step.name: impr-war.update_union_site_db_2
+    step.cmd: [file.update_line_for_match]:$impr-war_local_dir$/conf/properties/servers.properties  union_site_db_2=.*  union_site_db_2=$union_site_db_2$
+}
+
+{
+    step.name: impr-war.add_monitor
+    step.cmd: [file.update_line_for_contain_substr]:$impr-war_local_dir$/src/java/outfox/ead/impr/web/EadController.java, long start = System.currentTimeMillis();, // long start = System.currentTimeMillis();
+}
+
+{
+    step.name: impr-war.add_monitor_2
+    step.cmd: [file.insert_before_line]:$impr-war_local_dir$/src/java/outfox/ead/impr/web/EadController.java  AdRequest adRequest = adRequestFactory.create(request, response);  long start = System.currentTimeMillis();
+}
+
+{
+    step.name: impr-war.add_monitor_3
+    step.cmd: [file.insert_before_line]:$impr-war_local_dir$/src/java/outfox/ead/impr/web/EadController.java, return adCode;, LOG.info("@@ANALYSIS@@ eadu.resin.status=OK");
+}
+
+{
+    step.name: impr-war.add_monitor_4
+    step.cmd: [file.insert_before_line]:$impr-war_local_dir$/src/java/outfox/ead/impr/web/EadController.java  return renderer.render(adList, adRequest);  LOG.info("@@ANALYSIS@@ eadu.resin.status=OK");
+}
+
+{
+    step.name: impr-war.add_monitor_5
+    step.cmd: [file.insert_after_line]:$impr-war_local_dir$/src/java/outfox/ead/impr/web/EadController.java, if (adRequest==null|| adResponse==null){, LOG.info("@@ANALYSIS@@ eadu.resin.status=ERROR");
+}
+
+{
+    step.name: impr-war.add_monitor_6
+    step.cmd: [file.insert_before_line]:$impr-war_local_dir$/src/java/outfox/ead/impr/web/EadController.java, return renderer.renderUniversalAds(adRequest);, LOG.info("@@ANALYSIS@@ eadu.resin.status=ERROR");
+}
+
+{
+    step.name: impr-war.add_monitor_7
+    step.cmd: [file.insert_after_line] : $impr-war_local_dir$/src/java/outfox/ead/impr/web/EadController.java, staticCounterMonitorUpdate(StaticCounterMonitor.TOTAL_REQUEST);, LOG.info("@@ANALYSIS@@ eadu.resin.elapse="+(System.currentTimeMillis()-start));
+}
+
+{
+    step.name: impr-war.rabbitmq
+    step.cmd: [file.update_line_for_match]:$impr-war_local_dir$/conf/properties/servers.properties, rabbit_mq_host=.*, rabbit_mq_host=$rabbit_mq_host$
+}
+
+{
+    step.name: impr-war.ant
+    step.cmd: [shell]:cd $impr-war_local_dir$; ant resolve; ant mkconf; ant deploy-impr
+}
+
+
+### collect definitions 
+{
+    collect.name: deploy-impr-resin
+    collect.desc: collect
+    collect.cmd: impr-resin.remove, impr-resin.部署代码, impr-resin.update_http_port,  impr-resin.update_srun_port
+}
+
+{
+    collect.name: deploy-impr-war
+    collect.desc: collect
+    collect.cmd: impr-war.remove, impr-war.check-out, impr-war.build, impr-war.update_impr_resin_path, impr-war.update_union_site_db, impr-war.update_union_site_db_2, impr-war.add_monitor, impr-war.add_monitor_2, impr-war.add_monitor_3, impr-war.add_monitor_4, impr-war.add_monitor_5, impr-war.add_monitor_6, impr-war.add_monitor_7, impr-war.rabbitmq, impr-war.ant
+}
+
+{
+    collect.name: deploy-impr-resin-2
+    collect.desc: collect
+    collect.cmd: impr-resin.*
+}
+
+{
+    collect.name: deploy-impr-war-2
+    collect.desc: collect
+    collect.cmd: impr-war.*
+    collect.hostname: nc107
+}
+
+

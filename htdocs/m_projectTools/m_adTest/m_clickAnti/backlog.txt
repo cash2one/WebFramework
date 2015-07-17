@@ -1,0 +1,20 @@
+##### 2013-01-18: Created
+1. Set environment
+ 1.1 Set data in BlogUser table
+ 1.2 Set data in CLICK table
+ 1.3 Set data in Redis
+
+2. Update code and start service
+ 2.1 update code
+ 2.2 start server
+ 2.3 set flag in file to tell file started completely
+
+3. Request sender
+ 3.1 update flag file about request sender
+ 3.2 send request
+ 3.3 wait for result back
+
+4. service read result into file
+
+5. test service read the result to judge pass or fail
+5.2 test service update the result in web page

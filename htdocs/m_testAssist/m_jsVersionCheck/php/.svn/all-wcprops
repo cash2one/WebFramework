@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/outfox/!svn/ver/444111/incubator/Test/WebFramework/htdocs/m_testAssist/m_jsVersionCheck/php
+END
+check_js.sh
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/outfox/!svn/ver/444111/incubator/Test/WebFramework/htdocs/m_testAssist/m_jsVersionCheck/php/check_js.sh
+END
+load_result.php
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/outfox/!svn/ver/443847/incubator/Test/WebFramework/htdocs/m_testAssist/m_jsVersionCheck/php/load_result.php
+END
+readLog.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/outfox/!svn/ver/443221/incubator/Test/WebFramework/htdocs/m_testAssist/m_jsVersionCheck/php/readLog.php
+END

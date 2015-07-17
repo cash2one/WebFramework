@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="test">
+    <property name="srcDir" location="src" />
+    <property name="destDir" location="build" />
+ 
+    <path id="cp">
+        <pathelement location="../lib/testng.jar"/>
+        <pathelement location="./build"/>
+    </path>
+ 
+    <taskdef name="testng" classpathref="cp" classname="org.testng.TestNGAntTask" />
+
+    <target name="compile">
+        <javac classpathref="cp" srcdir="${srcDir}" destdir="${destDir}" />
+    </target>
+ 
+    <target name="test" depends="compile">
+        <testng classpathref="cp" groups="fast">
+            <classfileset dir="build" includes="./build/test/*.class" />
+            <xmlfileset dir="." includes="testng.xml"/>
+        </testng>
+    </target>
+</project>

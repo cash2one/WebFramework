@@ -1,0 +1,104 @@
+[_table_]
+name = 广告商账务明细
+primary_key = SAH_ID
+field_list = SAH_ID,FROM_USER_ID,TO_USER_ID,OPERATE_TYPE,CREDIT_AMOUNT,ACTUAL_BALANCE,VIRTUAL_BALANCE,COUPON,NEW_ACTUAL_BAL,NEW_VIRTUAL_BAL,DEPOSIT_SEQ,OPERATOR_ID,OPERATE_TIME,OPERATOR_IP,AUDITOR_ID,AUDIT_STATUS,AUDIT_TIME,IS_CHARGED,PAYMENT_TYPE,BILL_NO,VOUCHER_NO,REMARK,CASH_FLOW,NEW_CASH_FLOW,OPERATE_ID
+
+[SAH_ID]
+name = 账务记录ID
+readable_map = 
+
+[FROM_USER_ID]
+name = 账务主动方ID
+readable_map = 
+
+[TO_USER_ID]
+name = 账务被动方ID
+readable_map = 
+
+[OPERATE_TYPE]
+name = 操作类型
+readable_map = 1:入资|2:返点、体验金入资|3:撤资|4:被代理商撤资|5:被代理商入资|7:虚拟资金入资|8:体验金撤资|9:合同编辑|11:入资并扣除服务费|16:额外扣款|21:设置信用额度|31:录入折扣率|41:扣除服务费|42:返还服务费|32:录入月结折扣|51:标记月结广告商|52:月结广告商结算
+
+[CREDIT_AMOUNT]
+name = 信用额度
+readable_map = 
+
+[ACTUAL_BALANCE]
+name = 实际余额
+readable_map = 
+
+[VIRTUAL_BALANCE]
+name = 优惠金额
+readable_map = 
+
+[COUPON]
+name = 促销码
+readable_map = 
+
+[NEW_ACTUAL_BAL]
+name = 操作后的实际余额
+readable_map = 
+
+[NEW_VIRTUAL_BAL]
+name = 操作后的虚拟余额
+readable_map = 
+
+[DEPOSIT_SEQ]
+name = 入资序号
+readable_map = 
+
+[OPERATOR_ID]
+name = 操作人ID
+readable_map = 
+
+[OPERATE_TIME]
+name = 操作时间
+readable_func = readable_time
+
+[OPERATOR_IP]
+name = 操作人IP
+readable_map = 
+
+[AUDITOR_ID]
+name = 审核人ID
+readable_map = 
+
+[AUDIT_STATUS]
+name = 审核状态
+readable_map = 0:已提交|1:已确认待审核|2:审核未通过|3:审核通过|4:不用审核|5:无效(记录已删除)
+
+[AUDIT_TIME]
+name = 审核时间
+readable_func = readable_time
+
+[IS_CHARGED]
+name = 是否入账
+readable_map = 0:未入账|1:已入账
+
+[PAYMENT_TYPE]
+name = 支付类型
+readable_map = 1:现金|2:支票|3:电汇|4:其他|5:在线支付
+
+[BILL_NO]
+name = 票据编号
+readable_map = 
+
+[VOUCHER_NO]
+name = 凭证编号
+readable_map = 
+
+[REMARK]
+name = 备注
+readable_map = 
+
+[CASH_FLOW]
+name = 现金流
+readable_map = 
+
+[NEW_CASH_FLOW]
+name = 现金流累计
+readable_map = 
+
+[OPERATE_ID]
+name = 操作ID
+readable_map = 

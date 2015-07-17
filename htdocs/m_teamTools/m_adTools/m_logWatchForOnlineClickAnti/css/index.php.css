@@ -1,0 +1,38 @@
+h2 {
+    display: inline-block;
+}
+
+a#click_log_show,
+a#anti_log_show,
+a#show_machine_info,
+a#show_log_info {
+    text-decoration: none;
+    font-size:0.8em;
+    font-weight: bold;
+}
+
+a#click_log_show:hover,
+a#anti_log_show:hover,
+a#show_machine_info:hover,
+a#show_log_info:hover {
+    text-decoration: underline;
+}
+
+div.log_content_div {
+    width: 100%;
+    height: 600px;
+    background-color: black;
+    color: white;
+    overflow-y: auto;
+    overflow-x: hidden;
+    font-size: 0.8em;
+}
+
+.link_highlight,
+.link_enabled{
+    color: blue;
+}
+
+.link_disabled{
+    color: #CCDDEE;
+}

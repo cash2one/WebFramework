@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/outfox/!svn/ver/450180/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_clickAntiAutoTest/python/lib
+END
+Request.py
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/outfox/!svn/ver/449540/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_clickAntiAutoTest/python/lib/Request.py
+END
+ResultCollection.py
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/outfox/!svn/ver/449539/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_clickAntiAutoTest/python/lib/ResultCollection.py
+END
+TestCase.py
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/outfox/!svn/ver/450179/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_clickAntiAutoTest/python/lib/TestCase.py
+END
+FraudClickDB.py
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/outfox/!svn/ver/450179/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_clickAntiAutoTest/python/lib/FraudClickDB.py
+END
+ClickFactory.py
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/outfox/!svn/ver/450178/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_clickAntiAutoTest/python/lib/ClickFactory.py
+END
+TestResult.py
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/outfox/!svn/ver/449539/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_clickAntiAutoTest/python/lib/TestResult.py
+END
+UnchargedClicksDB.py
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/outfox/!svn/ver/450179/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_clickAntiAutoTest/python/lib/UnchargedClicksDB.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/outfox/!svn/ver/450174/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_clickAntiAutoTest/python/lib/__init__.py
+END
+Log.py
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/outfox/!svn/ver/449592/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_clickAntiAutoTest/python/lib/Log.py
+END
+ClickAction.py
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/outfox/!svn/ver/449539/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_clickAntiAutoTest/python/lib/ClickAction.py
+END
+Utility.py
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/outfox/!svn/ver/449540/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_clickAntiAutoTest/python/lib/Utility.py
+END
+TestConf.py
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/outfox/!svn/ver/449373/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_clickAntiAutoTest/python/lib/TestConf.py
+END
+Validator.py
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/outfox/!svn/ver/449407/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_clickAntiAutoTest/python/lib/Validator.py
+END
+Redis.py
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/outfox/!svn/ver/450180/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_clickAntiAutoTest/python/lib/Redis.py
+END

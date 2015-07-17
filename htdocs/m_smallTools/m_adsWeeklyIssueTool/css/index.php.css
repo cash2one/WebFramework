@@ -1,0 +1,37 @@
+table a {
+    font-size: 0.6em;
+    text-decoration: none;
+    color: #88bbff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+td {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+td input.tm_box {
+    width: 80px;
+}
+
+td input.id_box {
+    width: 80px;
+}
+
+table input,
+table select,
+table textarea {
+    background-color: #CCDDEE;
+}
+
+a#go_to_issue_page {
+    font-size: 0.6em;
+    text-decoration: none;
+}
+
+a#go_to_issue_page:hover {
+    text-decoration: underline;
+}

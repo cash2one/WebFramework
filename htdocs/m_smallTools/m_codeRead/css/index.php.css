@@ -1,0 +1,8 @@
+input#svn_addr,
+input#src_addr {
+   width: 85%; 
+}
+
+table#entry_table {
+    width: 100%;
+}

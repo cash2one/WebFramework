@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/outfox/!svn/ver/450105/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_financeTestTool/schema
+END
+fin_SPONSOR_BALANCE.schema
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/outfox/!svn/ver/444377/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_financeTestTool/schema/fin_SPONSOR_BALANCE.schema
+END
+fin_AGENT_ACCOUNT_HISTORY.schema
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/outfox/!svn/ver/441310/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_financeTestTool/schema/fin_AGENT_ACCOUNT_HISTORY.schema
+END
+fin_EXTRA_REVENUE.schema
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/outfox/!svn/ver/441260/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_financeTestTool/schema/fin_EXTRA_REVENUE.schema
+END
+fin_EXTRA_REVENUE_DETAIL.schema
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/outfox/!svn/ver/450105/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_financeTestTool/schema/fin_EXTRA_REVENUE_DETAIL.schema
+END
+fin_SPONSOR_ACCOUNT_HISTORY.schema
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn/outfox/!svn/ver/442058/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_financeTestTool/schema/fin_SPONSOR_ACCOUNT_HISTORY.schema
+END
+fin_AGENT_BALANCE.schema
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/outfox/!svn/ver/441250/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_financeTestTool/schema/fin_AGENT_BALANCE.schema
+END
+update_SPONSOR_BALANCE_CHANGE.schema
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/svn/outfox/!svn/ver/442717/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_financeTestTool/schema/update_SPONSOR_BALANCE_CHANGE.schema
+END

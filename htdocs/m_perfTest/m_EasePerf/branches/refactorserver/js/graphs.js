@@ -1,0 +1,322 @@
+// get rectangle area
+function get_box(color) {
+    var len = "5px";
+
+    var $rec = $("<div></div>");
+    $rec.css({"width":len, "height":len, "border":"2px solid #000", "background-color":color, "display":"inline-block"});
+    return $rec;
+}
+
+//show graphs
+function show_graph(dataobj,from_ts,end_ts) {
+    //draw graphics
+    $("#graphcs").html("");
+    if( dataobj ){
+        $("#tabs").tabs("select", 1);
+        var index = 0;
+        for(var productname in dataobj){
+            if(g_machineInfoName != productname){
+                index = draw_single_product_grahpics(dataobj[productname],from_ts,end_ts,index,add_click_handler_for_container);
+            }
+        }
+        index = draw_single_product_grahpics(dataobj[g_machineInfoName],from_ts,end_ts,index,add_click_handler_for_container);
+    }
+    if( !$("#graphcs").html() ){
+        $("#graphcs").html("No data to be showed.");
+    }
+}
+
+//add click function to container
+function add_click_handler_for_container(container,data){
+    // click on the container
+    $(container).click(function(e) {
+        var $dialog = $("#dialog");
+        $dialog.children().html("");
+
+        $(this).children("p").each(function() {
+            if ($(this).attr("class") == "title") {
+                return;
+            }
+
+            $(this).clone().appendTo($dialog.children().last());
+        });
+
+        $dialog.dialog("option", "title", $(this).children().first().html());
+        $dialog.dialog("open");
+
+        $.plot(
+            $("#content"),
+            data.values,
+            {
+                series: {
+                    lines: {show : true, lineWidth : 4},
+                },
+                xaxis: {
+                    mode: "time",
+                    timeformat: data.timeformat,
+                    timezone: "browser",
+                }
+            }
+        );
+    });
+};
+
+function isSpecialKey(key,type){
+    if("number" == type || "string" == type) {
+        var sepecialkeys = ["qps"];
+        for(var i = 0,length = sepecialkeys.length; i < length; ++i){
+            var skey = sepecialkeys[i];
+            if(skey == key) {
+                return skey;
+            }
+        }
+    } else if("process" == type) {
+        var sepecialkeys = ["pcpu","pmem"];
+        for(var i = 0,length = sepecialkeys.length; i < length; ++i){
+            var skey = sepecialkeys[i];
+            if(skey == key) {
+                return skey;
+            }
+        }
+     }
+     return false;
+}
+
+//restruct data
+function reStructData(dataObj,keepolddata){
+    //add datas
+    for (var type_cube in dataObj) {
+        var list = type_cube.split(//);
+        var type_name = list[0];
+        var cube_name = list[1];
+
+        var adddata = {};
+        var graphObj = dataObj[type_cube];
+        for (var graph_name in graphObj) {
+            var graph_values = graphObj[graph_name];
+            var graph_type = graph_values["type"];
+            var graph_result = graph_values["_results"];
+            var delitems = [];
+            for (var itemname in graph_values) {
+                if("type" == itemname || "_results" == itemname){
+                    continue;
+                } else {
+                    var ret = isSpecialKey( itemname, graph_type );
+                    if(false !== ret){
+                        var newgraphname = graph_name + '.' + ret;
+                        adddata[newgraphname] = {"type":graph_type, "_results": {} }
+                        adddata[newgraphname]["_results"][itemname] = graph_values["_results"][itemname];
+                        adddata[newgraphname][itemname] = graph_values[itemname];
+                        delitems.push( itemname );
+                    }
+                }
+            }
+            var length = delitems.length;
+            if( length > 0 ){
+                for(var i = 0; i < length; ++i){
+                    var delitem = delitems[i];
+                    delete graph_values["_results"][delitem];
+                    delete graph_values[delitem];
+                }
+                if( 0 == object_propertycount( graph_values["_results"] ) ){
+                    delete graphObj[graph_name];
+                }
+            }
+            
+        }
+        for(var graph_name in adddata) {
+            dataObj[type_cube][graph_name] = adddata[graph_name];
+        }
+    }
+    return dataObj;
+}
+// draw graphics on 2nd tab
+// a null signifies separate line segments
+function draw_single_product_grahpics(dataObj,from_ts,end_ts,index,callbackfunction_container){
+    var count_in_row  = $("#count_in_row").val().trim();
+    index  = index || 0;
+    var graphid = index || 0;
+
+    var ts_span = end_ts - from_ts;
+    var timeformat = "%m/%d";
+    if (ts_span < 48 * 60 * 60) {
+        timeformat = "%H:%M";
+    }
+    //compress and restruc Data data 
+    dataObj = reStructData( dataObj );
+    //alert(JSON.stringify(dataObj));
+    for (var type_cube in dataObj) {
+        var list = type_cube.split(//);
+        var type_name = list[0];
+        var cube_name = list[1] || type_name;
+
+        var graphObj = dataObj[type_cube];
+                
+        var sortedgraphnames = [];
+        for (var graph_name in graphObj){
+            sortedgraphnames.push( graph_name );
+        }
+        sortedgraphnames.sort();
+        for (var i = 0, length = sortedgraphnames.length; i < length; ++i) {
+            var graph_name = sortedgraphnames[i];
+            var val_dict = {};
+            var graph_values = graphObj[graph_name];
+            var graphtype = graph_values["type"];
+
+            var linearrayvalues = [];
+            var linearraydescs = [];
+            for (var itemname in graph_values) {
+                //在处理数据的时候：默认会将所有的数据都放在一块儿
+                //对于特定的的一些类型需要特殊处理： 1，数值类型的qps
+                if (itemname == "type") {
+                    continue;
+                }else if(itemname == "_results" ){
+                    //处理统计结果
+                    var itemvalues = graph_values[itemname];
+                    for(var key in itemvalues) {
+                        //如果key以非字符开始，则直接为graphname + key，否则为graphname.key
+                        //另外如果key中有. ，则直接使用 key即可
+                        var temp_str = "[" +  key + "]: ";
+                        if("number" == graphtype){
+                            temp_str = "[" + graph_name + "." + key + "]: ";
+                        } else if ("string" == graphtype){
+                            temp_str = "[" + graph_name + key + "]: ";
+                        } else if("process" == graphtype){
+                            
+                        }
+                        var val = itemvalues[key];
+                        for (var skey in val) {
+                            temp_str += " " + skey + ": " + val[skey];
+                        }
+                        linearraydescs.push( temp_str );
+                    }
+                } else {
+                    //处理具体的值信息
+                    var newitemvalues = [];
+                    var itemvalues = graph_values[itemname];
+                    for(var key in itemvalues){
+                        var ts = parseInt(key);
+                        var val = itemvalues[key];
+                        newitemvalues.push([ts * 1000 + 8 * 60 * 60 * 1000, val]);
+                    }
+                    //linearrayvalues.push( { label: itemname, data: newitemvalues} );
+                    linearrayvalues.push( { data: newitemvalues} );
+                }
+            }
+
+                var data = {"timeformat":timeformat, "values":linearrayvalues};
+                // draw containe
+                draw_single_container(graphid, graph_name + " - " + cube_name, data, linearraydescs , count_in_row, 0 == (index - graphid) % count_in_row);
+                //set call back function to container
+                if(callbackfunction_container){
+                    (function(){
+                        callbackfunction_container("#tabs-2 #container_" + graphid,data);
+                    })();
+                }
+            ++graphid;
+        }
+    }
+    return graphid;
+}
+
+// draw single container
+// graphid begins with 0
+function draw_single_container(graphid, title, data, desc_list, count_in_row, isnewrow) {
+    var $graph = $("#tabs-2 #graphcs");
+
+    // add sub div "yui3-g"
+    if (isnewrow) {
+        $graph.append("<div></div>")
+            // yui3-g node
+            .children().last().addClass("yui3-g");
+    }
+
+    // build container and add title
+    $graph.children().last()
+            // yui3-u-1-* node
+            .append("<div></div>").children().last().addClass("yui3-u-1-" + count_in_row)
+            // container node
+            .append("<div></div>").children().first().addClass("container").attr("id", "container_" + graphid)
+                // p node
+                .append("<p></p>").children().last().addClass("title").html(title).parent()
+                .append("<div id='placeholder" + graphid + "'></div>").children().last().addClass("graphics");
+
+    // set container height
+    var $placeholder = $("#placeholder" + graphid);
+    var height = Math.round( $placeholder.parent().css("width").slice(0, -2) * 0.75 );
+    $placeholder.parent().css("height", height + "px");
+
+    // set height for graphics and line-height for description p
+    var height = g_count_style_dict[count_in_row]["height"];
+    //var lineheight = parseInt( g_count_style_dict[count_in_row]["line-height"].slice(0, -2) ) * 8;
+    $placeholder.css("height", height);
+
+    // draw graphics
+    var plot = $.plot(
+    $("#placeholder" + graphid),
+        data.values,
+        {
+            series: {
+                lines: {show : true ,lineWidth : 4 },
+            },
+            xaxis: {
+                mode: "time",
+                timeformat: data.timeformat,
+                timezone: "browser",
+            }
+        }
+    );
+
+    // match color with description items
+    var series = plot.getData();
+    var desc_color_tuple = [];
+    for (var j = 0; j < series.length; j++) {
+        var desc = desc_list[j];
+        var color = series[j].color;
+        desc_color_tuple.push([desc, color]);
+    }
+
+    // draw description items
+    draw_desc(desc_color_tuple);
+    var line_height = g_count_style_dict[count_in_row]["line-height"];
+    $placeholder.parent().children(".desc").css("line-height", line_height);
+}
+
+function draw_desc(desc_color_tuple) {
+    var $graph = $("#tabs-2 #graphcs");
+
+    //sort data first 
+    desc_color_tuple.sort( function(a,b){return String(a[0]).localeCompare( String(b[0]) );} );
+    // append desc lists
+    var $container = $graph.children().last().children().last().children().last();
+    for (var i = 0; i < desc_color_tuple.length; i++) {
+        var tuple = desc_color_tuple[i];
+        var desc_str = tuple[0];
+        var color = tuple[1];
+        $container.append("<p></p>").children().last().addClass("desc").html(get_box(color)).append("&nbsp;").append(desc_str);
+    }
+}
+
+// ============================= Main Logic Area =================================
+//set globel functiond
+if( (undefined == show_graph_function) || ("function" != typeof show_graph_function) ){
+    show_graph_function = show_graph;
+}
+(function(){
+    var dialogwidth = $(document.body).width() * 0.6;
+    var dialogheight = $(document.body).height() * 0.8;
+    if(dialogwidth > 800){
+        dialogwidth = 800;
+    }
+    if(dialogheight > 800){
+        dialogheight = 800;
+    }
+    //show data
+    show_graph();
+
+    $("#dialog").hide();
+    $dialog = $("#dialog").dialog({autoOpen: false})
+            .dialog("option", "modal", true)
+            .dialog("option", "width", dialogwidth)
+            .dialog("option", "height", dialogheight);
+})();

@@ -1,0 +1,12 @@
+h2 {
+    display: inline;
+}
+
+table a,
+div#idx a {
+    text-decoration: none;
+}
+
+div#content {
+    width: 100%;
+}

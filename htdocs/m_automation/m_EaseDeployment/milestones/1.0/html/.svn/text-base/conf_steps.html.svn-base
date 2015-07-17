@@ -1,0 +1,95 @@
+<html>
+<head>
+    <meta charset="utf-8">
+	<link rel="stylesheet" href="./css/conf_steps.html.css" type="text/css" />
+</head>
+
+<body>
+    <div class="yui3-g">
+	    <div class="yui3-u-1-3" id="step_name_box">
+            <table border="1" id="steps_table">
+                <thead>
+                    <tr>
+                        <th>Step列表</th>
+                        <th><a href="" class="step_link add_step step_thead">添加</a></th>
+                    </tr>
+                </thead>
+
+                <tbody id="steps_tbody"></tbody>
+            </table>
+	    </div>
+
+	    <div class="yui3-u-2-3">
+
+		    <table id="step_info_table"> 
+                <thead>
+                    <tr>
+                        <th colspan="2">Step详细信息</th>
+                    </tr>
+                </thead>
+			    <tbody>
+			        <tr>
+				        <td>名字: </td>
+				        <td><input type="text" id="step_name" class="step_info step_name" /></td>
+			        </tr>
+			        <tr>
+				        <td>描述: </td>
+				        <td><input type="text" id="step_desc" class="step_info step_desc" ></td>
+			        </tr>
+                    <tr>
+				        <td>忽略失败: </td>
+				        <td>
+					        <select id="ignore_fail" class="step_info ignore_fail">
+						        <option id="opt_y">是</option>
+						        <option id="opt_n">否</option>
+					        </select>
+				        </td>
+			        </tr>
+
+
+			        <tr>
+                        <td colspan=2>
+                            <table id="step_info_cmd_table">
+                                <thead>
+                                    <tr>
+                                        <th>命令: </th>
+                                        <th >
+                                             <select id="step_cmd" class="step_info step_cmd">
+                                             </select>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>  
+                                </tbody>
+                            </table>
+                        </td>
+				        <!--td><input type="text" id="step_cmd" class="step_info step_cmd" ></textarea></td-->
+			        </tr>
+			        <!--tr>
+				        <td>分隔符: </td>
+				        <td><input type="text" id="step_param_sep" class="step_info step_param_sep" ></td>
+			        </tr-->
+			        <!--tr>
+				        <td>忽略失败: </td>
+				        <td>
+					        <select id="ignore_fail" class="step_info ignore_fail">
+						        <option id="opt_y">是</option>
+						        <option id="opt_n">否</option>
+					        </select>
+				        </td>
+			        </tr-->
+
+                    <tr>
+                        <td>机器:</td>
+                        <td><input size="25" type='text' id='step_deploy_host' /> <input type='button' id='deploy_step_btn' value='执行部署' /></td>
+                    </tr>
+			    </tbody>
+		    </table>
+    
+	    </div> <!-- end of yui3-u-3-4 -->
+    </div>
+
+    <!--script src="./js/conf_steps.html.js" type="text/javascript"></script-->
+
+</body>
+</html>

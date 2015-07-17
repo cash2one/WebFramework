@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/outfox/!svn/ver/447064/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_clickAntiAutoTest/python/redis
+END
+client.py
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/outfox/!svn/ver/447064/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_clickAntiAutoTest/python/redis/client.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/outfox/!svn/ver/447064/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_clickAntiAutoTest/python/redis/__init__.py
+END
+connection.py
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/outfox/!svn/ver/447064/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_clickAntiAutoTest/python/redis/connection.py
+END
+utils.py
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/outfox/!svn/ver/447064/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_clickAntiAutoTest/python/redis/utils.py
+END
+exceptions.py
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/outfox/!svn/ver/447064/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_clickAntiAutoTest/python/redis/exceptions.py
+END
+_compat.py
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/outfox/!svn/ver/447064/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest2/m_clickAntiAutoTest/python/redis/_compat.py
+END

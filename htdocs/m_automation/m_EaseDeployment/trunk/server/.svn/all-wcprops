@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/outfox/!svn/ver/510263/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/trunk/server
+END
+odfs.conf
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/outfox/!svn/ver/413553/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/trunk/server/odfs.conf
+END
+gethelp.py
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/outfox/!svn/ver/413553/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/trunk/server/gethelp.py
+END
+deploy.py
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/outfox/!svn/ver/457265/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/trunk/server/deploy.py
+END
+execute.py
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/outfox/!svn/ver/464260/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/trunk/server/execute.py
+END
+run.py
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/outfox/!svn/ver/430428/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/trunk/server/run.py
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/outfox/!svn/ver/457265/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/trunk/server/README
+END
+sysio.py
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/outfox/!svn/ver/457265/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/trunk/server/sysio.py
+END
+parse.py
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/outfox/!svn/ver/450737/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/trunk/server/parse.py
+END
+file.py
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/outfox/!svn/ver/460614/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/trunk/server/file.py
+END
+log.py
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/outfox/!svn/ver/413553/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/trunk/server/log.py
+END
+checkconf.py
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/outfox/!svn/ver/451651/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/trunk/server/checkconf.py
+END
+encrypt.py
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/outfox/!svn/ver/413553/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/trunk/server/encrypt.py
+END
+su_user.expect
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/outfox/!svn/ver/510263/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/trunk/server/su_user.expect
+END
+stop.py
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/outfox/!svn/ver/425026/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/trunk/server/stop.py
+END
+db.py
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/outfox/!svn/ver/413553/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/trunk/server/db.py
+END
+checkenv.py
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/outfox/!svn/ver/419422/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/trunk/server/checkenv.py
+END

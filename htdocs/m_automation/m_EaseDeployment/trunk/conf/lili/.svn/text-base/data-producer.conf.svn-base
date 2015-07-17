@@ -1,0 +1,512 @@
+### variable definitions 
+$svn_code_dataserv2$ => https://dev.corp.youdao.com/svn/outfox/products/ad/dataserv2/trunk/
+$svn_code_ead$ => https://dev.corp.youdao.com/svn/outfox/products/ad/ead/trunk/
+$install_path$ => /disk1/ead_test/dataserv/
+$ad_data_producer_dir$ => $install_path$/ad-data-producer
+$union_data_producer_dir$ => $install_path$/union_data_producer
+$all_platform_data_producer_dir$ => $install_path$/all_platform_data_producer
+$bizdb$ => jdbc:mysql://tb085:3336/adPublishTempTest?user=lili&amp;password=lili
+$bizdb_admin$ => jdbc:mysql://tb085:3336/adPublishTempTest?user=lili&amp;password=lili
+$adpublish_mysql_addr$ => tb085
+$adpublish_dbname$ => adPublishTempTest
+$adpublish_username$ => lili
+$adpublish_password$ => lili
+$adgroup_delivery_info_db_url$ => jdbc:mysql://tb085:3336/adPublishTempTest?user=lili&amp;password=lili
+$union_site_db$ => jdbc:mysql://tb085:3336/unionTempTest?user=lili&amp;password=lili
+$union_site_db_2$ => jdbc:mysql://tb085:3336/unionTempTest?user=lili&amp;password=lili
+$industry_mysql_addr$ => tb085x.corp.youdao.com:3336
+$industry_username$ => lili
+$industry_password$ => lili
+$blcustomerdb$ => jdbc:mysql://tb085:3336/auditTempTest?user=lili&amp;password=lili
+$img_direct_db_url$ => jdbc:mysql://tb085x.corp.youdao.com:3336/unionTempTest?useUnicode=true&amp;characterEncoding=utf8&amp;user=lili&amp;password=lili
+$industrydb$ => jdbc:mysql://tb085:3336/industry?user=lili&amp;password=lili
+$cache_port$ => 9527
+$zookeeper_hosts$ => tb081:2181
+$rabbitMQ_server_addr$ => tb085:5672
+$archive_path$ => /exp/lili/dataserv2/test
+$rabbit_mq_host$ => tb039x.corp.youdao.com
+
+### check definitions 
+
+### step definitions 
+{
+    step.name: ad_data_producer.stop_service
+    step.desc: stop service
+    step.cmd: [shell]:cd $ad_data_producer_dir$; ./bin/stop.sh ad-data-producer
+    step.cmd.sep: ,
+    step.ignore_fail: 1
+}
+
+{
+    step.name: ad_data_producer.remove
+    step.desc: remove old code
+    step.cmd: [shell]:cd $install_path$; rm -rf $ad_data_producer_dir$
+    step.cmd.sep: ,
+    step.ignore_fail: 1
+}
+
+{
+    step.name: ad_data_producer.checkout_code
+    step.desc: checkout code
+    step.cmd: [shell]:cd $install_path$; svn co $svn_code_dataserv2$ $ad_data_producer_dir$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: ad_data_producer.build
+    step.desc: cp servers.properties
+    step.cmd: [shell]:cd $ad_data_producer_dir$; cp conf/properties/servers.properties.online conf/properties/servers.properties
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: ad_data_producer.bizdb
+    step.cmd: [file.update_line_for_match]:$ad_data_producer_dir$/conf/properties/servers.properties,bizdb=.*,bizdb=$bizdb$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: ad_data_producer.bizdb_admin
+    step.cmd: [file.update_line_for_match]:$ad_data_producer_dir$/conf/properties/servers.properties,bizdb_admin=.*,bizdb_admin=$bizdb_admin$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: ad_data_producer.adpublish_mysql_addr
+    step.cmd: [file.update_line_for_match]:$ad_data_producer_dir$/conf/properties/servers.properties,adpublish_mysql_addr=.*,adpublish_mysql_addr=$adpublish_mysql_addr$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: ad_data_producer.adpublish_dbname
+    step.cmd: [file.update_line_for_match]:$ad_data_producer_dir$/conf/properties/servers.properties,adpublish_dbname=.*,adpublish_dbname=$adpublish_dbname$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: ad_data_producer.adpublish_username
+    step.cmd: [file.update_line_for_match]:$ad_data_producer_dir$/conf/properties/servers.properties,adpublish_username=.*,adpublish_username=$adpublish_username$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: ad_data_producer.adpublish_password
+    step.cmd: [file.update_line_for_match]:$ad_data_producer_dir$/conf/properties/servers.properties,adpublish_password=.*,adpublish_password=$adpublish_password$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: ad_data_producer.adgroup_delivery_info_db_url
+    step.cmd: [file.update_line_for_match]:$ad_data_producer_dir$/conf/properties/servers.properties,adgroup_delivery_info_db_url=.*,adgroup_delivery_info_db_url=$adgroup_delivery_info_db_url$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: ad_data_producer.union_site_db
+    step.cmd: [file.update_line_for_match]:$ad_data_producer_dir$/conf/properties/servers.properties,union_site_db=.*,union_site_db=$union_site_db$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: ad_data_producer.blcustomerdb
+    step.cmd: [file.update_line_for_match]:$ad_data_producer_dir$/conf/properties/servers.properties,blcustomerdb=.*,blcustomerdb=$blcustomerdb$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: ad_data_producer.img_direct_db_url
+    step.cmd: [file.update_line_for_match]:$ad_data_producer_dir$/conf/properties/servers.properties,img_direct_db_url=.*,img_direct_db_url=$img_direct_db_url$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: ad_data_producer.cache_port
+    step.cmd: [file.update_line_for_match]:$ad_data_producer_dir$/conf/properties/servers.properties,cache_port=.*,cache_port=$cache_port$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: ad_data_producer.zookeeper_hosts
+    step.cmd: [file.update_line_for_match]:$ad_data_producer_dir$/conf/properties/servers.properties,zookeeper_hosts=.*,zookeeper_hosts=$zookeeper_hosts$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: ad_data_producer.rabbitMQ_server_addr
+    step.cmd: [file.update_line_for_match]:$ad_data_producer_dir$/conf/properties/servers.properties,rabbitMQ_server_addr=.*,rabbitMQ_server_addr=$rabbitMQ_server_addr$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: ad_data_producer.archive_path
+    step.cmd: [file.update_line_for_match]:$ad_data_producer_dir$/conf/properties/servers.properties,archive_path=.*,archive_path=$archive_path$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: ad_data_producer.ant_resolve
+    step.cmd: [shell]:cd $ad_data_producer_dir$; ant resolve
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: ad_data_producer.ant_compile
+    step.cmd: [shell]:cd $ad_data_producer_dir$; ant compile
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: ad_data_producer.ant_mkconf
+    step.cmd: [shell]:cd $ad_data_producer_dir$; ant mkconf
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: ad_data_producer.start
+    step.cmd: [shell]:cd $ad_data_producer_dir$; ./bin/start.sh ad-data-producer;sleep 10
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: union_data_producer.stop_service
+    step.desc: stop service
+    step.cmd: [shell]:cd $union_data_producer_dir$; ./bin/stop.sh union-data-producer
+    step.cmd.sep: ,
+    step.ignore_fail: 1
+}
+
+{
+    step.name: union_data_producer.remove
+    step.desc: remove old code
+    step.cmd: [shell]:cd $install_path$; rm -rf $union_data_producer_dir$
+    step.cmd.sep: ,
+    step.ignore_fail: 1
+}
+
+{
+    step.name: union_data_producer.checkout_code
+    step.desc: checkout code
+    step.cmd: [shell]:cd $install_path$; svn co $svn_code_ead$ $union_data_producer_dir$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: union_data_producer.build
+    step.desc: cp servers.properties
+    step.cmd: [shell]:cd $union_data_producer_dir$; cp conf/properties/servers.properties.dataserv2_online conf/properties/servers.properties
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: union_data_producer.adgroup_delivery_info_db_url
+    step.cmd: [file.update_line_for_match]:$union_data_producer_dir$/conf/properties/servers.properties,adgroup_delivery_info_db_url=.*,adgroup_delivery_info_db_url=$adgroup_delivery_info_db_url$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: union_data_producer.union_site_db
+    step.cmd: [file.update_line_for_match]:$union_data_producer_dir$/conf/properties/servers.properties,union_site_db=.*,union_site_db=$union_site_db$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: union_data_producer.union_site_db_2
+    step.cmd: [file.update_line_for_match]:$union_data_producer_dir$/conf/properties/servers.properties,union_site_db_2=.*,union_site_db_2=$union_site_db_2$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: union_data_producer.industry_mysql_addr
+    step.cmd: [file.update_line_for_match]:$union_data_producer_dir$/conf/properties/servers.properties,industry_mysql_addr=.*,industry_mysql_addr=$industry_mysql_addr$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: union_data_producer.industry_username
+    step.cmd: [file.update_line_for_match]:$union_data_producer_dir$/conf/properties/servers.properties,industry_username=.*,industry_username=$industry_username$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: union_data_producer.industry_password
+    step.cmd: [file.update_line_for_match]:$union_data_producer_dir$/conf/properties/servers.properties,industry_password=.*,industry_password=$industry_password$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: union_data_producer.blcustomerdb
+    step.cmd: [file.update_line_for_match]:$union_data_producer_dir$/conf/properties/servers.properties,blcustomerdb=.*,blcustomerdb=$blcustomerdb$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: union_data_producer.img_direct_db_url
+    step.cmd: [file.update_line_for_match]:$union_data_producer_dir$/conf/properties/servers.properties,img_direct_db_url=.*,img_direct_db_url=$img_direct_db_url$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: union_data_producer.industrydb
+    step.cmd: [file.update_line_for_match]:$union_data_producer_dir$/conf/properties/servers.properties,industrydb=.*,industrydb=$industrydb$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: union_data_producer.cache_port
+    step.cmd: [file.update_line_for_match]:$union_data_producer_dir$/conf/properties/servers.properties,cache_port=.*,cache_port=$cache_port$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: union_data_producer.zookeeper_hosts
+    step.cmd: [file.update_line_for_match]:$union_data_producer_dir$/conf/properties/servers.properties,zookeeper_hosts=.*,zookeeper_hosts=$zookeeper_hosts$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: union_data_producer.rabbitMQ_server_addr
+    step.cmd: [file.update_line_for_match]:$union_data_producer_dir$/conf/properties/servers.properties,rabbitMQ_server_addr=.*,rabbitMQ_server_addr=$rabbitMQ_server_addr$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: union_data_producer.archive_path
+    step.cmd: [file.update_line_for_match]:$union_data_producer_dir$/conf/properties/servers.properties,archive_path=.*,archive_path=$archive_path$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: union_data_producer.ant_resolve
+    step.cmd: [shell]:cd $union_data_producer_dir$; ant resolve
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: union_data_producer.ant_mkconf
+    step.cmd: [shell]:cd $union_data_producer_dir$; ant mkconf
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: union_data_producer.ant_compile
+    step.cmd: [shell]:cd $union_data_producer_dir$; ant compile
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: union_data_producer.start
+    step.cmd: [shell]:cd $union_data_producer_dir$; ./bin/start.sh union-data-producer;sleep 10
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: all_platform_data_producer.stop_service
+    step.desc: stop service
+    step.cmd: [shell]:cd $all_platform_data_producer_dir$; ./bin/stop.sh all-platform-data-producer
+    step.cmd.sep: ,
+    step.ignore_fail: 1
+}
+
+{
+    step.name: all_platform_data_producer.remove
+    step.desc: remove old code
+    step.cmd: [shell]:cd $install_path$; rm -rf $all_platform_data_producer_dir$
+    step.cmd.sep: ,
+    step.ignore_fail: 1
+}
+
+{
+    step.name: all_platform_data_producer.checkout_code
+    step.desc: checkout code
+    step.cmd: [shell]:cd $install_path$; svn co $svn_code_ead$ $all_platform_data_producer_dir$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: all_platform_data_producer.build
+    step.desc: cp servers.properties
+    step.cmd: [shell]:cd $all_platform_data_producer_dir$; cp conf/properties/servers.properties.dataserv2_online conf/properties/servers.properties
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: all_platform_data_producer.adgroup_delivery_info_db_url
+    step.cmd: [file.update_line_for_match]:$all_platform_data_producer_dir$/conf/properties/servers.properties,adgroup_delivery_info_db_url=.*,adgroup_delivery_info_db_url=$adgroup_delivery_info_db_url$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: all_platform_data_producer.union_site_db
+    step.cmd: [file.update_line_for_match]:$all_platform_data_producer_dir$/conf/properties/servers.properties,union_site_db=.*,union_site_db=$union_site_db$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: all_platform_data_producer.union_site_db_2
+    step.cmd: [file.update_line_for_match]:$all_platform_data_producer_dir$/conf/properties/servers.properties,union_site_db_2=.*,union_site_db_2=$union_site_db_2$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: all_platform_data_producer.industry_mysql_addr
+    step.cmd: [file.update_line_for_match]:$all_platform_data_producer_dir$/conf/properties/servers.properties,industry_mysql_addr=.*,industry_mysql_addr=$industry_mysql_addr$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: all_platform_data_producer.industry_username
+    step.cmd: [file.update_line_for_match]:$all_platform_data_producer_dir$/conf/properties/servers.properties,industry_username=.*,industry_username=$industry_username$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: all_platform_data_producer.industry_password
+    step.cmd: [file.update_line_for_match]:$all_platform_data_producer_dir$/conf/properties/servers.properties,industry_password=.*,industry_password=$industry_password$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: all_platform_data_producer.blcustomerdb
+    step.cmd: [file.update_line_for_match]:$all_platform_data_producer_dir$/conf/properties/servers.properties,blcustomerdb=.*,blcustomerdb=$blcustomerdb$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: all_platform_data_producer.img_direct_db_url
+    step.cmd: [file.update_line_for_match]:$all_platform_data_producer_dir$/conf/properties/servers.properties,img_direct_db_url=.*,img_direct_db_url=$img_direct_db_url$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: all_platform_data_producer.industrydb
+    step.cmd: [file.update_line_for_match]:$all_platform_data_producer_dir$/conf/properties/servers.properties,industrydb=.*,industrydb=$industrydb$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: all_platform_data_producer.cache_port
+    step.cmd: [file.update_line_for_match]:$all_platform_data_producer_dir$/conf/properties/servers.properties,cache_port=.*,cache_port=$cache_port$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: all_platform_data_producer.zookeeper_hosts
+    step.cmd: [file.update_line_for_match]:$all_platform_data_producer_dir$/conf/properties/servers.properties,zookeeper_hosts=.*,zookeeper_hosts=$zookeeper_hosts$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: all_platform_data_producer.rabbitMQ_server_addr
+    step.cmd: [file.update_line_for_match]:$all_platform_data_producer_dir$/conf/properties/servers.properties,rabbitMQ_server_addr=.*,rabbitMQ_server_addr=$rabbitMQ_server_addr$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: all_platform_data_producer.archive_path
+    step.cmd: [file.update_line_for_match]:$all_platform_data_producer_dir$/conf/properties/servers.properties,archive_path=.*,archive_path=$archive_path$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: all_platform_data_producer.ant_resolve
+    step.cmd: [shell]:cd $all_platform_data_producer_dir$; ant resolve
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: all_platform_data_producer.ant_mkconf
+    step.cmd: [shell]:cd $all_platform_data_producer_dir$; ant mkconf
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: all_platform_data_producer.ant_compile
+    step.cmd: [shell]:cd $all_platform_data_producer_dir$; ant compile
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: all_platform_data_producer.start
+    step.cmd: [shell]:cd $all_platform_data_producer_dir$; ./bin/start.sh all-platform-data-producer;sleep 10
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+
+### collect definitions 
+{
+    collect.name: ad_data_producer
+    collect.cmd: ad_data_producer.*
+    collect.hostname: qt106
+}
+
+{
+    collect.name: union_data_producer
+    collect.cmd: union_data_producer.*
+    collect.hostname: qt105
+}
+
+{
+    collect.name: all_platform_data_producer
+    collect.cmd: all_platform_data_producer.*
+    collect.hostname: qt104
+}
+
+

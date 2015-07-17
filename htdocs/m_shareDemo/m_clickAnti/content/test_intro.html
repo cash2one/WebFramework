@@ -1,0 +1,259 @@
+一些bug的分享：
+<table border="1">
+    <tr>
+        <th>经验</th><th>bug id</th><th>bug 描述</th>
+    </tr>
+    <tr>
+        <td>
+            除了关注逻辑，你还要关注业务
+        </td>
+        <td>
+            <a href="https://dev.corp.youdao.com/bugs/show_bug.cgi?id=68472">68472</a><br>
+            <a href="https://dev.corp.youdao.com/bugs/show_bug.cgi?id=68933">68933</a>
+        </td>
+        <td>
+            博客反作弊读数据库如果错误，会把limit值设成5<br>
+            BlogIpMaxClick的策略有问题
+        </td>
+    </tr>
+    <tr>
+        <td>
+            开发也会丢三落四
+        </td>
+        <td>
+            <a href="https://dev.corp.youdao.com/bugs/show_bug.cgi?id=64557">64557</a><br>
+            <a href="https://dev.corp.youdao.com/bugs/show_bug.cgi?id=74067">74067</a><br>
+            <a href="https://dev.corp.youdao.com/bugs/show_bug.cgi?id=74067">79757</a>
+        </td>
+        <td>
+            /disk1/ead/data/ead-aes-key.1195118241296 不存在<br>
+            servers.properties.antifrauder_online中的redis相关配置不起作用<br>
+            线下直销的refer不能为空的策略被删掉了
+        </td>
+    </tr>
+    <tr>
+        <td>
+            问题虽小，后果很严重
+        </td>
+        <td>
+            <a href="https://dev.corp.youdao.com/bugs/show_bug.cgi?id=65118">65118</a><br>
+            <a href="https://dev.corp.youdao.com/bugs/show_bug.cgi?id=73262">73262</a><br>
+        </td>
+        <td>
+            线上点击服务未处理点击url的异常，导致点击url不停请求服务器<br>
+            有些链接的展示时间不对
+        </td>
+    </tr>
+    <tr>
+        <td>
+            配置文件也很重要
+        </td>
+        <td>
+            <a href="https://dev.corp.youdao.com/bugs/show_bug.cgi?id=65381">65381</a><br>
+            <a href="https://dev.corp.youdao.com/bugs/show_bug.cgi?id=74067">73067</a>
+        </td>
+        <td>
+            邮箱反作弊测试: 没有被反作弊过滤掉的点击，没有写到uncharged_clicks库中<br>
+            servers.properties.eadu_longtail_online中有重复配置项
+        </td>
+    </tr>
+    <tr>
+        <td>
+            测试也有讨厌的时候
+        </td>
+        <td>
+            <a href="https://dev.corp.youdao.com/bugs/show_bug.cgi?id=65511">65511</a>
+        </td>
+        <td>
+             点击服务抛出异常(invalid，原来是部署的时候端口冲突，小白一下)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            字符串判断时，null了，最好还要isEmpty一下
+        </td>
+        <td>
+            <a href="https://dev.corp.youdao.com/bugs/show_bug.cgi?id=65775">65775</a>
+        </td>
+        <td>
+             点击频道的广告，会导致outfox_search_user_id变化
+        </td>
+    </tr>
+    <tr>
+        <td>
+            谁动了我的配置
+        </td>
+        <td>
+            <a href="https://dev.corp.youdao.com/bugs/show_bug.cgi?id=67633">67633</a>
+        </td>
+        <td>
+             servers.properties.eads_online 有的项丢失了
+        </td>
+    </tr>
+    <tr>
+        <td>
+            千里之堤，毁于蚁穴
+        </td>
+        <td>
+            <a href="https://dev.corp.youdao.com/bugs/show_bug.cgi?id=67655">67655</a>
+        </td>
+        <td>
+             新加策略ipMaxClickFilter 没有使其生效
+        </td>
+    </tr>
+    <tr>
+        <td>
+            第三方依赖值得依赖？
+        </td>
+        <td>
+            <a href="https://dev.corp.youdao.com/bugs/show_bug.cgi?id=67723">67723</a>
+        </td>
+        <td>
+             如果rabbitMQ挂了，反作弊服务起不来
+        </td>
+    </tr>
+    <tr>
+        <td>
+            对繁琐的代码说不！
+        </td>
+        <td>
+            <a href="https://dev.corp.youdao.com/bugs/show_bug.cgi?id=68861">68861</a>
+        </td>
+        <td>
+             发现计算最大值的代码建议优化一下
+        </td>
+    </tr>
+    <tr>
+        <td>
+            即使log打印错误也不放过
+        </td>
+        <td>
+            <a href="https://dev.corp.youdao.com/bugs/show_bug.cgi?id=68866">68866</a>
+        </td>
+        <td>
+             log 错误
+        </td>
+    </tr>
+    <tr>
+        <td>
+            对配置你够健壮吗？
+        </td>
+        <td>
+            <a href="https://dev.corp.youdao.com/bugs/show_bug.cgi?id=68925">68925</a>
+        </td>
+        <td>
+             FILTERARG表中的SearchSingleQueryFilter当设置value为null时会报config init error
+        </td>
+    </tr>
+    <tr>
+        <td>
+            我debug，我快乐
+        </td>
+        <td>
+            <a href="https://dev.corp.youdao.com/bugs/show_bug.cgi?id=74017">74017</a>
+        </td>
+        <td>
+             因为反作弊服务中定义的变量不对，导致点击服务rpc call不停地抛异常
+        </td>
+    </tr>
+    <tr>
+        <td>
+            为啥你总爱多管闲事儿
+        </td>
+        <td>
+            <a href="https://dev.corp.youdao.com/bugs/show_bug.cgi?id=74108">74108</a>
+        </td>
+        <td>
+             DoubleClickFilter总是能生效
+        </td>
+    </tr>
+    <tr>
+        <td>
+            拷贝代码十有八九会出错
+        </td>
+        <td>
+            <a href="https://dev.corp.youdao.com/bugs/show_bug.cgi?id=78002">78002</a>
+        </td>
+        <td>
+             新加的Filter中，FILTER_NAME赋值错误
+        </td>
+    </tr>
+    <tr>
+        <td>
+            如此绕的逻辑开发也hold不住了
+        </td>
+        <td>
+            <a href="https://dev.corp.youdao.com/bugs/show_bug.cgi?id=78005">78005</a>
+        </td>
+        <td>
+             新加过滤规则ClickCheckAdjustFilter有逻辑错误
+        </td>
+    </tr>
+    <tr>
+        <td>
+            时间不仅关乎生命 - 来自测试的小建议
+        </td>
+        <td>
+            <a href="https://dev.corp.youdao.com/bugs/show_bug.cgi?id=79108">79108</a>
+        </td>
+        <td>
+             zk检测反作弊是否存在的时间设置太小
+        </td>
+    </tr>
+    <tr>
+        <td>
+            分析代码是件有意思的事儿
+        </td>
+        <td>
+            <a href="https://dev.corp.youdao.com/bugs/show_bug.cgi?id=79113">79113</a>
+        </td>
+        <td>
+             代码逻辑有问题
+        </td>
+    </tr>
+    <tr>
+        <td>
+            我已不是原来的那个我
+        </td>
+        <td>
+            <a href="https://dev.corp.youdao.com/bugs/show_bug.cgi?id=79940">79940</a>
+        </td>
+        <td>
+             DSP的二次跳转逻辑有问题
+        </td>
+    </tr>
+    <tr>
+        <td>
+            或许有问题吧~
+        </td>
+        <td>
+            <a href="https://dev.corp.youdao.com/bugs/show_bug.cgi?id=82016">82016</a>
+        </td>
+        <td>
+             反作弊代码逻辑问题的一个确认
+        </td>
+    </tr>
+    <tr>
+        <td>
+            从客户的角度考虑问题?!
+        </td>
+        <td>
+            <a href="https://dev.corp.youdao.com/bugs/show_bug.cgi?id=82048">82048</a>
+        </td>
+        <td>
+              新代码逻辑存在扣费却没有把用户带到广告商页面的可能性
+        </td>
+    </tr>
+    <tr>
+        <td>
+            一次比较刺激的旅程
+        </td>
+        <td>
+            <a href="https://dev.corp.youdao.com/bugs/show_bug.cgi?id=82119">82119</a>
+        </td>
+        <td>
+              .tmpclk4check目录下的点击没有发送在服务启动之后处理完了 却没有删除
+        </td>
+    </tr>
+    
+</table>

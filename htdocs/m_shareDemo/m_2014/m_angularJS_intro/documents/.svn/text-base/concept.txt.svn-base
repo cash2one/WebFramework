@@ -1,0 +1,35 @@
+<h3>directive的link函数</h3>
+<pre>
+主要用于directive的行为绑定
+和前端交互，最好是重新定义一个directive
+</pre>
+
+<h3>service</h3>
+<pre>
+这是一个的维护应用程序功能逻辑部分，他是一个单间模式singleton。
+为了保持应用程序的逻辑层次分明，更趋向于将其业务逻辑放到不同的services，保持controller的逻辑只有流程控制和view交互逻辑。
+</pre>
+
+<h3>Scopes</h3>
+<pre>
+$scope实际上就是一个JavaScript对象，controller和view都可以访问它，所以我们可以利用它在两者间传递信息。我们既存储数据，又存储将要运行在view上的函数。
+每一个Angular应用都会有一个 $rootScope。这个 $rootScope是最顶级的scope，它对应着含有 ng-app 指令属性的那个DOM元素。
+</pre>
+
+<h3>$watch函数</h3>
+<pre>
+$watch函数（在使用时）运行在Angular.js的事件循环（即$digest循环）里，让Angular.js能够对DOM进行相应的更新。
+{{ 表达式 }}: 这个双大括号指令属性，使用$watch()函数，给括号内的表达式注册了一个监听器。正是这个$watch函数，让Angular.js能够实时自动更新view。
+</pre>
+
+<h3>$apply函数</h3>
+<pre>
+$apply() is used to execute an expression in angular from outside of the angular framework. 
+$scope.$apply() takes a function or an Angular expression string, and executes it, then calls $scope.$digest() to update any bindings or watchers.
+</pre>
+
+<h3>ng-init</h3>
+<pre>
+ng-init指令属性是一个在启动时运行的函数（在程序进入运行阶段之前）。它让我们能够在程序运行前设定初始变量的值：
+&lt;b ng-init='name = "Ari Lerner"'&gt;Hello, {{ name }}&lt;/b&gt;
+</pre>

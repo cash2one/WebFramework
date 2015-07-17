@@ -1,0 +1,44 @@
+【用途】
+1. 可视化的工具集合
+2. 所有工具的代码都被SVN管理
+3. 该服务用test账号启动，方便组内成员操作
+4. 方便部署
+
+【路径】 
+tb037:/disk2/qatest/svn_code/qa/WebFramework/htdocs
+
+【SVN路径】 
+https://dev.corp.youdao.com/svn/outfox/incubator/Test/WebFramework
+
+【如何添加工具】
+1. checkout代码https://dev.corp.youdao.com/svn/outfox/incubator/Test/WebFramework到你的目录（如果还没有的话）
+2. 在htdocs目录下或者其他目录下新建一个目录， 目录的名字是以m_开头
+3. 把你的代码放到改目录下，当然，你需要在该目录下创建一个index.php或者index.html文件，作为入口文件
+4. check-in你的代码
+5. 去tb037:/disk2/qatest/svn_code/qa/下（test账号），svn up一下
+6. 访问http://tb037x.corp.youdao.com:28081，你就会看到你的工具在该页面上了（或者页面的某个导航栏下了）
+
+【部署步骤】
+1. 新建一个目录, 比如/disk2/qatest/
+2. 创建子目录/disk2/qatest/svn_code, 进入并把代码checkout出来：svn co https://dev.corp.youdao.com/svn/outfox/incubator/Test qa
+3. 部署php和appache：
+3.1 去/disk2/qatest/svn_code/qa/WebFramework
+3.2 修改install.sh中的路径为你要部署php和appache的路径(看情况来决定是不是需要拷贝php和appache的文件，源文件在tb037上）
+3.3 运行部署脚本: ./install.sh
+4. 部署svn上的工具
+4.1 去appache的安装路径，删掉htdocs
+4.2 在原htdocs的父目录，ln -s ../../svn_code/qa/WebFramework/htdocs htdocs 来创建一个新目录
+5. 其他
+5.1 你有可能需要修改appache的端口, 在conf/httpd.conf中，"Listen xxxxxx"
+5.2 如果想设置index.php为默认文件，可以修改： DirectoryIndex index.php index.html
+
+【其他】
+1. 如果你想更改你的项目的显示名，可以在你的项目的主目录下建立一个名字为name.tts的文件，并把文件名写进去
+2. 如果你想告诉别人改项目有啥功能，如何使用等等，你可以在你的项目的主目录下新建一个名为readme.tts的文件，并把内容写进去, 当用户将鼠标放到你的项目的导航栏的时候，TTS主页就会显示你写的描述
+3. 将鼠标放到TTS头文字上，会显示TTS的相关说明
+4. readme.tts中的内容是按照html的方式解析的
+
+【contact】
+Author: 张培
+Email: zhangpei@rd.netease.com
+desktop-phone: 9723

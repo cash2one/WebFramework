@@ -1,0 +1,17 @@
+test user:
+----------------------------
+# archive the tts dir each 2 fours
+# added by zhangpei
+0 */2 * * * /disk2/qatest/svn_code/qa/WebFramework/tts_archive.sh
+
+
+
+zhangpei user:
+----------------------------
+*/30 * * * * /home/zhangpei/installations/httpd2221/htdocs/rsync.sh
+0 23 * * * /home/zhangpei/installations/httpd2221/htdocs/rsync_1_day.sh
+0 03 * * * cd /disk2/qatest/svn_code/qa/WebFramework/htdocs/m_smallTools/m_userEmail;./bin/build.sh zhangpei $password
+
+0 01 * * * cd /disk2/qatest/svn_code/qa/WebFramework/htdocs/m_teamTools/m_adTools2/m_fraudAnalysis/python; ./run.sh
+0 04 * * * cd /disk2/qatest/svn_code/qa/WebFramework/htdocs/m_teamTools/m_adTools2/m_onlineServiceInfo/php; ./php DeployDirReader.php
+0 05 * * * cd /disk2/qatest/svn_code/qa/WebFramework/htdocs/m_teamTools/m_adTools/m_clickReq/bin; ./get_data.sh

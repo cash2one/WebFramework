@@ -1,0 +1,121 @@
+### variable definitions 
+$root_dir$ => /disk1/test_guojing/odfs
+$code_dir$ => $root_dir$/5.0
+$user$ => [shell:whoami]
+$install_dir$ => /disk1/test_guojing/ndfs/install
+$log_dir$ => $root_dir$/log
+$svn_dir$ => https://dev.corp.youdao.com/svn/outfox/odis/odfs/milestone/5.0/
+$tmp_subname$ => [shell:svn info --no-auth-cache $svn_dir$ 2>&1|grep Revision|cut -d' ' -f2]
+$install_code_dir$ => $install_dir$/odfs-5.0.$tmp_subname$M
+$namenode_dir$ => $root_dir$/namenode
+$namenode_bak_dir$ => $root_dir$/namenode_bak
+$datanode_dir_disk1$ => $root_dir$/datanode
+$datanode_dir_disk2$ => /disk2/test_guojing/odfs/datanode
+$datanode_dir_disk3$ => /disk3/test_guojing/odfs/datanode
+$property_file_name$ => $code_dir$/default.properties
+$service_file$ => $install_code_dir$/conf/service.xml
+$odis_file$ => $install_code_dir$/bin/odis
+
+### check definitions 
+
+### step definitions 
+{
+    step.name: stop_service.stopnamenode
+    step.desc: stop namenode
+    step.cmd: [shell]:cd $install_code_dir$; sh bin/stopnn namenode
+    step.ignore_fail: 1
+}
+
+{
+    step.name: stop_service.stopdatanode
+    step.desc: stop datanode
+    step.cmd: [shell]:cd $install_code_dir$; sh bin/stopdn datanode
+    step.ignore_fail: 1
+}
+
+{
+    step.name: clear_env.clear
+    step.desc: clear odfs ndfs log data dirctory
+    step.cmd: [shell]:rm -rf $root_dir$;rm -rf $install_dir$;rm -rf $log_dir$;rm -rf $namenode_dir$;rm -rf $datanode_dir_disk1$;rm -rf $datanode_dir_disk2$
+    step.ignore_fail: 1
+}
+
+{
+    step.name: init.mkdir
+    step.desc: init root_dir
+    step.cmd: [shell]:mkdir $root_dir$;cd $root_dir$
+}
+
+{
+    step.name: deploy.checkcode
+    step.cmd: [shell]:svn co --no-auth-cache $svn_dir$
+}
+
+{
+    step.name: deploy.modify_deploy_dir
+    step.cmd: [file.update_line_for_match]:$property_file_name$,install.base.dir    = ${build.dir}/install,install.base.dir    = ${build.dir}/install
+}
+
+{
+    step.name: deploy.install
+    step.cmd: [shell]:cd $code_dir$;ant install
+}
+
+{
+    step.name: deploy.modify_hostport
+    step.cmd: [file.update_line_for_match]:$service_file$,<oldproxyhostport>localhost:7080</oldproxyhostport>,<oldproxyhostport>$namenode_host$:7080</oldproxyhostport>
+}
+
+{
+    step.name: deploy.modify_root
+    step.cmd: [file.update_line_for_match]:$service_file$,<root>${odis.local}/namenode</root>,<root>$namenode_dir$</root>
+}
+
+{
+    step.name: deploy.modify_rootbak
+    step.cmd: [file.update_line_for_match]:$service_file$,<backuproot>/global/tmp/odfs/namenode</backuproot>,<backuproot>$namenode_bak_dir$</backuproot>
+}
+
+{
+    step.name: deploy.modify_datanode_dir
+    step.cmd: [file.update_line_for_match]:$service_file$,<dirs>${odis.local}/datanode</dirs>,<dirs>$datanode_dir_disk1$,$datanode_dir_disk2$</dirs>
+}
+
+{
+    step.name: deploy.add_capacity
+    step.cmd: [file.insert_after_line]:$service_file$,<capacity.0>0</capacity.0>,<capacity.1>0</capacity.1>
+}
+
+{
+    step.name: deploy.modify_reserve
+    step.cmd: [file.insert_after_line]:$service_file$,<reserve.0>10737418240</reserve.0>,<reserve.1>10737418240</reserve.1>
+}
+
+{
+    step.name: deploy.modify_log_dir
+    step.cmd: [file.insert_after_line]:$odis_file$,export ODIS_HOME,export ODIS_LOCAL=$log_dir$
+}
+
+{
+    step.name: deploy.modify_jvm
+    step.cmd: [file.update_line_for_match]:$odis_file$,JAVA_HEAP_MAX="-Xmx7000m -Xms7000m",JAVA_HEAP_MAX="-Xmx1000m -Xms1000m"
+}
+
+{
+    step.name: start.namenode
+    step.cmd: [shell]:cd $install_code_dir$; sh bin/startnn namenode
+}
+
+{
+    step.name: start.datanode
+    step.cmd: [shell]:cd $install_code_dir$ ; sh bin/startdn datanode
+}
+
+
+### collect definitions 
+{
+    collect.name: deployodfs
+    collect.cmd: stop_service.*, clear_env.*, init.*, deploy.*, start.*
+}
+
+

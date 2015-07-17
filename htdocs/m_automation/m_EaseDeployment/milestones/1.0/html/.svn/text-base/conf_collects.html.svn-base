@@ -1,0 +1,65 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./css/conf_collects.html.css" type="text/css" />
+</head>
+
+<body>
+    <div id="confirm-dialog"  title="是否保存配置文件?">
+    </div>
+    <div id="sshpassword-dialog" style="display:none" title="请输入机群密码">
+         <input type="password" id="ssh_passwd" value="" class="text ui-widget-content ui-corner-all" />
+    </div>
+
+    <div class="yui3-g" id="collect_div"> 
+    	 <div class="yui3-u-1-3" id="collect_name_box">
+ 		    <table id="collect_table" border="1">
+        		<thead> 
+            		<tr><th>集合列表</th> <th><a href="" class="collect_link collect_thead add_collect">添加</a></th></tr>
+       		    </thead>
+                <tbody id="collect_tbody"></tbody>
+    		</table>
+         </div>
+
+	     <div class="yui3-u-2-3" id="collect_detail">
+            <!--div class="yui3-g"-->
+                <h3 id="collect_detail_header">集合详细信息:</h3>
+                <!--div class="yui3-u-1-4" id="collect_detail_basic"-->	 
+                	<table id="collect_detail_table">
+                	    <tbody id="collect_detail_tbody">
+                	    <tr>
+                    	    <td>执行远程部署的机器:</td>
+                    	    <td><input type="text" class="collect_info collect_hostname" id = "collect_hostname"/> </td> 
+                	    </tr>
+					    <tr>
+				    	    <td>集合名称: </td>
+				    	    <td><input type="text" class="collect_info collect_name" id="collect_name"/></td>
+			    	    </tr>
+			    	    <tr>
+				    	    <td>集合描述: </td>
+				    	    <td><input type="text" class="collect_info collect_desc" id ="collect_desc"></td>
+			   		    </tr>
+			    	    </tbody>
+		    	    </table>
+                <!--/div-->
+
+		        <!--div class="yui3-u-3-4" id="collect_detail_step"-->
+			        <!--h3 id="step_array_header">步骤列表:</h3-->
+                        <table id = "collect_detailstep_table">
+                            <tbody id="collect_detailstep_tbody">
+                    		<thead> 
+                        		<tr><th>步骤列表</th> <th><a href="" class="collect_step_link collect_step_thead add_collect_step">添加</a></th></tr>
+       		                  </thead>
+                            <!--tr>
+                                <td><input type="text" id="collect_step_name"></td>
+                            </tr-->
+                            </tbody>
+                        </table>                    
+        	        <ol id="step_array"></ol> 
+		        <!--/div--> <!-- end of yui3-u-3-4!-->
+	        <!--/div--><!-- end of yui3-g!-->
+       </div><!-- end of yui3-u-3-4!-->
+    </div>
+
+</body>
+</html>

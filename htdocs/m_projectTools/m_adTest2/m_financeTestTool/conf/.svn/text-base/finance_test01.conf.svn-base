@@ -1,0 +1,7 @@
+[db_conf]
+fin = tb081:financeDB:3306:test:test
+publish = sb095:adpublish:3306:test:iliketesting
+update = tb081:adupdateDB:3306:test:test
+
+[table_info]
+schema_list = fin_AGENT_BALANCE, fin_AGENT_ACCOUNT_HISTORY, fin_SPONSOR_BALANCE, fin_SPONSOR_ACCOUNT_HISTORY, fin_EXTRA_REVENUE_DETAIL, update_SPONSOR_BALANCE_CHANGE

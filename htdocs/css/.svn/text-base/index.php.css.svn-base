@@ -1,0 +1,23 @@
+body h1 {
+    background-color: #CCC;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+table tr th {
+    width: 90px;
+}
+
+.hide2 {
+    visible: false;
+    /*
+    color: #ccc;
+    background-color: #ccc;
+    */
+}

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/outfox/!svn/ver/437666/incubator/Test/WebFramework/htdocs/m_teamTools/m_adTools/m_logWatchForOnlineClickAnti/php
+END
+write_user_log.php
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/outfox/!svn/ver/410471/incubator/Test/WebFramework/htdocs/m_teamTools/m_adTools/m_logWatchForOnlineClickAnti/php/write_user_log.php
+END
+read_user_log.php
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/outfox/!svn/ver/410471/incubator/Test/WebFramework/htdocs/m_teamTools/m_adTools/m_logWatchForOnlineClickAnti/php/read_user_log.php
+END
+get_log.php
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/outfox/!svn/ver/437666/incubator/Test/WebFramework/htdocs/m_teamTools/m_adTools/m_logWatchForOnlineClickAnti/php/get_log.php
+END
+query_log.exp.template
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/outfox/!svn/ver/414410/incubator/Test/WebFramework/htdocs/m_teamTools/m_adTools/m_logWatchForOnlineClickAnti/php/query_log.exp.template
+END
+query_log_for_luqy.exp.template
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/svn/outfox/!svn/ver/437663/incubator/Test/WebFramework/htdocs/m_teamTools/m_adTools/m_logWatchForOnlineClickAnti/php/query_log_for_luqy.exp.template
+END

@@ -1,0 +1,14 @@
+#!/usr/bin/expect
+set timeout 5
+
+# remove this file for security reason
+set ret [exec rm "$current_file$"]
+
+spawn su -c "$cmd$" $username$
+while {1} {
+  expect {
+    eof         {break} 
+    "Password:" {sleep 1; send "$password$\r"}
+  };
+}
+close $spawn_id

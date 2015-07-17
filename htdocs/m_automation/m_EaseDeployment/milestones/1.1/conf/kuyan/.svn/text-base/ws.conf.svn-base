@@ -1,0 +1,61 @@
+### variable definitions 
+$user_name$ => kuyan
+$install_path$ => /disk1/kuyan/3.1.6_base/outfront_ds
+$host$ => nb174
+$run_dir$ => $install_path$/Bin/Linux
+$outfront_svn$ => https://dev.corp.youdao.com/svn/outfox/outfox/milestones/3.1.6/outfront
+$version$ => 384908
+$build_type$ => rls
+
+### check definitions 
+
+### step definitions 
+{
+    step.name: status_ds
+    step.desc: check the status of ds
+    step.cmd: [shell]: cd $run_dir$;sh status.sh ds
+    step.ignore_fail: 0
+}
+
+{
+    step.name: deploy_ds
+    step.desc: deploy ds
+    step.cmd: [shell]: svn co $outfront_svn$ $install_path$;
+    step.ignore_fail: 0
+}
+
+{
+    step.name: config_ds
+    step.desc: config ds
+    step.cmd: [shell]: ls $install_path$
+}
+
+{
+    step.name: compile_ds
+    step.cmd: [shell]: cd $install_path$/searcher;./go.sh rls install ../../
+    step.ignore_fail: 0
+}
+
+
+### collect definitions 
+{
+    collect.name: status_ds
+    collect.desc: return the status of ds
+    collect.cmd: status_ds
+    collect.hostname: nb171
+}
+
+{
+    collect.name: deploy_ds
+    collect.desc: deploy ds code
+    collect.cmd: deploy_ds,status_ds,compile_ds
+    collect.hostname: nb174
+}
+
+{
+    collect.name: config_ds
+    collect.cmd: config_ds
+    collect.hostname: nb171
+}
+
+

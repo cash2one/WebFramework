@@ -1,0 +1,12 @@
+table {
+    display: none;
+    table-layout: fixed;
+}
+
+table td {
+    max-width: 1050px;
+}
+
+h2 {
+    display: inline;
+}

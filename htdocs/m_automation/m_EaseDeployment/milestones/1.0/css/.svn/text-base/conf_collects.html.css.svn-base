@@ -1,0 +1,13 @@
+a.collect_link {
+    color: #88bbff;
+    font-size: 0.8em;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    text-decoration: none;
+}
+
+a.collect_link:hover {
+    text-decoration: underline;
+}

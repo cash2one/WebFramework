@@ -1,0 +1,116 @@
+### variable definitions 
+$svnurl$ => https://dev.corp.youdao.com/svn/outfox/products/dict-apps/dict-media/milestones/1.1
+$rootpath$ => /disk2/deploydict/dictmedia
+$codepath$ => $rootpath$/code
+$resinpath$ => 
+
+### check definitions 
+
+### step definitions 
+{
+    step.name: stopls
+    step.cmd: [shell]:killall java
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: clear.env
+    step.cmd: [shell]:rm -rf $rootpath$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: init.mkdir
+    step.cmd: [shell]:mkdir -p $rootpath$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: deploy.checkoutcode
+    step.cmd: [shell]:cd $rootpath$ ;svn co $svnurl$  $codepath$
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: deploy.ant
+    step.cmd: [shell]:cd $codepath$; ant
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: deployls0.checkoutdata
+    step.cmd: [shell]:cd $codepath$; perl run/download-only.pl  0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: deployls1.checkoutdata
+    step.cmd: [shell]:cd $codepath$; perl run/download-only.pl  1
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: deployls2.checkoutdata
+    step.cmd: [shell]:cd $codepath$; perl run/download-only.pl  2
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: startls0.voice
+    step.cmd: [shell]:cd $codepath$ ; sh run/voice.sh  0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: startls1.voice
+    step.cmd: [shell]:cd $codepath$ ; sh run/voice.sh  1
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: startls2.voice
+    step.cmd: [shell]:cd $codepath$ ; sh run/voice.sh  2
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: startls0.video
+    step.cmd: [shell]:cd $codepath$ ; sh run/video.sh 0
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: startls1.video
+    step.cmd: [shell]:cd $codepath$ ; sh run/video.sh 1
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+{
+    step.name: startls2.video
+    step.cmd: [shell]:cd $codepath$ ; sh run/video.sh 2
+    step.cmd.sep: ,
+    step.ignore_fail: 0
+}
+
+
+### collect definitions 
+{
+    collect.name: deployls0
+    collect.cmd: stopls,clear.*,init.*,deploy.*,deployls0.*,startls0.*
+    collect.hostname: nc107
+}
+
+

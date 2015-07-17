@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/outfox/!svn/ver/512316/incubator/Test/WebFramework/htdocs/m_teamTools/m_adTools2/m_fraudAnalysis/python
+END
+antiLogParser.py
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/outfox/!svn/ver/478366/incubator/Test/WebFramework/htdocs/m_teamTools/m_adTools2/m_fraudAnalysis/python/antiLogParser.py
+END
+clickLogParser.py
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/outfox/!svn/ver/474743/incubator/Test/WebFramework/htdocs/m_teamTools/m_adTools2/m_fraudAnalysis/python/clickLogParser.py
+END
+clickAccessLogParser.py
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/outfox/!svn/ver/474573/incubator/Test/WebFramework/htdocs/m_teamTools/m_adTools2/m_fraudAnalysis/python/clickAccessLogParser.py
+END
+run.sh
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/outfox/!svn/ver/512316/incubator/Test/WebFramework/htdocs/m_teamTools/m_adTools2/m_fraudAnalysis/python/run.sh
+END

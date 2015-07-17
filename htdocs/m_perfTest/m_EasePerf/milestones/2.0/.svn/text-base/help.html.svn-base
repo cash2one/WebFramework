@@ -1,0 +1,27 @@
+<meta charset="utf-8">
+<p>一、功能介绍</p>
+<p>对服务性能相关的数据做收集, 分析, 展示和监控(报警), 目前能处理的数据类型为:</p>
+<p>1. 服务日志</p>
+<p>2. java进程的gc日志 (说明见<a href="https://dev.corp.youdao.com/outfoxwiki/XunjunYin/gcviewer">gcviewer)</a></p>
+<p>3. 进程占用的系统资源(mem, cpu, thread number, net links, file descriptor number)</p>
+<p>4. 用户配置的shell命令输出结果</p>
+<p>5. 机器的系统资源使用(block io, cpu, mem, swap io, sys_cs, sys_in, load, user_cpu, user_mem)</p>
+<br>
+<p><strong>可对各数据的值进行监控和报警: 
+<p>1. v-: 值小于v时alarm</p>
+<p>2. v+: 值大于v时alarm</p>
+<p>3. v++: (v必须>1) 值不在[min/v,max*v]区间内时alarm (min及max由之前的值得到)</p>
+<p>具体配置见<a href="https://dev.corp.youdao.com/svn/outfox/incubator/Test/WebFramework/htdocs/m_perfTest/m_EasePerf/milestones/2.0/server/config.xml" target="_blank">config.xml</a></strong></p>
+<br>
+<p>二、开始收集</p>
+<p>1. svn co https://dev.corp.youdao.com/svn/outfox/incubator/Test/WebFramework/htdocs/m_perfTest/m_EasePerf/milestones/2.0/server</p>
+<p>注: 请使用最新的milestones版本, 当前为2.0</p>
+<p>2. cd server</p>
+<p>3. 按config.xml中的说明进行参数修改</p>
+<p>4. python collect.py start 开始数据收集(也可python collect.py -h 查看运行方式)</p>
+<p>5. 注意查看log (log 默认为config.log)</p>
+<p>6. 如需收集机器的系统资源使用, 可查看python machine.py -h 来启动</p>
+<br>
+<p>三、展示说明</p>
+<p>1. 打开<a href="http://tb037x.corp.youdao.com:28081/m_perfTest/m_EasePerf/">web页面</a></p>
+<p>2. 在配置页中按ldap(其中一项为Machine表示机器资源), product, cubename, time和graph来选取需要观察的项, 点击"查看"按钮即可在"图表"页中查看图形结果, 也可在"表格"页中查看summary结果</p>

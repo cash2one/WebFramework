@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/outfox/!svn/ver/416800/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/milestones/1.1/php
+END
+export_selected_conf.php
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/outfox/!svn/ver/416800/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/milestones/1.1/php/export_selected_conf.php
+END
+create_user_dir.php
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/outfox/!svn/ver/416800/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/milestones/1.1/php/create_user_dir.php
+END
+settings.php
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/outfox/!svn/ver/416800/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/milestones/1.1/php/settings.php
+END
+stop_deploy.php
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/outfox/!svn/ver/416800/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/milestones/1.1/php/stop_deploy.php
+END
+read_user_list.php
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/outfox/!svn/ver/416800/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/milestones/1.1/php/read_user_list.php
+END
+save_selected_conf.php
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/outfox/!svn/ver/416800/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/milestones/1.1/php/save_selected_conf.php
+END
+read_conf_list.php
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/outfox/!svn/ver/416800/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/milestones/1.1/php/read_conf_list.php
+END
+deploy_entry.php
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/outfox/!svn/ver/416800/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/milestones/1.1/php/deploy_entry.php
+END
+delete_selected_conf.php
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/outfox/!svn/ver/416800/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/milestones/1.1/php/delete_selected_conf.php
+END
+ldap.php
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/outfox/!svn/ver/416800/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/milestones/1.1/php/ldap.php
+END
+log.php
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/outfox/!svn/ver/416800/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/milestones/1.1/php/log.php
+END
+create_new_conf.php
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/outfox/!svn/ver/416800/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/milestones/1.1/php/create_new_conf.php
+END
+step_help.php
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/outfox/!svn/ver/416800/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/milestones/1.1/php/step_help.php
+END
+rename_selected_conf.php
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/outfox/!svn/ver/416800/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/milestones/1.1/php/rename_selected_conf.php
+END
+encrypt.php
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/outfox/!svn/ver/416800/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/milestones/1.1/php/encrypt.php
+END
+copy_selected_conf.php
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/outfox/!svn/ver/416800/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/milestones/1.1/php/copy_selected_conf.php
+END
+read_selected_conf.php
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/outfox/!svn/ver/416800/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/milestones/1.1/php/read_selected_conf.php
+END

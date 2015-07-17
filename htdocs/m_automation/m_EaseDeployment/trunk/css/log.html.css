@@ -1,0 +1,62 @@
+a.log_link {
+    font-size: 0.83em;
+    color: #4488ff;
+    text-decoration: none;
+}
+a.log_link:hover {
+    text-decoration: underline;
+}
+div.contents_log {
+    font-size: 0.9em;
+}
+#回到顶部{ 
+
+display:block;  
+
+width:50px; 
+
+height:50px;
+
+background-image:url(images/backToTop.gif);
+
+position:fixed;  
+
+bottom:50px;  
+
+right:40px; 
+
+border-radius:10px 10px 10px 10px;   
+
+text-decoration:none;  
+
+display:none;  
+
+background-color:#999999;     
+
+}
+
+#回到顶部 span{ 
+
+display:block; 
+
+width:60px; 
+
+color:#dddddd; 
+
+} 
+
+#回到顶部 span:hover{ 
+
+color:#cccccc; 
+
+} 
+
+#gotop span{ 
+
+font-size:40px; 
+
+text-align:center; 
+
+margin-top:4px; 
+
+}

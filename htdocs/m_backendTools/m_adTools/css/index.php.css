@@ -1,0 +1,26 @@
+body {
+    padding: 5px 10px 5px 10px;
+}
+
+h4 {
+    display: inline;
+}
+
+div.yui3-g{
+    border-top: 1px solid #95B8E7;
+    height: 96%;
+}
+
+div.mycontainer {
+    height: 100%;
+    overflow:hidden;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* font-size: 0.8em; */
+}
+
+div#file_content {
+    border-left: 1px solid #95B8E7;
+    border-right: 1px solid #95B8E7;
+}

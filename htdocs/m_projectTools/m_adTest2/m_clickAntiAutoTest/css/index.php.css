@@ -1,0 +1,12 @@
+h2 {
+    display: inline;
+}
+
+body a#readme {
+    font-size: 0.9;
+    text-decoration: none;
+}
+
+body a#readme:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,178 @@
+body {
+    background-color: #20B2AA;
+    margin-left: 0px;
+    overflow-y: hidden;
+}
+
+h3#title {
+    color: #4169E1;
+    display: inline-block;
+    margin: 0px 20px 10px 8px;
+}
+
+div#title2 {
+    color: #8A2BE2;
+    display: inline-block;
+    font-size: 0.8em;
+}
+
+div#title2 a {
+    text-decoration: none;
+}
+div#title2 a:hover {
+    text-decoration: underline;
+}
+
+div#filePath {
+    color: #4169E1;
+    margin-left: 8px;
+    font-size: 0.8em;
+}
+div#filePath span  {
+    text-decoration: underline;
+}
+
+div#content {
+    letter-spacing:-0.31em;
+	*letter-spacing:normal;
+	word-spacing:-0.43em;
+    margin: 5px 0px 5px 0px;
+}
+
+div#content div.sub {
+	zoom:1;
+	letter-spacing:normal;
+	word-spacing:normal;
+	vertical-align:top;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px 5px 10px 5px;
+}
+
+div#content div.sub a {
+    text-decoration: none;
+}
+
+div#content div.sub a:hover {
+    text-decoration: underline;
+}
+
+div#content div.view1 {
+	display:inline-block;
+	*display:inline;
+    height: 91%;
+}
+
+div#tree_navbar {
+    border: 1px solid #BABABA;
+    width: 20px;
+    background-color: #7B68EE;
+}
+
+div#file_content {
+    border-top: 1px solid #BABABA;
+    border-bottom: 1px solid #BABABA;
+    width: 66%;
+    /* background-color: #6495ED; */
+    background-color: #222;
+    color: #F5FFFA;
+    margin: 0px 3px 0px 3px;
+
+    white-space: -moz-pre-wrap; /* Mozilla, supported since 1999 */
+    white-space: -pre-wrap; /* Opera 4 - 6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    white-space: pre-wrap; /* CSS3 - Text module (Candidate Recommendation) http://www.w3.org/TR/css3-text/#white-space */
+    word-wrap: break-word; /* IE 5.5+ */
+}
+
+div#note_content {
+    border: 1px solid #BABABA;
+    width: 30%;
+    /* background-color: #3CB371; */
+    background-color: #7B68EE;
+}
+
+div#tree_content {
+    position: fixed;
+    background: #7B68EE;
+    display: none;
+    top: 70px;
+    border: solid 2px #DCDCDC;
+    height: 87%;
+    width: 380px;
+}
+
+div#file_content span.idx_span {
+    padding-right: 5px;
+}
+
+div#file_content span.func {
+    color: red;
+    font-weight: bold;
+}
+
+div#file_content div.file_line {
+    display: block;
+    margin-bottom: 3px;
+}
+
+div#n_add {
+    display: none;
+}
+
+div#note_content div.note {
+    margin-bottom: 10px;
+}
+
+div#note_content div#title input {
+    margin-top: 10px;
+    width: 95%;
+}
+
+div#note_content div#user_input textarea {
+    margin-top: 10px;
+    width: 95%;
+    height: 300px;
+}
+
+div#note_content div#detail_type div {
+    display:none;
+}
+
+div#note_content textarea,
+div#note_content input,
+div#note_content select {
+    background: #E0FFFF;
+}
+
+span#func_assist {
+    font-size: 0.8em;
+    display: none;
+}
+
+span#func_assist .show_it {
+    display: inline-block;
+}
+
+div#history_items ul {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+div#history_items ul li a {
+    font-size: 0.6em;
+}
+div#history_items ul li a.selected {
+    font-weight: bold;
+}
+
+div.note_func,
+div.note_tts {
+    display: none;
+}
+
+div.note3 {
+    overflow:auto;
+    padding:10px;
+    background-color: #E0FFFF;
+}

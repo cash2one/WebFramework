@@ -1,0 +1,85 @@
+yout */
+.yui3-g {
+    letter-spacing:-0.31em;
+    *letter-spacing:normal;
+    word-spacing:-0.43em;
+    /* font-size: 0.8em; */
+}
+
+.yui3-u-1-1,
+.yui3-u-1-2,
+.yui3-u-1-3,
+.yui3-u-1-4,
+.yui3-u-1-5,
+.yui3-u-1-6,
+.yui3-u-1-7,
+.yui3-u-1-8,
+.yui3-u-2-3,
+.yui3-u-2-4,
+.yui3-u-3-4,
+.yui3-u-4-5 {
+    zoom:1;
+    display:inline;
+    letter-spacing:normal;
+    word-spacing:normal;
+    vertical-align:top;
+}
+
+		.yui3-u-1{display:block;}
+		.yui3-u-1-1 {width:100%;}
+		.yui3-u-1-2 {width:50%;}
+		.yui3-u-1-3 {width:33.333333%;}
+		.yui3-u-1-4 {width:50%;}
+		.yui3-u-1-5 {width:20%;}
+		.yui3-u-1-6 {width:16.666667%;}
+		.yui3-u-1-7 {width:14.285714%;}
+		.yui3-u-1-8 {width:12.5%;}
+		.yui3-u-2-3 {width:66.666667%;}
+		.yui3-u-2-4 {width:50%;}
+		.yui3-u-1-5 {width:20%;}
+		.yui3-u-3-4 {width:75%;}
+		.yui3-u-4-5 {width:80%;}
+
+.yui3-hor {
+    display:inline;
+    zoom:1; 
+    letter-spacing:normal;
+    word-spacing:normal;
+    vertical-align:top;
+}
+.yui3-right {
+    float:right;
+}
+h3 {
+    margin-bottom: 2px;
+}
+#toolbar {
+    font-size: 1.4em;
+    margin-top: 10px;
+    height: 1.4em;
+    display:inline;
+    overflow-x:hidden;
+}
+#columnum {
+    display:inline;
+    right:30px;
+    width: 120px;
+    max-width: 25%;
+}
+#time_list {
+    width: 100;
+    max-width:10%;
+}
+#directvisiturl {
+    width: 160;
+    max-width: 20%;
+}
+.manual {
+    width: 140;
+    max-width: 65%;
+}
+#loadingtip{
+    position: absolute;
+    font-size: 1.4em;
+    background: LightGrey ;
+}

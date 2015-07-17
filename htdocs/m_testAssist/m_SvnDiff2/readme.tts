@@ -1,0 +1,9 @@
+【功能说明】
+1. 通过给定两个版本的SVN 地址来查看这两个版本之间的差异
+2. 显示的结果可以去掉单元测试的java文件
+3. 输出的内容是格式化的，与rb类似
+
+【contact】
+Author: 张培
+Email: zhangpei@rd.netease.com
+desktop-phone: 9723

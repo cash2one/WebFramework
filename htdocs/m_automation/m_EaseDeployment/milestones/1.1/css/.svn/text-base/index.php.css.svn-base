@@ -1,0 +1,41 @@
+div#setting_bar {
+    text-align: right;
+    padding-right: 20px;
+    padding-bottom: 5px;
+}
+
+tbody#user-conf-list td {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+a.op_link {
+    text-decoration: none;
+    color: #4488ff;
+}
+
+a.op_link:hover {
+    text-decoration: underline;
+}
+
+tr.myDragClass td {
+    color: yellow;
+    background-color: black;
+}
+
+a.save_all,
+a.check_conf{
+    font-size: 0.8em;
+    text-decoration: none;
+    color: #4488ff;
+    float: right;
+}
+
+a.save_all:hover {
+    text-decoration: underline;
+}
+a.check_conf:hover {
+    text-decoration: underline;
+}

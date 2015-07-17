@@ -1,0 +1,15 @@
+div#tabs-members table tr td {
+    text-align:center;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+table td div {
+    display: none;
+}

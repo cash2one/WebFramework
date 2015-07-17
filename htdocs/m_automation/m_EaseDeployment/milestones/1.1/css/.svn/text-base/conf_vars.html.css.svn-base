@@ -1,0 +1,31 @@
+a.var_link {
+    color: #4488ff;
+    font-size: 0.8em;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    text-decoration: none;
+}
+
+a.var_link:hover {
+    text-decoration: underline;
+}
+
+pre.var_help {
+    background-color: yellow; 
+    border:0;
+    font-size: 0.77em;
+    font-family:arial;
+}
+
+a.vars_help{
+    font-size: 0.8em;
+    text-decoration: none;
+    color: #4488ff;
+    float: right;
+}
+
+a.vars_help:hover{
+    text-decoration: underline;
+}

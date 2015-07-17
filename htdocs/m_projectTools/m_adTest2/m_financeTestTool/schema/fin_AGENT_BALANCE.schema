@@ -1,0 +1,20 @@
+[_table_]
+name = 代理商余额表
+primary_key = AGENT_ID
+field_list = AGENT_ID,ACTUAL_BALANCE,VIRTUAL_BALANCE,COST_FLOW
+
+[AGENT_ID]
+name = 代理商ID
+readable_map = 
+
+[ACTUAL_BALANCE]
+name = 实际余额
+readable_map = 
+
+[VIRTUAL_BALANCE]
+name = 体验金余额
+readable_map = 
+
+[COST_FLOW]
+name = 消费流
+readable_map = 

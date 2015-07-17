@@ -1,0 +1,55 @@
+body {
+    line-height: 1.5em;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 14px;
+    color: #000000;
+    background: #f2e7ca url(images/templatemo_body.jpg) top center no-repeat;
+}
+
+table {
+    width: 80%;
+}
+
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+table#add_table tr th {
+    text-align: right;
+    width: 80px;
+}
+
+table#add_table .full_td {
+    width: 100%;
+}
+
+table#add_table textarea {
+    height: 100px;
+}
+
+div.desc {
+    background: yellow;
+}
+
+ul li {
+    border-bottom: 1px solid #aa4488;
+    padding: 5px;
+    cursor: hand;
+}
+
+ul li.first {
+    border-top: 1px solid #aa4488;
+}
+
+pre {
+    font-size: 8pt;
+    line-height: 140%;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+}

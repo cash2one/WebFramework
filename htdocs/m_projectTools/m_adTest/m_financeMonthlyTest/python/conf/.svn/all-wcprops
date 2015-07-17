@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/outfox/!svn/ver/428460/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/conf
+END
+SPONSOR_MONTHLY_SETTLEMENT.schema
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/svn/outfox/!svn/ver/428438/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/conf/SPONSOR_MONTHLY_SETTLEMENT.schema
+END
+SPONSOR_MONTHLY_DISCOUNT.schema
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/svn/outfox/!svn/ver/412871/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/conf/SPONSOR_MONTHLY_DISCOUNT.schema
+END
+Log_DA.schema
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/outfox/!svn/ver/413604/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/conf/Log_DA.schema
+END
+CLICK.schema
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/outfox/!svn/ver/419182/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/conf/CLICK.schema
+END
+AD_CLICK_CHARGE_UP_PROGRESS.schema
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/svn/outfox/!svn/ver/417972/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/conf/AD_CLICK_CHARGE_UP_PROGRESS.schema
+END
+SPONSOR_TODAY_COST.schema
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/outfox/!svn/ver/419181/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/conf/SPONSOR_TODAY_COST.schema
+END
+Log_DA_SIM.schema
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/outfox/!svn/ver/417232/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/conf/Log_DA_SIM.schema
+END
+SPONSOR_ACCOUNT_HISTORY.schema
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/svn/outfox/!svn/ver/428460/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/conf/SPONSOR_ACCOUNT_HISTORY.schema
+END
+Sponsor.schema
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/outfox/!svn/ver/409381/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/conf/Sponsor.schema
+END
+finance_deploy.conf
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/outfox/!svn/ver/410485/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/conf/finance_deploy.conf
+END
+SPONSOR_MONTHLY_DISCOUNT_DETAIL.schema
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/svn/outfox/!svn/ver/409316/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/conf/SPONSOR_MONTHLY_DISCOUNT_DETAIL.schema
+END
+SPONSOR_BALANCE.schema
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/outfox/!svn/ver/409316/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/conf/SPONSOR_BALANCE.schema
+END
+SPONSOR_MONTHLY_CONTRACT.schema
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/svn/outfox/!svn/ver/428436/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/conf/SPONSOR_MONTHLY_CONTRACT.schema
+END
+SPONSOR_DAILY_COST.schema
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/outfox/!svn/ver/419179/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/conf/SPONSOR_DAILY_COST.schema
+END
+SPONSOR_BALANCE_CHANGE.schema
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/svn/outfox/!svn/ver/421200/incubator/Test/WebFramework/htdocs/m_projectTools/m_adTest/m_financeMonthlyTest/python/conf/SPONSOR_BALANCE_CHANGE.schema
+END

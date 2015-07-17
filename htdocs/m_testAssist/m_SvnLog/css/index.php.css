@@ -1,0 +1,41 @@
+table#log_tbl {
+    width: 80%;
+}
+
+table tr th {
+    text-align: left;
+}
+
+input#svn_url_input {
+    width: 80%;
+}
+
+th.choice {
+    width: 50;
+}
+
+th.version {
+    width: 50;
+}
+
+th.user {
+    width: 50;
+}
+
+th.time {
+    width: 150px;
+}
+
+hr {
+    display: inline-block;
+    width: 90%;
+}
+
+a.open_close_tag {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a.open_close_tag:hover {
+    text-decoration: underline;
+}

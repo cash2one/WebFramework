@@ -1,0 +1,193 @@
+<h3>Test groups</h3>
+<pre>
+   * 关于测试组：TestNG容许执行复杂的测试方法分组。不仅可以申明方法属于组，而且可以指定分组包含其他分组。然后TestNG可以被调用，并被要求包含某些分组和排除其他的分组。
+   * 这将提供怎样划分测试的最大弹性，并且如果想运行两个不同的测试装置不需要重新编译。
+      * Check-in tests.这些测试将在提交新代码之前运行.它们典型的被要求快速而且仅仅确认没有基础功能被破坏。
+      * Functional tests.这些测试将覆盖所有的软件功能，并且必须运行至少1天，尽管理想的是连续运行. 
+   * 基本分组：<a target=_blank href="demos/src/demo_02">demo_02</a>
+   * 正则运行分组：<a target=_blank href="demos/src/demo_03">demo_03</a>
+   * 方法正则分组: <a target=_blank href="demos/src/demo_04">demo_04</a>
+</pre>
+
+<h3>包含组的组</h3>
+<pre>
+    * 组可以包含其他组。这些组被称为"MetaGroups"。例如，你可能想定义一个"all"组，包括"checkintest"和"functest"。"functest"自身将包含组
+      "windows" 和 "linux"，而"checkintest"将包含"windows".
+    * 实例: <a target=_blank href="demos/src/demo_05">demo_05</a>
+</pre>
+
+<h3>排除组</h3>
+<pre>
+    * 当由因为最近的修改而临时破坏的测试而又没有时间去修复它们时非常有用。
+      无论如何，你想要干净的运行功能性测试，因此你想要是这些测试失效，但是记住它们重新被激活。
+    * 实例: <a target=_blank href="demos/src/demo_06">demo_06</a>
+       * 用这种方法，我将得到一个干净的测试运行，同时记录了那些被破坏并想要后续修复的测试。
+       * 注意：你也可以通过使用在@Test and @Before/After annotations上的"enabled"属性在个体的层面上关闭测试，
+</pre>
+
+<h3>类的级别上定义组</h3>
+<pre>
+    * 你可以在类的级别上定义组，然后在方法的层次上添加组：
+@Test(groups = { "func-test" })  
+public class All {  
+  @Test(groups = { "checkin-test"} )  
+  public void method1() { ... }  
+  public void method2() { ... }  
+}  
+</pre>
+
+<h3>数据驱动测试</h3>
+<pre>
+   * 测试方法不要求是无参数的。你可以在每个测试方法上使用任意数量的参数，并指示testNG传递正确的参数。
+   * 有两种方式用于设置参数：使用testng.xml或者编程式。
+   * testng.xml模式
+      * 在xml文件中指定参数: <a target=_blank href="demos/src/demo_07">demo_07</a>
+      * in suite or test node: format:  &lt;parameter name="first-name" value="Cedric"/&gt;
+      * 同样的方法可以用于注解@Before/After和@Factory
+   * 可选注解
+@Parameters("db")
+@Test
+public void testNonExistentParameter(@Optional("mysql") String db) {  }
+   * 如果在testng.xml文件中没有找到名为"db"的参数，测试方法将接受在@Optional注解中指定的默认值："mysql"
+
+   * @Parameters 注解可以在下面位置使用：
+      * 在任何有@Test, @Before/After或者@Factory注解的方法上
+      * 在测试类的最多一个构造函数上。这种情况下，当TestNG需要实例化测试类时，他将调用这个特别的带有初始化为testng.xml中指定的值的参数的构造函数。
+        这个特性可以被用于初始化类内部的值域为将用于测试方法的值。
+   * 注意
+      * xml参数被以在注解中出现的相同顺序映射到java参数，如果参数数量不匹配testNG将发生错误。
+      * 参数是有范围的。在testng.xml中，你可以在<suite>标签或者<test>标签下声明参数。
+        如果两个参数同名，在<test>标签下定义的参数优先。非常适用于这样的场合：需要指定一个应用于所有测试的参数，但是又希望在特定测试用覆盖它的值。
+</pre>
+
+<h3>数据驱动测试2</h3>
+<pre>
+   * 通过testng.xml指定参数，有缺点：
+      * 测试不适用testng.xml
+      * 需要传递复杂参数，或者参数需要从java中创建
+   * Parameters with DataProviders
+      * 在xml文件中指定参数: <a target=_blank href="demos/src/demo_08">demo_08</a>
+   * 默认，将在当前类或者它的基类中查找data provider。如果你想将data provider放置到另一个类中，需要将这个data provider方法设置为静态方法，
+     并在dataProviderClass属性中指定在哪个类中可以找到这个方法。
+   * Data Provider方法将返回下面两个类型中的一种：
+      * 对象数组的数组(Object[][]),外围数据的大小是测试方法将被调用的次数，而内层数组的大小和类型必须和测试方法的参数列表匹配。
+      * <Object[]>的Iterator,和Object[][]的唯一差别在于Iterator容许延迟创建测试数据。
+        testNG将一个接一个的调用iterator，再用iterator返回的参数调用测试方法。如果有很多参数集合需要传递给方法而又不想一开始就创建所有参数，会非常有用。
+   * 如果将测试方法的第一个参数申明为java.lang.reflect.Method，TestNG将使用这个第一个参数来传递当前测试方法。
+     当多个测试方法使用同一个@DataProvider而需要依当前申请数据的方法而定来返回不同值时特别有用。
+      * 通过DataProvider参数: <a target=_blank href="demos/src/demo_09">demo_09</a>
+</pre>
+
+<h3>方法/组依赖</h3>
+<pre>
+   * 有些时候，你需要你的测试方法按照一个特定的顺序被调用。
+      * 在运行更多测试方法前确认特定数量的测试方法调用完成并且成功
+      * 初始化测试并希望这个初始化方法也作为测试方法（被标记为@Before/After的方法将不作为最终报告的一部分）
+      * 解决：需要使用@Test注解的dependsOnMethods属性或者dependsOnGroups属性。
+   * 有两种依赖：
+      * 强依赖,在运行你的测试方法前所有依赖方法必须运行并且成功。哪怕有一个依赖方法失败，测试方法都不会被调用，在报告中将被标记为SKIP。
+      * 软依赖。测试方法在依赖方法运行后总是会被运行，即使某些依赖方法失败
+        (对于只想确认测试方法是按照特定顺序运行，而测试方法并不真正依赖其他方法是否成功的情况)
+         * 软依赖通过在@Test注解中增加"alwaysRun=true"来实现。
+      * 强依赖: <a target=_blank href="demos/src/demo_10">demo_10</a>
+   * 如果一个方法的依赖失败了，而且是强依赖(默认alwaysRun=false)，这个方法将不被标记为FAIL而是SKIP。
+     被跳过的方法在最终的报告中报告（在HTML中用红和绿之外的其他颜色）
+      * 对于dependsOnMethods,
+      * 如果你依赖的方法巧合有多个重载的版本，所有装载的方法都将被调用。如果你只想调用重载的方法中的一个，请使用dependsOnGroups。
+   * 方法依赖阅读扩展：<a href="http://beust.com/weblog/2004/08/19/dependent-test-methods/">Dependent test methods</a>
+</pre>
+
+<h3>XML中设置依赖</h3>
+<pre>
+    * 使用dependencies标签
+&lt;test name="My suite"&gt;
+  &lt;groups&gt;
+    &lt;dependencies&gt;
+      &lt;group name="c" depends-on="a  b" /&gt;
+      &lt;group name="z" depends-on="c" /&gt;
+    &lt;/dependencies&gt;
+  &lt;/groups&gt;
+&lt;/test&gt;
+</pre>
+
+<h3>工厂类</h3>
+<pre>
+   * 场景：工厂类容许你动态创建测试案例。例如，想象你需要创建一个测试方法，访问一个web站点上的页面很多次，而你希望用不同的值来调用它：
+        public class TestWebServer {  
+            @Test(parameters = { "number-of-times" })  
+            public void accessPage(int numberOfTimes) {  
+                while (numberOfTimes-- > 0) {  
+                    // access the web page  
+                }  
+            }  
+        }  
+        
+        testng.xml:
+        &lt;test name="T1"&gt;  
+            &lt;parameter name="number-of-times" value="10"/&gt;  
+            &lt;class name= "TestWebServer" /&gt;  
+        &lt;/test&gt;  
+        &lt;test name="T2"&gt;  
+            &lt;parameter name="number-of-times" value="20"/&gt;  
+            &lt;class name= "TestWebServer"/&gt;  
+        &lt;/test&gt;  
+        &lt;test name="T3"&gt;  
+            &lt;parameter name="number-of-times" value="30"/&gt;  
+            &lt;class name= "TestWebServer"/&gt;  
+        &lt;/test&gt;  
+        
+        => 这种方式很快就会变的难于管理，所以作为替换品，你可以使用factory:
+   * 工厂类: <a target=_blank href="demos/src/demo_11">demo_11</a>
+   * testng.xml只需要引用简单引用这个包含factory方法的类，因为测试实例将在运行时被创建。
+      * &lt;class name="WebTestFactory" /&gt;
+      * 工厂类将像@Test和@Before/After一样接收参数，必须返回Object[]。
+</pre>
+
+<h3>使用dataProvider的工厂类</h3>
+<pre>
+   * 工厂类可以和DataProvider组合使用，可以把@Factory注解放到一个普通函数或者构造函数上面
+@Factory(dataProvider = "dp")
+public FactoryDataProviderSampleTest(int n) {
+  super(n);
+}
+ 
+@DataProvider
+static public Object[][] dp() {
+  return new Object[][] {
+    new Object[] { 41 },
+    new Object[] { 42 },
+  };
+}
+
+</pre>
+
+<h3>类级别的注解</h3>
+<pre>
+   * 类级别注解的效果是将这个类的所有的public方法都变成测试方法，即使他们没有被注解。还可以在需要增加属性的方法上重复@Test注解。
+     @Test  
+     public class Test1 {  
+        public void test1() {  
+        }  
+        @Test(groups = "g1")  
+        public void test2() {  
+        }  
+    }  
+</pre>
+
+<h3>并行执行和超时</h3>
+<pre>
+   * 可以通过使用parallel属性要求TestNG在单独的线程中运行测试。这个属性可以在两个值中取其一：
+      * parallel="methods":TestNG将在单独的线程中运行测试方法，除了那些依赖其他测试方法的，这些将在同一个线程中运行，以保证他们的执行顺序。
+         * &lt;suite name="My suite" parallel="methods" thread-count="5"&gt;
+      * parallel="tests": TestNG将在一个线程中运行所有在同一个<test>标签中的测试方法，但是每个<test>标签将在单独的线程中运行。
+        这种方式容许把所有不是线程安全的类分组到相同的<test>标签中，保证他们将在相同的线程中运行，有利于TestNG使用尽可能多的线程来运行测试。
+         * &gt;suite name="My suite" parallel="tests" thread-count="5"&lt;
+      * thread-count属性容许指定运行时将分配多少线程。
+      * @Test的属性timeOut在并发和非并发模型下都可以工作。
+   * 可以指定@Test方法在不同的线程中被调用,可以使用threadPoolSize属性来实现这样的结果：
+      * @Test(threadPoolSize = 3, invocationCount = 10,  timeOut = 10000)
+        public void testServer() {}
+      * 方法testServer将被3个不同线程调用10次。此外，10秒种的time-out属性保证任何线程都不会长时间阻塞。
+
+   * 扩展阅读：http://testng.org/doc/documentation-main.html#parallel-running
+</pre>

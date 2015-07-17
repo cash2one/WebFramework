@@ -1,0 +1,64 @@
+#!/usr/bin/expect -f
+#Author: kuyan@rd.netease.com
+    
+# 获取所有的参数
+    set timeout 5
+    set username [lindex $argv 0]
+    set deployuser [lindex $argv 1]
+    set key [lindex $argv 2]
+    set password [lindex $argv 3]
+    set cmd [lindex $argv 4]
+
+# 获取当前用户与当前机器
+    set who [exec "whoami"]
+    set host [exec sh -c "hostname|awk -F '.' '{print \$1}'"]
+    #send_user "host:$host"     
+
+# 解密密码
+    set keylen [exec echo $key | wc -m]
+    if { $keylen > 50 } {
+        set key [exec python encrypt.py $key]
+    }
+    set passlen [exec echo $password | wc -m]
+    if { $passlen > 50 } {
+        set password [exec python encrypt.py $password]
+    }
+
+    #send_user "key:$key"
+    #send_user "password:$password"
+    #send_user "cmd:$cmd"
+# 转换成个人帐户
+    spawn su $username
+    exec sleep 1
+    while {1} {
+        expect {
+        "Password:" {send "$key\r"}
+        "Store password unencrypted (yes/no)?"  {send "no\r"}
+        "]\\$" {
+            # 转换成公共帐户
+            if { $username != $deployuser} {
+                send "ssh $deployuser@$host\r"
+                exec sleep 2
+                expect "]\\$"
+            }
+            send "$cmd\r" 
+            break
+        }
+        }
+    }
+
+# 处理svn命令中的交互
+    while {1} {
+        expect {
+        "Password for \'$who\':" {send "$password\r"}
+        "Password for \'$deployuser\':" {send "$password\r"}
+        "Username:" {send "$username\r"}
+        "Password for \'$username\':" {send "$password\r"}
+        "Store password unencrypted (yes/no)?"  {send "no\r"}
+        "(R)eject, accept (t)emporarily or accept (p)ermanently?"  {send "t\r"}
+        "(R)eject or accept (t)emporarily?"  {send "t\r"}
+        "]\\$" {
+            send "exit\r"
+            break }
+        }
+    }

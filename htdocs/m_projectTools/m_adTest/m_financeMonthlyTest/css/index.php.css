@@ -1,0 +1,29 @@
+a {
+    text-decoration: none;
+    font-size: 0.8em;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+input#sponsor_id2,
+input#sponsor_id {
+    width: 50px;
+}
+
+div#deploy_conf {
+    font-size: 0.8em;
+}
+
+input#finance_host {
+    width: 150px;
+}
+
+input#finance_dir {
+    width: 50%;
+}
+
+div#nav_bar table th {
+    padding:3px;
+}

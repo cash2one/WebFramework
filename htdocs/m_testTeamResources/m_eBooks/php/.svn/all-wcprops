@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/outfox/!svn/ver/494742/incubator/Test/WebFramework/htdocs/m_testTeamResources/m_eBooks/php
+END
+book_delete.php
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/outfox/!svn/ver/493320/incubator/Test/WebFramework/htdocs/m_testTeamResources/m_eBooks/php/book_delete.php
+END
+save_name.php
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/outfox/!svn/ver/493335/incubator/Test/WebFramework/htdocs/m_testTeamResources/m_eBooks/php/save_name.php
+END
+book_edit.php
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/outfox/!svn/ver/493471/incubator/Test/WebFramework/htdocs/m_testTeamResources/m_eBooks/php/book_edit.php
+END
+read_user_info.php
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/outfox/!svn/ver/494742/incubator/Test/WebFramework/htdocs/m_testTeamResources/m_eBooks/php/read_user_info.php
+END
+download.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/outfox/!svn/ver/494741/incubator/Test/WebFramework/htdocs/m_testTeamResources/m_eBooks/php/download.php
+END
+sqlite_lib.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/outfox/!svn/ver/493335/incubator/Test/WebFramework/htdocs/m_testTeamResources/m_eBooks/php/sqlite_lib.php
+END
+update_book_info.php
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/outfox/!svn/ver/493335/incubator/Test/WebFramework/htdocs/m_testTeamResources/m_eBooks/php/update_book_info.php
+END
+read_books.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/outfox/!svn/ver/494741/incubator/Test/WebFramework/htdocs/m_testTeamResources/m_eBooks/php/read_books.php
+END

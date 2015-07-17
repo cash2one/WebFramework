@@ -1,0 +1,29 @@
+h2 {
+    display: inline;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+div.easyui-accordion {
+    width: 100%;
+    height: auto;
+}
+
+div.content {
+    padding: 10px;
+}
+
+div h3 {
+    color:#0099FF; 
+}
+
+div pre.code{
+    background-color: #AA9900;
+    padding: 5px;
+}

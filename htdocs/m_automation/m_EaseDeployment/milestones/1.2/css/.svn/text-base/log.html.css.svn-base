@@ -1,0 +1,12 @@
+a.log_link {
+    font-size: 0.83em;
+    color: #4488ff;
+    text-decoration: none;
+}
+a.log_link:hover {
+    text-decoration: underline;
+}
+div.contents_log {
+    font-size: 0.9em;
+}
+

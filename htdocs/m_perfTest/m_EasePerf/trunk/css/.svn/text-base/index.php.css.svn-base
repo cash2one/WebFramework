@@ -1,0 +1,37 @@
+h3 {
+    margin-bottom: 2px;
+}
+#toolbar {
+    font-size: 1.4em;
+    margin-top: 10px;
+    height: 1.4em;
+    display:inline;
+    overflow-x:hidden;
+}
+#columnum {
+    display:inline;
+    right:30px;
+    width: 120px;
+    max-width: 25%;
+}
+#time_list {
+    width: 100;
+    max-width:10%;
+}
+#realtime {
+    width: 80;
+    max-width:8%;
+}
+#directvisiturl {
+    width: 160;
+    max-width: 20%;
+}
+.manual {
+    width: 140;
+    max-width: 65%;
+}
+#loadingtip{
+    position: absolute;
+    font-size: 1.4em;
+    background: LightGrey ;
+}

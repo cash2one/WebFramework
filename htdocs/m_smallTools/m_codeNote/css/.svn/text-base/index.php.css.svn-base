@@ -1,0 +1,48 @@
+table#new_index_table,
+table#update_index_table {
+    width: 100%;
+}
+
+table#new_index_table th,
+table#update_index_table th {
+    width: 80px;
+}
+
+table#new_index_table input[type=text],
+table#update_index_table input[type=text] {
+    width: 100%;
+}
+
+
+table#new_note_table,
+table#update_note_table {
+    width: 100%;
+}
+
+table#new_note_table th,
+table#update_note_table th {
+    width: 80px;
+}
+
+table#new_note_table textarea,
+table#new_note_table input[type=text],
+table#update_note_table textarea,
+table#update_note_table input[type=text] {
+    width: 100%;
+}
+
+table#note_list_table {
+    width: 100%;
+}
+
+tbody#note_list_tbody td.update_time {
+    width:170px;
+}
+
+tbody#note_list_tbody td.op_str {
+    width:150px;
+}
+
+b {
+    color: red;
+}

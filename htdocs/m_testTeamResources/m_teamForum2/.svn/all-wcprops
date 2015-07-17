@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/outfox/!svn/ver/517171/incubator/Test/WebFramework/htdocs/m_testTeamResources/m_teamForum2
+END
+deploy_resin.sh
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/outfox/!svn/ver/517093/incubator/Test/WebFramework/htdocs/m_testTeamResources/m_teamForum2/deploy_resin.sh
+END
+index.php
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/outfox/!svn/ver/517171/incubator/Test/WebFramework/htdocs/m_testTeamResources/m_teamForum2/index.php
+END
+resin.conf.template
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/outfox/!svn/ver/517171/incubator/Test/WebFramework/htdocs/m_testTeamResources/m_teamForum2/resin.conf.template
+END

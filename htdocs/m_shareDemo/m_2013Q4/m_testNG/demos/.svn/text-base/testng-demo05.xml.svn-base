@@ -1,0 +1,29 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+  
+<suite name="Suite1" verbose="1" >
+<test name="Regression1">  
+  <groups>  
+    <define name="functest">  
+      <include name="windows.*"/>  
+      <include name="linux.*"/>  
+    </define>  
+
+    <define name="checkintest">  
+      <include name="windows.*"/>  
+    </define>  
+   
+    <define name="all">  
+      <include name="functest"/>  
+      <include name="checkintest"/>  
+    </define>  
+   
+    <run>  
+      <include name="all"/>  
+    </run>  
+  </groups>  
+   
+  <classes>  
+    <class name="demos.Demo05"/>  
+  </classes>  
+</test>  
+</suite>

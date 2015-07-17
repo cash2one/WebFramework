@@ -1,0 +1,8 @@
+web端部署时使用的server环境：
+    服务路径：/global/share/test/deploy_web/
+    部署方法：直接下载最新的svn代码即可：https://dev.corp.youdao.com/svn/outfox/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/trunk/server
+
+linux机群上shell命令部署时使用的server环境:
+    部署方法：直接下载最新的svn代码后(代码路径同上)，对sysio.py进行如下修改：
+    SCRIPT_PATH = "/global/share/test/deploy"
+    DEPLOY_MODE = "shell"

@@ -1,0 +1,12 @@
+div.mycontainer {
+    overflow:hidden;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+div#diff_content {
+    padding-top: 20px;
+    border-left: 1px solid #95B8E7;
+    padding-left: 10px;
+}

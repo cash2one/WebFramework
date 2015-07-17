@@ -1,0 +1,19 @@
+#!/usr/bin/expect  
+
+set timeout 30
+set ret [exec rm "$current_file$"]
+
+spawn su $username$
+expect "Password:"  
+  
+send "$password$\r"  
+  
+send "$cmd$\r"
+
+expect "Enter passphrase for key*"
+
+send "$password$\r"
+
+#interact
+
+expect eof

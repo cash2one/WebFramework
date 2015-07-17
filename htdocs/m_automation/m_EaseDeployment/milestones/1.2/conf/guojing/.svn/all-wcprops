@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/outfox/!svn/ver/426366/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/milestones/1.2/conf/guojing
+END
+odfs.conf
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/outfox/!svn/ver/426366/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/milestones/1.2/conf/guojing/odfs.conf
+END
+dict_ocr.conf
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/outfox/!svn/ver/426366/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/milestones/1.2/conf/guojing/dict_ocr.conf
+END
+fanyi.conf
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/outfox/!svn/ver/426366/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/milestones/1.2/conf/guojing/fanyi.conf
+END
+dict_server.conf
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/outfox/!svn/ver/426366/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/milestones/1.2/conf/guojing/dict_server.conf
+END
+fanyi_webds.conf
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/outfox/!svn/ver/426366/incubator/Test/WebFramework/htdocs/m_automation/m_EaseDeployment/milestones/1.2/conf/guojing/fanyi_webds.conf
+END

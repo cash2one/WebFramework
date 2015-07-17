@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/outfox/!svn/ver/513029/incubator/Test/WebFramework/htdocs/m_smallTools/m_userEmail/bin
+END
+build.sh
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/outfox/!svn/ver/512910/incubator/Test/WebFramework/htdocs/m_smallTools/m_userEmail/bin/build.sh
+END
+infoExtract.py
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/outfox/!svn/ver/513029/incubator/Test/WebFramework/htdocs/m_smallTools/m_userEmail/bin/infoExtract.py
+END
+extractGroup.py
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/outfox/!svn/ver/434692/incubator/Test/WebFramework/htdocs/m_smallTools/m_userEmail/bin/extractGroup.py
+END
