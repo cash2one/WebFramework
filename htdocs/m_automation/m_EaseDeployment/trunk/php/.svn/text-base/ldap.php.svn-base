@@ -1,9 +1,9 @@
 <?php
  $user = $_GET["username"];
  $ldappass = $_GET["password"];
- $ldaphost = "soda.rd.netease.com";  // your ldap server
+ $ldaphost = "soda.rd.xxx.com";  // your ldap server
  $ldapport = 389;                    // your ldap server's port number
- $ldapuser = "uid=".$user.",ou=people,dc=rd,dc=netease,dc=com";
+ $ldapuser = "uid=".$user.",ou=people,dc=rd,dc=xxx,dc=com";
  // Connecting to LDAP
  $ldapconn = ldap_connect($ldaphost, $ldapport);
  if($ldapconn) {
