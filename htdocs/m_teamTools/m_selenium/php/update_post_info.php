@@ -24,7 +24,7 @@ function send_mail($user_list, $subject, $body, $user) {
     $mail->From     = 'youdao_adtest02@163.com';
     $mail->FromName = 'Selenium分享';
     foreach ($user_list as $ldap_name => $name) {
-        $mail->addAddress($ldap_name . "@rd.netease.com", $name);  // Add a recipient
+        $mail->addAddress($ldap_name . "@rd.xxx.com", $name);  // Add a recipient
     }
 
     $mail->WordWrap = 50;                                 // Set word wrap to 50 characters
