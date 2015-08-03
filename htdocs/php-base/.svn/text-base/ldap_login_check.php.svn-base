@@ -5,7 +5,7 @@ define("LDAP_VER", 3);
 
 $user     = stripslashes($_GET["username"]);
 $ldappass = stripslashes($_GET["password"]);
-$ldaphost = "soda.rd.netease.com"; // your ldap server
+$ldaphost = "mail.com"; // your ldap server
 $ldapport = 389; // your ldap server's port number
 $ldapuser = "uid=" . $user . ",ou=people,dc=rd,dc=netease,dc=com";
 
