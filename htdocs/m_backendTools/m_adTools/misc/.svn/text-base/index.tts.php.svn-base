@@ -15,7 +15,7 @@ $treeIndex = Array(
             "最终会转化成vim /\$proj_path/src/java/outfox/ead/antifrauder/redis.RedisDaoImpl.java"
         ),
         "author" => Array(
-            "email" => "zhangpei@rd.netease.com",
+            "email" => "zhangpei@rd.xxx.com",
             "phone" => "9723",
         ),
         "backlog" => Array(
