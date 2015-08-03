@@ -71,10 +71,10 @@ function UsersCtrl($scope, $timeout, Users, Group) {
         for (var i = 0; i < $scope.users.length; i++) {
             var user = $scope.users[i];
             if (user.to == true) {
-                to += user.ldap + "@rd.netease.com;";
+                to += user.ldap + "@rd.xxx.com;";
             } 
             if (user.cc == true) {
-                cc += user.ldap + "@rd.netease.com;";
+                cc += user.ldap + "@rd.xxx.com;";
             }
         }
 
