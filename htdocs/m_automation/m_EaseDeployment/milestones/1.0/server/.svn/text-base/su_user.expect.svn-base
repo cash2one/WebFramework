@@ -1,5 +1,5 @@
 #!/usr/bin/expect -f
-#Author: kuyan@rd.netease.com
+#Author: kuyan@rd.xxx.com
 
     set timeout 5
     set username [lindex $argv 0]
