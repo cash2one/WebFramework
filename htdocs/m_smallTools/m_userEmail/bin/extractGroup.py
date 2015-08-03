@@ -22,7 +22,7 @@ for line in lines:
 # read lines from src_data_file2
 for line in open(src_data_file2).read().splitlines():
     for ldap, name in output_lines:
-        email_addr = ldap + "@rd.netease.com"
+        email_addr = ldap + "@rd.xxx.com"
         if email_addr in line:
             break
     else:
