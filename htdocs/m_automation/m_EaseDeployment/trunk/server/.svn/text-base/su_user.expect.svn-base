@@ -1,5 +1,5 @@
 #!/usr/bin/expect -f
-#Author: kuyan@rd.netease.com
+#Author: kuyan@rd.xxx.com
     
 # 获取所有的参数
     set timeout 5
