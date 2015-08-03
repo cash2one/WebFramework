@@ -56,8 +56,8 @@ def getBugzillaInfo():
 
     content_str = "".join(temp_lines)
     # get pingying name AND ldap
-    for name, ldap in  re.findall("<option value=\"[^\"]*\">([^>]*?)[ >]&lt;([\w-]+)&#64;rd.netease.com&gt;</option>", content_str):
-        ret_dict[ldap] = name.lower().replace("&#64;rd.netease.com", "").replace("-", "").replace("_", "")
+    for name, ldap in  re.findall("<option value=\"[^\"]*\">([^>]*?)[ >]&lt;([\w-]+)&#64;rd.xxx.com&gt;</option>", content_str):
+        ret_dict[ldap] = name.lower().replace("&#64;rd.xxx.com", "").replace("-", "").replace("_", "")
 
     return ret_dict
 
