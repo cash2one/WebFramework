@@ -140,7 +140,7 @@ class Collect( Daemon ):
         self.phone = self.getText( userInfo, 'phone', False, 'userInfo' )
         self.maxAlarmInterval = self.getText( userInfo, 'maxAlarmInterval', False, 'userInfo' )
         Alarmer.phone=self.phone
-        Alarmer.email=self.ldap+'@rd.netease.com'
+        Alarmer.email=self.ldap+'@rd.xxx.com'
         if self.maxAlarmInterval!='':
             Alarmer.maxAlarmInterval=int(self.maxAlarmInterval)
         self.maxAlarmInterval=Alarmer.maxAlarmInterval
