@@ -1,7 +1,7 @@
 #!/usr/bin/python -u
 # coding=utf-8
 #
-# Authour: kuyan@rd.netease.com
+# Authour: kuyan@rd.xxx.com
 # Created: 2011 Dec 13 Tue 18:26:28 PM CST
 
 import os
