@@ -18,7 +18,7 @@ $treeIndex = Array(
             "如果运行失败了，工具会抛出异常",
         ),
         "author" => Array(
-            "email" => "zhangpei@rd.netease.com",
+            "email" => "zhangpei@rd.xxx.com",
             "phone" => "9723",
         ),
         "backlog" => Array(
@@ -42,7 +42,7 @@ $treeIndex = Array(
             "本地access日志的命名方式：access.log.\$date.\$hostname(如access.log.2013-11-10.nc072)",
         ),
         "author" => Array(
-            "email" => "zhangpei@rd.netease.com",
+            "email" => "zhangpei@rd.xxx.com",
             "phone" => "9723",
         ),
         "backlog" => Array(
