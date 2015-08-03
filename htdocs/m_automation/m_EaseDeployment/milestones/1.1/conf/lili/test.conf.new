@@ -14,7 +14,7 @@ $zookeeper_hosts$ => tb081:2181
 $adverdb$ => jdbc:mysql://tb085:3336/adPublishTempTest?user=lili&amp;password=lili
 $blcustomerdb$ => jdbc:mysql://tb085:3336/auditTempTest?user=lili&password=lili
 $industrydb$ => jdbc:mysql://tb085:3336/industry?user=lili&password=lili
-$blog_info_db$ => jdbc:mysql://tb041:3306/netease_blog_ad?user=lili&password=lili
+$blog_info_db$ => jdbc:mysql://tb041:3306/xxx_blog_ad?user=lili&password=lili
 $hibernate_connection_traffic_url$ => jdbc:mysql://tb085x.corp.youdao.com:3336/unionTempTest?useUnicode=true&amp;characterEncoding=utf8
 $hibernate_connection_traffic_username$ => lili
 $hibernate_connection_traffic_password$ => lili
